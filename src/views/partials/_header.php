@@ -8,7 +8,7 @@
         <meta name="description" content="A starter landing page template for samp servers.">
         <meta name="keywords" content="template, landing-page, samp, samp-server, samp-website">
         
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
         <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
 
@@ -21,7 +21,7 @@
                 <div class="left menu">
                     <a class="item" href="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <img class="ui avatar image" src="./assets/img/logo.png">
-                        <span> <?php echo $server_info['name']; ?> <span>
+                        <span class="community-name"> <?php echo $server_info['name']; ?> <span>
                     </a>
                 </div>
 

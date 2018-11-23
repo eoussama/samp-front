@@ -1,7 +1,20 @@
+/* #region Nav */
+
+nav span.community-name {
+    font-weight: bold;
+}
+
+/* #endregion */
+
+/* #region Footer */
+
 footer {
     margin: 50px 0 0 0 !important;
+    padding: 80px 0 80px 0 !important;
 }
 
 footer div.community-link-label {
     text-transform: capitalize !important;
 }
+
+/* #endregion */

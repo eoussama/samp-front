@@ -29,7 +29,9 @@
     define('COMMUNITY_LINKS', serialize(array(
         "forum"     =>  "http://forum.sa-mp.com",
         "discord"   =>  "https://discord.gg/uaU2KBz",
-        "youtube"   =>  "https://www.youtube.com/"
+        "youtube"   =>  "https://www.youtube.com/",
+        "twitter"   =>  "https://www.twitter.com/",
+        "facebook"   =>  "https://www.facebook.com/"
     )));
 
     /**
@@ -39,7 +41,9 @@
     define('SOCIAL_ICONS', serialize(array(
         "forum"     =>  "external alternate",
         "discord"   =>  "discord",
-        "youtube"   =>  "youtube"
+        "youtube"   =>  "youtube",
+        "twitter"   =>  "twitter",
+        "facebook"   =>  "facebook"
     )));
 
     /**
