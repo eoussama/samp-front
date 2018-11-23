@@ -10,7 +10,12 @@
         /**
          * The name of the community.
          */
-        "name"  =>  "MyCommunity",
+        "name"  =>  "My Community Name",
+
+        /**
+         * Optional community slogan.
+         */
+        "slogan"  =>  "Lorem ipsum, dolor sit consectetur adipisicing",
 
         /**
          * The server's IP address.
