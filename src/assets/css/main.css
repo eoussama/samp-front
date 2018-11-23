@@ -1,0 +1,7 @@
+footer {
+    margin: 50px 0 0 0 !important;
+}
+
+footer div.community-link-label {
+    text-transform: capitalize !important;
+}

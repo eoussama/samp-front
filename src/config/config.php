@@ -4,24 +4,43 @@
      */
 
     /**
-     * The server's name.
+     * The server's information.
      */
-    define('SERVER_NAME', "MyServer");
+    define('SERVER_INFO', serialize(array(
+        /**
+         * The name of the community.
+         */
+        "name"  =>  "MyCommunity",
+
+        /**
+         * The server's IP address.
+         */
+        "ip"    =>  "37.59.72.97",
+
+        /**
+         * The server's port.
+         */
+        "port"  =>  "7777"
+    )));
 
     /**
-     * The server's IP address.
+     * The community's links.
      */
-    define('SERVER_IP', "37.59.72.97");
+    define('COMMUNITY_LINKS', serialize(array(
+        "forum"     =>  "http://forum.sa-mp.com",
+        "discord"   =>  "https://discord.gg/uaU2KBz",
+        "youtube"   =>  "https://www.youtube.com/"
+    )));
 
     /**
-     * The server's port.
+     * The respective icon of all social media.
+     * To add more, check out (https://semantic-ui.com/elements/icon.html#/icon).
      */
-    define('SERVER_PORT', "7777");
-
-    /**
-     * The forum's URL.
-     */
-    define('FORUM_URL', "http://forum.sa-mp.com");
+    define('SOCIAL_ICONS', serialize(array(
+        "forum"     =>  "external alternate",
+        "discord"   =>  "discord",
+        "youtube"   =>  "youtube"
+    )));
 
     /**
      * The donation's URL.
