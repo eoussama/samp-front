@@ -26,7 +26,6 @@
                 </div>
 
                 <div class="right menu">
-                    <a class="item">Home</a>
                     <a class="item" href="<?php echo $community_links['forum']; ?>">Forum</a>
                     <a class="item">Live stats</a>
                     <a class="item">News</a>

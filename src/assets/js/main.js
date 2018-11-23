@@ -6,3 +6,11 @@ $(document).ready(() => {
         }, 500, 'swing');
     });
 });
+
+$(document).on('scroll', (e) => {
+    if ($(window).scrollTop() > ($('header').outerHeight() + $('nav').outerHeight())) {
+        $('nav').addClass('sticky');
+    } else {
+        $('nav').removeClass('sticky');
+    }
+});

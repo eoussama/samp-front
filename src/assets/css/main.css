@@ -9,23 +9,44 @@ nav span.community-name {
     margin-left: 10px;
 }
 
+nav.sticky {
+    animation-duration: .3s;
+    animation-name: menu-reveal;
+    left: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100%;
+}
+
+@keyframes menu-reveal {
+    from {
+        top: -100px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
 /* #endregion */
 
 /* #region Header */
 
 header {
+    background-attachment: fixed !important;
     background-image: url('../img/header-bg.jpg') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     filter: grayscale(50%);
     height: 600px;
     margin: 0 0 80px 0 !important;
+    overflow: hidden;
 }
 
 header > div.container {
-    float: right;
     display: flex !important;
     flex-direction: column;
+    float: right;
     justify-content: center;
     height: 100%;
     width: 50% !important;
