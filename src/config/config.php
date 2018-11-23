@@ -21,7 +21,7 @@
     /**
      * The forum's URL.
      */
-    define('FORUM_URL', "forum.sa-mp.com");
+    define('FORUM_URL', "http://forum.sa-mp.com");
 
     /**
      * The donation's URL.

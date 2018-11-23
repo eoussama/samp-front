@@ -16,3 +16,23 @@
     </head>
 
     <body>
+        <div class="ui stackable borderless menu">
+            <div class="ui container">
+                <div class="left menu">
+                    <a href="<?php echo $_SERVER['PHP_SELF'] ?>" class="item">
+                        <img class="ui avatar image" src="./assets/img/logo.png">
+                        <span> <?php echo SERVER_NAME; ?> <span>
+                    </a>
+                </div>
+
+                <div class="right menu">
+                    <a class="item">Home</a>
+                    <a href="<?php echo FORUM_URL; ?>" class="item">Forum</a>
+                    <a class="item">Live stats</a>
+                    <a class="item">News</a>
+                    <a class="item">Gallery</a>
+                    <a class="item">About</a>
+                    <a class="item">Donate</a>
+                </div>
+            </div>
+        </div>
