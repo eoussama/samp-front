@@ -1,28 +1,19 @@
-<?php ?>
+<?php
+    /**
+     * @name:       Samp Front
+     * @version:    0.1.0
+     * @author:     EOussama (eoussama.github.io)
+     * @license     MIT
+     * @source:     github.com/EOussama/samp-front
+     */
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="EOussama">
-        <meta name="application-name" content="Samp Front">
-        <meta name="description" content="A starter landing page template for samp servers.">
-        <meta name="keywords" content="template, landing-page, samp, samp-server, samp-website">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-        <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
-        <link rel="stylesheet" href="assets/css/main.css">
+    require_once "config/config.php";
 
-        <title>project test</title>
-    </head>
+    include "views/partials/_header.php";
+?>
 
-    <body>
         <main>
 
         </main>
-
-        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
-</html>
+        
+<?php include "views/partials/_footer.php"; ?>
