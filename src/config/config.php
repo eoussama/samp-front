@@ -21,7 +21,7 @@
             /**
              * The server's IP address.
              */
-            "ip"    =>  "37.59.72.97",
+            "ip"    =>  "137.74.179.193",
 
             /**
              * The server's port.
@@ -64,6 +64,6 @@
             /**
              * The discord widget's theme; (light/dark).
              */
-            "theme" =>  "dark"
+            "theme" =>  "light"
         )
      )));

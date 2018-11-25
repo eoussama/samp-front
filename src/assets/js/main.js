@@ -23,7 +23,7 @@ $(document).ready(() => {
     // #region Scroll to live stats
     $('#live-stats-btn').on('click', () => {
         $('html').animate({
-            scrollTop: $('#live-stats').offset().top - 75
+            scrollTop: $('#live-stats').offset().top - 100
         }, config['scrollSpeed']);
     });
     // #endregion

@@ -34,13 +34,15 @@ nav.sticky {
 
 header {
     background-attachment: fixed !important;
-    background-image: url('../img/header-bg.jpg') !important;
+    background-image: url('../img/backgrounds/header-bg.jpg') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     filter: grayscale(50%);
     height: 600px;
     margin: 0 0 80px 0 !important;
     overflow: hidden;
+    transition-duration: .3s;
+    transition-property: margin;
 }
 
 header.sticky {

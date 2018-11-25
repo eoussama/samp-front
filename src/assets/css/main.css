@@ -1,3 +1,26 @@
+body {
+    position: relative;
+}
+
+body::before {
+    background-image: url('../img/backgrounds/intro-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    content: "";
+    left: 0;
+    height: 100%;
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+section {
+    margin: 50px 0 !important;
+    position: relative;
+}
+
 /* #region ScrollTop */
 
 div#scroll-top {
@@ -32,11 +55,53 @@ div#scroll-top:hover {
 
 /* #endregion */
 
+/* #region Live stats */
+
+div#live-stats {
+    height: 430px !important;
+}
+
+div#live-stats section > div.segment {
+    height: 362px !important;
+}
+
+div#live-stats section div.segment > div {
+    height: 97.3%;
+}
+
+div#server-live-stats + div img {
+    bottom: 0;
+    position: absolute;
+    right: -25px;
+    width: 320px;
+}
+
+div.server-offline {
+    align-items: center;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+div.server-offline i {
+    margin-bottom: 20px;
+}
+
+div#players-live-stats {
+    height: 235px !important;
+    margin-top: 0 !important;
+    overflow-y: scroll !important;
+}
+
+/* #endregion */
+
 /* #region Discord section */
 
 div.discord-section {
     border: none !important;
-    box-shadow: none !important;
     padding: 0 !important;
 }
 
