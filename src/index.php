@@ -143,9 +143,13 @@
                     <!-- Players live stats. -->
                     <section id="players-stats" class="five wide column">
                         <div class="ui segment">
-                            <h3>Players</h3>
-
                             <?php if($query->isOnline()): ?>
+                                <?php
+                                    $players = $query->getDetailedPlayers();
+                                ?>
+
+                                <h3>Players <span id="player-count"><?php echo count($players) . " / " . $server_info['maxplayers']; ?></span></h3>
+
                                 <table class="ui celled table">
                                     <thead>
                                         <tr>
@@ -161,10 +165,6 @@
                                 <div id="players-live-stats" class="twelve wide column">
                                     <table class="ui celled table">
                                         <tbody>
-                                            <?php
-                                                $players = $query->getDetailedPlayers();
-                                            ?>
-
                                             <?php foreach($players as $player): ?>
                                                 <tr>
                                                     <td><?php echo $player['playerid']; ?></td>

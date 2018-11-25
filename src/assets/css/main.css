@@ -96,6 +96,11 @@ div#players-live-stats {
     overflow-y: scroll !important;
 }
 
+span#player-count {
+    color: gray;
+    float: right;
+}
+
 /* #endregion */
 
 /* #region Discord section */
