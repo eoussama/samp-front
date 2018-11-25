@@ -37,7 +37,7 @@
                 <div class="row">
 
                     <!-- Live stats section. -->
-                    <section class="eleven wide column">
+                    <section id="live-stats" class="eleven wide column">
                         <div class="ui segment">
                             <h3>Live stats</h3>
                             

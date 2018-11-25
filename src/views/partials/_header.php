@@ -43,7 +43,7 @@
                 <!-- The reset of the links. -->
                 <div class="right menu">
                     <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
-                    <a class="item">Live stats</a>
+                    <a class="item" id="live-stats-btn">Live stats</a>
                     <a class="item">News</a>
                     <a class="item">Gallery</a>
                     <a class="item" id="about-btn">About</a>

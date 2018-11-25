@@ -5,13 +5,11 @@ $(document).ready(() => {
     };
 
     // #region Scroll down button press.
-    
     $('#scroll-down-btn').on('click', () => {
         $('html').animate({
             scrollTop: ($('header').outerHeight() + $('nav').outerHeight()) + 1
         }, config['scrollSpeed']);
     });
-
     // #endregion
 
     // #region Scroll to about
@@ -22,14 +20,20 @@ $(document).ready(() => {
     });
     // #endregion
 
-    // #region Scroll to top
+    // #region Scroll to live stats
+    $('#live-stats-btn').on('click', () => {
+        $('html').animate({
+            scrollTop: $('#live-stats').offset().top - 75
+        }, config['scrollSpeed']);
+    });
+    // #endregion
 
+    // #region Scroll to top
     $('#scroll-top').on('click', () => {
         $('html').animate({
             scrollTop: 0
         }, config['scrollSpeed']);
     });
-
     // #endregion
 });
 
