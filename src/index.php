@@ -61,7 +61,7 @@
                                 <div id="server-live-stats" class="twelve wide column">
                                     <?php if($query->isOnline()): ?>
                                         <table class="ui table">
-                                            <tbody>
+                                            <tbody id="server-stats-content">
                                                 <?php
                                                     $server_info = $query->getInfo();
                                                     $server_rules = $query->getRules();
@@ -164,7 +164,7 @@
                                 <!-- Actuall stats -->
                                 <div id="players-live-stats" class="twelve wide column">
                                     <table class="ui celled table">
-                                        <tbody>
+                                        <tbody id="player-stats-content">
                                             <?php foreach($players as $player): ?>
                                                 <tr>
                                                     <td><?php echo $player['playerid']; ?></td>
