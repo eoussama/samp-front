@@ -2,11 +2,8 @@
     /**
      * Samp Front configurations.
      */
+     define('CONFIG', serialize(array(
 
-    /**
-     * The server's information.
-     */
-    define('SERVER_INFO', serialize(array(
         /**
          * The name of the community.
          */
@@ -18,56 +15,55 @@
         "slogan"  =>  "Lorem ipsum, dolor sit consectetur adipisicing",
 
         /**
-         * The server's IP address.
+         * The server's information.
          */
-        "ip"    =>  "37.59.72.97",
+        "server" => array(
+            /**
+             * The server's IP address.
+             */
+            "ip"    =>  "37.59.72.97",
+
+            /**
+             * The server's port.
+             */
+            "port"  =>  "7777"
+        ),
 
         /**
-         * The server's port.
+         * All community related external links.
          */
-        "port"  =>  "7777"
-    )));
+        "links" => array(
 
-    /**
-     * The community's links.
-     */
-    define('COMMUNITY_LINKS', serialize(array(
-        "forum"     =>  "http://forum.sa-mp.com",
-        "discord"   =>  "https://discord.gg/uaU2KBz",
-        "youtube"   =>  "https://www.youtube.com/",
-        "twitter"   =>  "https://www.twitter.com/",
-        "facebook"  =>  "https://www.facebook.com/"
-    )));
+            /**
+             * The community's links.
+             */
+            "community" => array(
+                "forum"     =>  "http://forum.sa-mp.com",
+                "discord"   =>  "https://discord.gg/uaU2KBz",
+                "youtube"   =>  "https://www.youtube.com/",
+                "twitter"   =>  "https://www.twitter.com/",
+                "facebook"  =>  "https://www.facebook.com/",
+                "reddit"    =>  "https://www.reddit.com/r/samp/"
+            ),
 
-    /**
-     * The discord server's information.
-     */
-    define('DISCORD_CONFIG', serialize(array(
+            /**
+             * The donation redirect link.
+             */
+            "donation" => "javascript:void(0)"
+        ),
 
         /**
-         * The discord server's ID.
+         * The discord server's information.
          */
-        "id"    =>  "231799104731217931",
+        "discord" => array(
+            /**
+             * The discord server's ID.
+             */
+            "id"    =>  "231799104731217931",
 
-        /**
-         * The discord widget's theme; (light/dark).
-         */
-        "theme" =>  "dark"
-    )));
-
-    /**
-     * The respective icon of all social media.
-     * To add more, check out (https://semantic-ui.com/elements/icon.html#/icon).
-     */
-    define('SOCIAL_ICONS', serialize(array(
-        "forum"     =>  "external alternate",
-        "discord"   =>  "discord",
-        "youtube"   =>  "youtube",
-        "twitter"   =>  "twitter",
-        "facebook"   =>  "facebook"
-    )));
-
-    /**
-     * The donation's URL.
-     */
-    define('DONATION_URL', "javascript:void(0)");
+            /**
+             * The discord widget's theme; (light/dark).
+             */
+            "theme" =>  "dark"
+        )
+     )));

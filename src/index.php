@@ -1,26 +1,30 @@
 <?php
     /**
      * @name:       Samp Front
-     * @version:    0.1.0
+     * @version:    0.2.0
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
      */
 
     require_once "config/config.php";
+    require_once "utils/icons.php";
 
-    $server_info        = unserialize(SERVER_INFO);
-    $community_links    = unserialize(COMMUNITY_LINKS);
-    $discord_config     = unserialize(DISCORD_CONFIG);
-    $social_icons       = unserialize(SOCIAL_ICONS);
+    $config = unserialize(CONFIG);
 
     include "views/partials/_header.php";
 ?>
         <!-- The header. -->
         <header class="ui vertical center aligned segment">
             <div class="ui container">
-                <h1 class="ui header"><?php echo $server_info['name']; ?></h1>
-                <h4 class="ui grey header"><?php echo $server_info['slogan']; ?></h4>
+
+                <!-- Community name -->
+                <h1 class="ui header"><?php echo $config['name']; ?></h1>
+
+                <!-- Community slogan. -->
+                <h4 class="ui grey header"><?php echo $config['slogan']; ?></h4>
+
+                <!-- Scroll down button. -->
                 <p class="icon-wrapper">
                     <i id="scroll-down-btn" class="grey huge angle down icon"></i>
                 </p>
@@ -45,7 +49,7 @@
                     <!-- Discord section. -->
                     <section class="five wide column">
                         <div class="ui segment discord-section">
-                            <iframe src="https://discordapp.com/widget?id=<?php echo $discord_config['id']; ?>&theme=<?php echo $discord_config['theme']; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['discord']['theme']; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
                     </section>
                 </div>

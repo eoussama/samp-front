@@ -23,7 +23,7 @@
         <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
 
         <!-- The website's title -->
-        <title><?php echo $server_info['name']; ?></title>
+        <title><?php echo $config['name']; ?></title>
     </head>
 
     <body>
@@ -36,18 +36,18 @@
                 <div class="left menu">
                     <a class="item" href="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <img class="ui avatar image" src="./assets/img/logo.png">
-                        <span class="community-name"> <?php echo $server_info['name']; ?> <span>
+                        <span class="community-name"> <?php echo $config['name']; ?> <span>
                     </a>
                 </div>
 
                 <!-- The reset of the links. -->
                 <div class="right menu">
-                    <a class="item" href="<?php echo $community_links['forum']; ?>">Forum</a>
+                    <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
                     <a class="item">Live stats</a>
                     <a class="item">News</a>
                     <a class="item">Gallery</a>
                     <a class="item" id="about-btn">About</a>
-                    <a class="item" href="<?php echo DONATION_URL; ?>">Donate</a>
+                    <a class="item" href="<?php echo $config['links']['donation']; ?>">Donate</a>
                 </div>
             </div>
         </nav>
