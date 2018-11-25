@@ -43,6 +43,10 @@ header {
     overflow: hidden;
 }
 
+header.sticky {
+    margin-top: 50px !important;
+}
+
 header > div.container {
     display: flex !important;
     flex-direction: column;
@@ -100,6 +104,45 @@ footer {
 
 footer div.community-link-label {
     text-transform: capitalize !important;
+}
+
+div#about {
+    padding-right: 100px !important;
+    text-align: justify;
+}
+
+/* #endregion */
+
+/* #region ScrollTop */
+
+div#scroll-top {
+    animation-duration: .3s;
+    animation-name: scroll-top-reveal;
+    bottom: 50px;
+    cursor: pointer;
+    display: none;
+    opacity: .1;
+    position: fixed;
+    right: 50px;
+    transition-duration: .3s;
+    transition-property: opacity;
+    z-index: 10;
+}
+
+div#scroll-top:hover {
+    opacity: .6 !important;
+}
+
+@keyframes scroll-top-reveal {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 50px;
+        opacity: .1;
+    }
 }
 
 /* #endregion */
