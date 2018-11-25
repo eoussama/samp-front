@@ -36,7 +36,23 @@
         "discord"   =>  "https://discord.gg/uaU2KBz",
         "youtube"   =>  "https://www.youtube.com/",
         "twitter"   =>  "https://www.twitter.com/",
-        "facebook"   =>  "https://www.facebook.com/"
+        "facebook"  =>  "https://www.facebook.com/"
+    )));
+
+    /**
+     * The discord server's information.
+     */
+    define('DISCORD_CONFIG', serialize(array(
+
+        /**
+         * The discord server's ID.
+         */
+        "id"    =>  "231799104731217931",
+
+        /**
+         * The discord widget's theme; (light/dark).
+         */
+        "theme" =>  "dark"
     )));
 
     /**

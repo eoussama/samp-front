@@ -31,3 +31,17 @@ div#scroll-top:hover {
 }
 
 /* #endregion */
+
+/* #region Discord section */
+
+div.discord-section {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+div.discord-section iframe {
+    width: 100%;
+}
+
+/* #endregion */

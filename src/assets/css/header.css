@@ -60,6 +60,10 @@ header h1.header {
     font-size: 40px !important;
 }
 
+header h4 {
+    font-weight: 500 !important;
+}
+
 header p.icon-wrapper {
     position: relative;
 }
