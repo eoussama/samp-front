@@ -15,7 +15,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
+        <link rel="stylesheet" href="assets/css/header.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
 
         <!-- The website's favicon. -->
         <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
