@@ -42,7 +42,11 @@
         <!-- Semantic UI. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
+        <!-- Scrollreveal. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
+
         <!-- The main script -->
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/scrollreveal.js"></script>
     </body>
 </html>

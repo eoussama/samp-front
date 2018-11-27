@@ -21,6 +21,15 @@ section {
     position: relative;
 }
 
+/* #region Intro */
+
+section#intro img {
+    width: 180px;
+    transform: rotateY(180deg);
+}
+
+/* #endregion */
+
 /* #region ScrollTop */
 
 div#scroll-top {

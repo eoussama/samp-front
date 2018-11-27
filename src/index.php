@@ -49,9 +49,17 @@
                 <div class="row">
                     <section id="intro" class="column">
                         <div class="ui segment">
-                            <h3>Who we are</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptatem culpa, obcaecati nam esse voluptatum laudantium omnis aspernatur minus non repellat exercitationem facilis fuga ab recusandae reprehenderit molestias? Deleniti, ea!</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptatem culpa, obcaecati nam esse voluptatum laudantium omnis aspernatur minus non repellat exercitationem facilis fuga ab recusandae reprehenderit molestias? Deleniti, ea!</p>
+                            <div class="ui grid">
+                                <div id="fellas" class="three wide column">
+                                    <img src="assets/img/figures/fellas.png" alt="Who we are image.">
+                                </div>
+                                <div id="intro-content" class="thirteen wide column">
+                                    <h3>Who we are</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptatem culpa, obcaecati nam esse voluptatum laudantium omnis aspernatur minus non repellat exercitationem facilis fuga ab recusandae reprehenderit molestias? Deleniti, ea!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptatem culpa, obcaecati nam esse voluptatum laudantium omnis aspernatur minus non repellat exercitationem facilis fuga ab recusandae reprehenderit molestias? Deleniti, ea!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptatem culpa, obcaecati nam esse voluptatum laudantium omnis aspernatur minus non repellat exercitationem facilis fuga ab recusandae reprehenderit molestias? Deleniti, ea!</p>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -184,7 +192,7 @@
 
                                 <!-- Officer tempany. -->
                                 <div class="four wide column">
-                                    <img src="assets/img/figures/tempeny-1.png" alt="Live stats figure.">
+                                    <img id="office-tempany" src="assets/img/figures/tempeny-1.png" alt="Live stats figure.">
                                 </div>
                             </div>
                         </div>
@@ -255,7 +263,7 @@
                     </section>
 
                     <!-- Discord section. -->
-                    <section class="five wide column">
+                    <section id="discord" class="five wide column">
                         <div class="ui segment discord-section">
                             <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['discord']['theme']; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>

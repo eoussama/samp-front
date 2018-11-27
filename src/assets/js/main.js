@@ -29,7 +29,7 @@ $(document).ready(() => {
         // #region Scroll to live stats
         $('#live-stats-btn').on('click', () => {
             $('html').animate({
-                scrollTop: $('#live-stats').offset().top - 50
+                scrollTop: $('#live-stats').offset().top - 80
             }, config['scrollSpeed']);
         });
         // #endregion
