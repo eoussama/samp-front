@@ -7,12 +7,20 @@
      * @source:     github.com/EOussama/samp-front
      */
 
+    /**
+     * Only disable errors if you're pushing this
+     * into a production environment.
+     * In order to disable it, change `E_ALL` to `0`.
+     */
+    error_reporting(E_ALL);
+
     require_once "config/config.php";
     require_once "utils/SampQueryAPI.php";
     require_once "utils/icons.php";
 
     $config = unserialize(CONFIG);
     $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
+    $isOnline = $query->isOnline();
 
     include "views/partials/_header.php";
 ?>
@@ -58,78 +66,120 @@
                             <div class="ui two column grid">
 
                                 <!-- Actuall stats -->
-                                <div id="server-live-stats" class="twelve wide column">
-                                    <?php if($query->isOnline()): ?>
-                                        <table class="ui table">
-                                            <tbody id="server-stats-content">
-                                                <?php
+                                <div id="server-live-stats" class="twelve wide column <?php  echo ($isOnline ? '' : 'offline'); ?>">
+                                    <table class="ui table">
+                                        <tbody id="server-stats-content">
+                                            <?php
+                                                if ($isOnline) {
                                                     $server_info = $query->getInfo();
                                                     $server_rules = $query->getRules();
-                                                ?>
+                                                }
+                                            ?>
 
-                                                <!-- Hostname. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="star icon"></i> Host name
-                                                    </td>
-                                                    <td id="server-hostname"><?php echo $server_info['hostname']; ?></td>
-                                                </tr>
+                                            <!-- Hostname. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="star icon"></i> Host name
+                                                </td>
+                                                <td id="server-hostname">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_info['hostname'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Version. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="circle icon"></i> Version
-                                                    </td>
-                                                    <td id="server-version"><?php echo $server_rules['version']; ?></td>
-                                                </tr>
+                                            <!-- Version. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="circle icon"></i> Version
+                                                </td>
+                                                <td id="server-version">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_rules['version'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Gamemode. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="play icon"></i> Game-mode
-                                                    </td>
-                                                    <td id="server-gamemode"><?php echo $server_info['gamemode']; ?></td>
-                                                </tr>
+                                            <!-- Gamemode. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="play icon"></i> Game-mode
+                                                </td>
+                                                <td id="server-gamemode">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_info['gamemode'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Map. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="map icon"></i> Map
-                                                    </td>
-                                                    <td id="server-mapname"><?php echo $server_rules['mapname']; ?></td>
-                                                </tr>
+                                            <!-- Map. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="map icon"></i> Map
+                                                </td>
+                                                <td id="server-mapname">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_rules['mapname'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Language. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="globe icon"></i> Language
-                                                    </td>
-                                                    <td id="server-language"><?php echo $server_info['mapname']; ?></td>
-                                                </tr>
+                                            <!-- Language. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="globe icon"></i> Language
+                                                </td>
+                                                <td id="server-language">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_info['mapname'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Players. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="user icon"></i> Players
-                                                    </td>
-                                                    <td id="server-players"><?php echo $server_info['players']. " / " .$server_info['maxplayers']; ?></td>
-                                                </tr>
+                                            <!-- Players. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="user icon"></i> Players
+                                                </td>
+                                                <td id="server-players">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_info['players']. " / " .$server_info['maxplayers'];
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Password. -->
-                                                <tr>
-                                                    <td class="collapsing">
-                                                        <i class="lock icon"></i> Password
-                                                    </td>
-                                                    <td id="server-password"><?php echo $server_info['password'] == 0 ? "No" : "Yes"; ?></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    <?php else: ?>
-                                        <div class="server-offline">
-                                            <i class="huge exclamation icon"></i>
-                                            <p>The server is currently offline</p>
-                                        </div>
-                                    <?php endif; ?>
+                                            <!-- Password. -->
+                                            <tr>
+                                                <td class="collapsing">
+                                                    <i class="lock icon"></i> Password
+                                                </td>
+                                                <td id="server-password">
+                                                    <?php
+                                                        if ($isOnline) {
+                                                            echo $server_info['password'] == 0 ? "No" : "Yes";
+                                                        }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="server-offline">
+                                        <i class="huge exclamation icon"></i>
+                                        <p>The server is currently offline</p>
+                                    </div>
                                 </div>
 
                                 <!-- Figure. -->
@@ -141,15 +191,23 @@
                     </section>
 
                     <!-- Players live stats. -->
-                    <section id="players-stats" class="five wide column">
+                    <section id="players-stats" class="five wide column <?php  echo ($isOnline ? '' : 'offline'); ?>">
                         <div class="ui segment">
-                            <?php if($query->isOnline()): ?>
-                                <?php
+                            <?php
+                                if ($isOnline) {
                                     $players = $query->getDetailedPlayers();
-                                ?>
+                                }
+                            ?>
 
-                                <h3>Players <span id="player-count"><?php echo count($players) . " / " . $server_info['maxplayers']; ?></span></h3>
-
+                            <div class="content">
+                                <h3>Players <span id="player-count">
+                                    <?php
+                                        if ($isOnline) {
+                                            echo count($players) . " / " . $server_info['maxplayers'];
+                                        }
+                                    ?>
+                                </span></h3>
+    
                                 <table class="ui celled table">
                                     <thead>
                                         <tr>
@@ -160,28 +218,30 @@
                                         </tr>
                                     </thead>
                                 </table>
-
+    
                                 <!-- Actuall stats -->
                                 <div id="players-live-stats" class="twelve wide column">
                                     <table class="ui celled table">
                                         <tbody id="player-stats-content">
-                                            <?php foreach($players as $player): ?>
-                                                <tr>
-                                                    <td><?php echo $player['playerid']; ?></td>
-                                                    <td><?php echo $player['nickname']; ?></td>
-                                                    <td><?php echo $player['score']; ?></td>
-                                                    <td><?php echo $player['ping']; ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
+                                            <?php if ($isOnline): ?>
+                                                <?php foreach($players as $player): ?>
+                                                    <tr>
+                                                        <td><?php echo $player['playerid']; ?></td>
+                                                        <td><?php echo $player['nickname']; ?></td>
+                                                        <td><?php echo $player['score']; ?></td>
+                                                        <td><?php echo $player['ping']; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
                                         </tbody>
                                     </table>
                                 </div>
-                            <?php else: ?>
-                                <div class="server-offline">
-                                    <i class="huge exclamation icon"></i>
-                                    <p>The server is currently offline</p>
-                                </div>
-                            <?php endif; ?>
+                            </div>
+
+                            <div class="server-offline">
+                                <i class="huge exclamation icon"></i>
+                                <p>The server is currently offline</p>
+                            </div>
                         </div>
                     </section>
                 </div>

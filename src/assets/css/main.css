@@ -69,6 +69,15 @@ div#live-stats section div.segment > div {
     height: 97.3%;
 }
 
+
+div#server-live-stats.offline table, section#players-stats.offline div.content {
+    display: none;
+}
+
+div#server-live-stats.offline div.server-offline, section#players-stats.offline div.server-offline {
+    display: flex;
+}
+
 div#server-live-stats + div img {
     bottom: 0;
     position: absolute;
@@ -79,7 +88,7 @@ div#server-live-stats + div img {
 div.server-offline {
     align-items: center;
     color: gray;
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 100%;
     justify-content: center;

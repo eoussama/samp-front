@@ -47,6 +47,7 @@ $(document).ready(() => {
 
     const
         $serverInfo = {
+            "section": $('#server-live-stats'),
             "hostname": $('#server-hostname'),
             "version": $('#server-version'),
             "gamemode": $('#server-gamemode'),
@@ -59,46 +60,49 @@ $(document).ready(() => {
         $playerCount = $('#player-count');
 
     setInterval(() => {
-        try {
-            fetch('utils/live-update.php')
-            .then(response => response.json())
-            .then(data => {
-                if (!data.hasOwnProperty('error')) {
-    
-                    // Updating the server's info.
-                    $serverInfo["hostname"].text(data.info.hostname);
-                    $serverInfo["version"].text(data.rules.version);
-                    $serverInfo["gamemode"].text(data.info.gamemode);
-                    $serverInfo["mapname"].text(data.rules.mapname);
-                    $serverInfo["language"].text(data.info.mapname);
-                    $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
-                    $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
-    
-                    // Updating the player count.
-                    $playerCount.text(`${ data.players.length } / ${ data.info.maxplayers }`);
-    
-                    // Updating the players' list.
-                    $playersStats.text("");
-                    $.each(data.players, (i, v) => {
-                        $playersStats.append(`
-                            <tr>
-                                <td>${ v.playerid }</td>
-                                <td>${ v.nickname }</td>
-                                <td>${ v.score }</td>
-                                <td>${ v.ping }</td>
-                            </tr>
-                        `);
-                    });
-                } else {
-                    throw new Exception('[error] - ' + data.error);
-                }
-    
-                console.log('updated');
-            });
-        }
-        catch(e) {
-            console.log('exception: ' + e);
-        }
+        fetch('utils/live-update.php')
+        .then(response => response.json())
+        .then(data => {
+            if (!data.hasOwnProperty('error')) {
+                $serverInfo["section"].removeClass('offline');
+
+                // Updating the server's info.
+                $serverInfo["hostname"].text(data.info.hostname);
+                $serverInfo["version"].text(data.rules.version);
+                $serverInfo["gamemode"].text(data.info.gamemode);
+                $serverInfo["mapname"].text(data.rules.mapname);
+                $serverInfo["language"].text(data.info.mapname);
+                $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
+                $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
+
+                // Updating the player count.
+                $playerCount.text(`${ data.players.length } / ${ data.info.maxplayers }`);
+
+                // Updating the players' list.
+                $playersStats.text("");
+                $.each(data.players, (i, v) => {
+                    $playersStats.append(`
+                        <tr>
+                            <td>${ v.playerid }</td>
+                            <td>${ v.nickname }</td>
+                            <td>${ v.score }</td>
+                            <td>${ v.ping }</td>
+                        </tr>
+                    `);
+                });
+            } else {
+                throw `[error] - ${ data.error }`;
+            }
+
+            console.log('updated');
+        })
+        .catch(err => {
+            if (err == "The server is currently offline") {
+                $serverInfo["section"].addClass('offline');
+            }
+
+            console.error('Samp Front: ' + err);
+        });
     }, config['liveUpdateInterval']);
 
     // #endregion

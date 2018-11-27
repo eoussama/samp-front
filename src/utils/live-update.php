@@ -48,6 +48,5 @@
         $data = json_encode(array("error" => htmlspecialchars($e->getMessage())));
     }
     finally {
-    
         echo json_encode($data);
     }
