@@ -2,7 +2,7 @@
     /**
      * Samp Front configurations.
      */
-     define('CONFIG', serialize(array(
+    define('CONFIG', serialize(array(
 
         /**
          * The name of the community.
@@ -65,5 +65,19 @@
              * The discord widget's theme; (light/dark).
              */
             "theme" =>  "light"
-        )
-     )));
+        ),
+
+        /**
+         * The auto scroll's speed in milliseconds.
+         */
+        "scrollSpeed" => 500,
+
+        /**
+         * The live stats update interval in milliseconds.
+         */
+        "liveUpdateInterval" => 10000
+    )));
+
+    if (isset($_GET['q'])) {
+        echo json_encode(unserialize(CONFIG));
+    }
