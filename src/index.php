@@ -267,8 +267,8 @@
                 <div class="row">
 
                     <!-- Gallery. -->
-                    <section class="eleven wide column">
-                        <div class="ui segment">
+                    <section style="background: red;" class="eleven wide column">
+                        <div id="gallery" class="ui segment">
                             <h3>Gallery</h3>
                         </div>
                     </section>
