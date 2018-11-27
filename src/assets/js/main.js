@@ -58,8 +58,11 @@ $(document).ready(() => {
                 "players": $('#server-players'),
                 "password": $('#server-password')
             },
-            $playersStats = $('#player-stats-content'),
-            $playerCount = $('#player-count');
+            $playersInfo = {
+                "section": $('#players-stats'),
+                "stats": $('#player-stats-content'),
+                "count": $('#player-count')
+            };
     
         setInterval(() => {
             fetch('./utils/live-update.php')
@@ -67,6 +70,7 @@ $(document).ready(() => {
             .then(data => {
                 if (!data.hasOwnProperty('error')) {
                     $serverInfo["section"].removeClass('offline');
+                    $playersInfo["section"].removeClass('offline');
     
                     // Updating the server's info.
                     $serverInfo["hostname"].text(data.info.hostname);
@@ -76,14 +80,14 @@ $(document).ready(() => {
                     $serverInfo["language"].text(data.info.mapname);
                     $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
                     $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
-    
+
                     // Updating the player count.
-                    $playerCount.text(`${ data.players.length } / ${ data.info.maxplayers }`);
+                    $playersInfo["count"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
     
                     // Updating the players' list.
-                    $playersStats.text("");
+                    $playersInfo["stats"].text("");
                     $.each(data.players, (i, v) => {
-                        $playersStats.append(`
+                        $playersInfo["stats"].append(`
                             <tr>
                                 <td>${ v.playerid }</td>
                                 <td>${ v.nickname }</td>
@@ -101,6 +105,7 @@ $(document).ready(() => {
             .catch(err => {
                 if (err == "The server is currently offline") {
                     $serverInfo["section"].addClass('offline');
+                    $playersInfo["section"].addClass('offline');
                 }
     
                 console.error(`Samp Front: ${ err }.`);
