@@ -5,12 +5,12 @@ body {
 
 body::before {
     background-image: url('../img/backgrounds/beach-bg.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
     background-attachment: fixed;
     content: "";
     left: 0;
-    height: 100%;
+    height: 120%;
     opacity: .2;
     position: absolute;
     top: 0;
