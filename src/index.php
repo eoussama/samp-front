@@ -254,12 +254,23 @@
                     </section>
                 </div>
 
-                <!-- . -->
+                <!-- News. -->
+                <div class="row">
+                    <section class="sixteen wide column">
+                        <div class="ui segment">
+                            <h3>News</h3>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Misc. -->
                 <div class="row">
 
-                    <!-- . -->
+                    <!-- Gallery. -->
                     <section class="eleven wide column">
-                        
+                        <div class="ui segment">
+                            <h3>Gallery</h3>
+                        </div>
                     </section>
 
                     <!-- Discord section. -->
