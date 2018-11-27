@@ -10,6 +10,9 @@ $(document).ready(() => {
         return config;
     })
     .then(config => {
+        $('#loader').removeClass('active');
+        $('body').css('overflow-y', 'auto');
+
         // #region Scroll down button press.
         $('#scroll-down-btn').on('click', () => {
             $('html').animate({
@@ -93,14 +96,14 @@ $(document).ready(() => {
                     throw `[error] - ${ data.error }`;
                 }
     
-                console.log('updated');
+                console.info('Samp Front: Server stats updated.');
             })
             .catch(err => {
                 if (err == "The server is currently offline") {
                     $serverInfo["section"].addClass('offline');
                 }
     
-                console.error('Samp Front: ' + err);
+                console.error(`Samp Front: ${ err }.`);
             });
         }, config['liveUpdateInterval']);
     

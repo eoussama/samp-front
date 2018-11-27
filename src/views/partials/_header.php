@@ -27,6 +27,9 @@
     </head>
 
     <body>
+        <div id="loader" class="ui inverted active dimmer">
+            <div class="ui text loader"><?php echo $config['name']; ?></div>
+        </div>
 
         <!-- The navbar. -->
         <nav class="ui stackable borderless menu">
