@@ -68,34 +68,42 @@ $(document).ready(() => {
             fetch('./utils/live-update.php')
             .then(response => response.json())
             .then(data => {
-                if (!data.hasOwnProperty('error')) {
+                if (data.error === undefined) {
                     $serverInfo["section"].removeClass('offline');
                     $playersInfo["section"].removeClass('offline');
     
-                    // Updating the server's info.
-                    $serverInfo["hostname"].text(data.info.hostname);
-                    $serverInfo["version"].text(data.rules.version);
-                    $serverInfo["gamemode"].text(data.info.gamemode);
-                    $serverInfo["mapname"].text(data.rules.mapname);
-                    $serverInfo["language"].text(data.info.mapname);
-                    $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
-                    $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
+                    if (data.info !== null) {
+                        // Updating the server's info.
+                        $serverInfo["hostname"].text(data.info.hostname);
+                        $serverInfo["language"].text(data.info.mapname);
+                        $serverInfo["gamemode"].text(data.info.gamemode);
+                        $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
+                        $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
+                        
+                        // Updating the player count.
+                        $playersInfo["count"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
+                    }
 
-                    // Updating the player count.
-                    $playersInfo["count"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
-    
+                    if (data.rules !== null) {
+                        // Updating the server's info.
+                        $serverInfo["version"].text(data.rules.version);
+                        $serverInfo["mapname"].text(data.rules.mapname);
+                    }
+
                     // Updating the players' list.
-                    $playersInfo["stats"].text("");
-                    $.each(data.players, (i, v) => {
-                        $playersInfo["stats"].append(`
-                            <tr>
-                                <td>${ v.playerid }</td>
-                                <td>${ v.nickname }</td>
-                                <td>${ v.score }</td>
-                                <td>${ v.ping }</td>
-                            </tr>
-                        `);
-                    });
+                    if (data.players !== null) {
+                        $playersInfo["stats"].text("");
+                        $.each(data.players, (i, v) => {
+                            $playersInfo["stats"].append(`
+                                <tr>
+                                    <td>${ v.playerid }</td>
+                                    <td>${ v.nickname }</td>
+                                    <td>${ v.score }</td>
+                                    <td>${ v.ping }</td>
+                                </tr>
+                            `);
+                        });
+                    }
                 } else {
                     throw `[error] - ${ data.error }`;
                 }
