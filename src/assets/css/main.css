@@ -3,7 +3,7 @@ body {
 }
 
 body::before {
-    background-image: url('../img/backgrounds/intro-bg.jpg');
+    background-image: url('../img/backgrounds/beach-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

@@ -182,7 +182,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Figure. -->
+                                <!-- Officer tempany. -->
                                 <div class="four wide column">
                                     <img src="assets/img/figures/tempeny-1.png" alt="Live stats figure.">
                                 </div>
