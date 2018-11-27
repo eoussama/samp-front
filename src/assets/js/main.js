@@ -8,7 +8,7 @@ $(document).ready(() => {
         /**
          * The live stats update interval in milliseconds.
          */
-        liveUpdateInterval: 10000
+        liveUpdateInterval: 3000
     };
 
     // #region Scroll down button press.
@@ -46,86 +46,59 @@ $(document).ready(() => {
     // #region Live update
 
     const
-        $serverStats = $('#server-stats-content'),
+        $serverInfo = {
+            "hostname": $('#server-hostname'),
+            "version": $('#server-version'),
+            "gamemode": $('#server-gamemode'),
+            "mapname": $('#server-mapname'),
+            "language": $('#server-language'),
+            "players": $('#server-players'),
+            "password": $('#server-password')
+        },
         $playersStats = $('#player-stats-content'),
         $playerCount = $('#player-count');
 
     setInterval(() => {
-        fetch('utils/live-update.php')
-        .then(response => response.json())
-        .then(data => {
-            if (!data.hasOwnProperty('error')) {
-                // Updating the server's info.
-                $serverStats.html(`
-                    <tr>
-                        <td class="collapsing">
-                            <i class="star icon"></i> Host name
-                        </td>
-                        <td>${ data.info.hostname }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="circle icon"></i> Version
-                        </td>
-                        <td>${ data.rules.version }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="play icon"></i> Game-mode
-                        </td>
-                        <td>${ data.info.gamemode }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="map icon"></i> Map
-                        </td>
-                        <td>${ data.rules.mapname }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="globe icon"></i> Language
-                        </td>
-                        <td>${ data.info.mapname }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="user icon"></i> Players
-                        </td>
-                        <td>${ data.info.players } / ${ data.info.maxplayers }</td>
-                    </tr>
-
-                    <tr>
-                        <td class="collapsing">
-                            <i class="lock icon"></i> Password
-                        </td>
-                        <td>${ data.info.password ? "Yes" : "No" }</td>
-                    </tr>
-                `);
-
-                // Updating the player count.
-                $playerCount.text(`${ data.players.length } / ${ data.info.maxplayers }`);
-
-                // Updating the players' list.
-                $playersStats.text("");
-                $.each(data.players, (i, v) => {
-                    $playersStats.append(`
-                        <tr>
-                            <td>${ v.playerid }</td>
-                            <td>${ v.nickname }</td>
-                            <td>${ v.score }</td>
-                            <td>${ v.ping}</td>
-                        </tr>
-                    `);
-                });
-            }
-
-            console.log('updated');
-        });
+        try {
+            fetch('utils/live-update.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.hasOwnProperty('error')) {
+    
+                    // Updating the server's info.
+                    $serverInfo["hostname"].text(data.info.hostname);
+                    $serverInfo["version"].text(data.rules.version);
+                    $serverInfo["gamemode"].text(data.info.gamemode);
+                    $serverInfo["mapname"].text(data.rules.mapname);
+                    $serverInfo["language"].text(data.info.mapname);
+                    $serverInfo["players"].text(`${ data.players.length } / ${ data.info.maxplayers }`);
+                    $serverInfo["password"].text(`${ data.info.password ? "Yes" : "No" }`);
+    
+                    // Updating the player count.
+                    $playerCount.text(`${ data.players.length } / ${ data.info.maxplayers }`);
+    
+                    // Updating the players' list.
+                    $playersStats.text("");
+                    $.each(data.players, (i, v) => {
+                        $playersStats.append(`
+                            <tr>
+                                <td>${ v.playerid }</td>
+                                <td>${ v.nickname }</td>
+                                <td>${ v.score }</td>
+                                <td>${ v.ping }</td>
+                            </tr>
+                        `);
+                    });
+                } else {
+                    throw new Exception('[error] - ' + data.error);
+                }
+    
+                console.log('updated');
+            });
+        }
+        catch(e) {
+            console.log('exception: ' + e);
+        }
     }, config['liveUpdateInterval']);
 
     // #endregion

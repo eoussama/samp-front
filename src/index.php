@@ -72,7 +72,7 @@
                                                     <td class="collapsing">
                                                         <i class="star icon"></i> Host name
                                                     </td>
-                                                    <td><?php echo $server_info['hostname']; ?></td>
+                                                    <td id="server-hostname"><?php echo $server_info['hostname']; ?></td>
                                                 </tr>
 
                                                 <!-- Version. -->
@@ -80,7 +80,7 @@
                                                     <td class="collapsing">
                                                         <i class="circle icon"></i> Version
                                                     </td>
-                                                    <td><?php echo $server_rules['version']; ?></td>
+                                                    <td id="server-version"><?php echo $server_rules['version']; ?></td>
                                                 </tr>
 
                                                 <!-- Gamemode. -->
@@ -88,7 +88,7 @@
                                                     <td class="collapsing">
                                                         <i class="play icon"></i> Game-mode
                                                     </td>
-                                                    <td><?php echo $server_info['gamemode']; ?></td>
+                                                    <td id="server-gamemode"><?php echo $server_info['gamemode']; ?></td>
                                                 </tr>
 
                                                 <!-- Map. -->
@@ -96,7 +96,7 @@
                                                     <td class="collapsing">
                                                         <i class="map icon"></i> Map
                                                     </td>
-                                                    <td><?php echo $server_rules['mapname']; ?></td>
+                                                    <td id="server-mapname"><?php echo $server_rules['mapname']; ?></td>
                                                 </tr>
 
                                                 <!-- Language. -->
@@ -104,7 +104,7 @@
                                                     <td class="collapsing">
                                                         <i class="globe icon"></i> Language
                                                     </td>
-                                                    <td><?php echo $server_info['mapname']; ?></td>
+                                                    <td id="server-language"><?php echo $server_info['mapname']; ?></td>
                                                 </tr>
 
                                                 <!-- Players. -->
@@ -112,7 +112,7 @@
                                                     <td class="collapsing">
                                                         <i class="user icon"></i> Players
                                                     </td>
-                                                    <td><?php echo $server_info['players']. " / " .$server_info['maxplayers']; ?></td>
+                                                    <td id="server-players"><?php echo $server_info['players']. " / " .$server_info['maxplayers']; ?></td>
                                                 </tr>
 
                                                 <!-- Password. -->
@@ -120,7 +120,7 @@
                                                     <td class="collapsing">
                                                         <i class="lock icon"></i> Password
                                                     </td>
-                                                    <td><?php echo $server_info['password'] == 0 ? "No" : "Yes"; ?></td>
+                                                    <td id="server-password"><?php echo $server_info['password'] == 0 ? "No" : "Yes"; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
