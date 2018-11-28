@@ -61,6 +61,20 @@ section#news div#news-list {
     background-color: transparent !important;
 }
 
+section#news div#no-articles {
+    align-items: center;
+    color: #afafaf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    width: 100%;
+}
+
+section#news div#no-articles i {
+    margin-bottom: 20px;
+}
+
 /* #endregion */
 
 /* #region Gallery */

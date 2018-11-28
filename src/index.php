@@ -306,6 +306,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                <?php else: ?>
+                                    <div id="no-articles">
+                                        <i class="huge exclamation icon"></i>
+                                        <p>Such empty!</p>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
