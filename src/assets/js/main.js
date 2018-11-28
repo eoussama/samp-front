@@ -13,6 +13,14 @@ $(document).ready(() => {
         $('#loader').removeClass('active');
         $('body').css('overflow-y', 'auto');
 
+        // #region Carousel
+        $('#gallery-carousel').slick({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            dots: true
+        });
+        // #endregion
+
         // #region Scroll down button press.
         $('#scroll-down-btn').on('click', () => {
             $('html').animate({
@@ -37,6 +45,14 @@ $(document).ready(() => {
         });
         // #endregion
     
+        // #region Scroll to gallery
+        $('#gallery-btn').on('click', () => {
+            $('html').animate({
+                scrollTop: $('#gallery').offset().top - 90
+            }, config['scrollSpeed']);
+        });
+        // #endregion
+
         // #region Scroll to top
         $('#scroll-top').on('click', () => {
             $('html').animate({

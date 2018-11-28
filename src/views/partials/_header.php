@@ -52,7 +52,7 @@
                     <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
                     <a class="item" id="live-stats-btn">Live stats</a>
                     <a class="item">News</a>
-                    <a class="item">Gallery</a>
+                    <a class="item" id="gallery-btn">Gallery</a>
                     <a class="item" id="about-btn">About</a>
                     <a class="item" href="<?php echo $config['links']['donation']; ?>">Donate</a>
                 </div>

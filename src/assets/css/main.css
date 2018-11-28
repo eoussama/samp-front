@@ -22,9 +22,29 @@ section {
     position: relative;
 }
 
+/* #region Gallery */
+
 div#gallery {
     height: 100% !important;
 }
+
+div#gallery-carousel {
+    height: 408px !important;
+}
+
+div#gallery-carousel img {
+    cursor: w-resize;
+    filter: grayscale(70%);
+    height: 400px !important;
+    transition-duration: .5s;
+    transition-property: filter;
+}
+
+div#gallery-carousel img:hover {
+    filter: grayscale(0%);
+} 
+
+/* #endregion */
 
 /* #region Intro */
 

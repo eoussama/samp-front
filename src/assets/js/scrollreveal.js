@@ -37,6 +37,14 @@ $(document).ready(() => {
     });
     // #endregion
 
+    // #region Gallery
+    ScrollReveal().reveal('#gallery', {
+        delay: 300,
+        distance: '20px',
+        origin: 'left'
+    });
+    // #endregion
+
     // #region Discord
     ScrollReveal().reveal('#discord', {
         delay: 300,
