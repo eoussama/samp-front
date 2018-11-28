@@ -272,21 +272,12 @@
                                     <!-- News preview. -->
                                     <div class="ten wide column">
                                         <div id="news-content" class="ui segment">
-                                            <?php
-                                                $news->get(1);
-                                            ?>
-                                            <h2 id="news-title">
-                                                <?php echo $news->title; ?>
-                                            </h2>
-                                            <small id="news-date">
-                                            <?php echo $news->created_at; ?>
-                                            </small>
+                                            <h2 id="news-title"></h2>
+                                            <small id="news-date"></small>
 
                                             <div class="ui divider"></div>
 
-                                            <p id="news-body">
-                                                <?php echo $news->body; ?>
-                                            </p>
+                                            <p id="news-body"></p>
                                         </div>
                                     </div>
 

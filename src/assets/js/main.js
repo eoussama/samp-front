@@ -166,6 +166,8 @@ $(document).ready(() => {
                 $($news['body']).text(article.body);
             });
         });
+
+        $('#news-list div.item:first-of-type').trigger('click');
         // #endregion
     });
 });
