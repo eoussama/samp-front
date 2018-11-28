@@ -21,7 +21,7 @@
             /**
              * The server's IP address.
              */
-            "ip"    =>  "137.74.179.193",
+            "ip"    =>  "176.32.37.208",
 
             /**
              * The server's port.

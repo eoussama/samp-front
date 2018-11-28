@@ -22,6 +22,23 @@ section {
     position: relative;
 }
 
+/* #region News */
+
+section#news {
+    height: 500px;
+}
+
+section#news > div.segment {
+    height: 100%;
+}
+
+section#news div#news-content, section#news div#news-list {
+    height: 430px;
+    overflow-y: auto;
+}
+
+/* #endregion */
+
 /* #region Gallery */
 
 div#gallery {

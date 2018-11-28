@@ -14,9 +14,14 @@
      */
     error_reporting(E_ALL);
 
+    require_once "config/Database.php";
     require_once "config/config.php";
+    require_once "models/News.php";
     require_once "utils/SampQueryAPI.php";
     require_once "utils/icons.php";
+
+    $conn = new Database();
+    $news = new News($conn);
 
     $config = unserialize(CONFIG);
     $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
@@ -256,9 +261,38 @@
 
                 <!-- News. -->
                 <div class="row">
-                    <section class="sixteen wide column">
+                    <section id="news" class="sixteen wide column">
                         <div class="ui segment">
                             <h3>News</h3>
+
+                            <div class="ui grid">
+
+                                <!-- News preview. -->
+                                <div class="ten wide column">
+                                    <div id="news-content" class="ui segment">
+                                        <h2>Title</h2>
+                                        <small>date</small>
+
+                                        <div class="ui divider"></div>
+
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci odio laudantium asperiores explicabo aut tenetur, vel, quis iure molestias dolorum autem magni repudiandae alias nesciunt? Provident sit eveniet ratione similique!</p>
+                                    </div>
+                                </div>
+
+                                <!-- News list. -->
+                                <div class="six wide column">
+                                    <div id="news-list" class="ui segment">
+                                        <div class="ui relaxed divided list">
+                                            <div class="item">
+                                                <div class="content">
+                                                    <div class="header">Title</div>
+                                                    date
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>

@@ -62,7 +62,6 @@ $(document).ready(() => {
         // #endregion
     
         // #region Live update
-    
         const
             $serverInfo = {
                 "section": $('#server-live-stats'),
@@ -135,7 +134,6 @@ $(document).ready(() => {
                 console.error(`Samp Front: ${ err }.`);
             });
         }, config['liveUpdateInterval']);
-    
         // #endregion
     });
 
