@@ -15,7 +15,7 @@
     function sanitizeInfo ($info) {
         if (is_array($info) || is_object($info)) {
             foreach ($info as $key => $value) {
-                $info[$key] = htmlspecialchars($value);
+                $info[$key] = htmlspecialchars(strip_tags($value));
             }
 
             return $info;
@@ -32,7 +32,7 @@
             foreach ($players as $player) {
                 if (is_array($player) || is_object($player)) {
                     foreach ($player as $key => $value) {
-                        $info[$key] = htmlspecialchars($value);
+                        $info[$key] = htmlspecialchars(strip_tags($value));
                     }
                 }
             }
