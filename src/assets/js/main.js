@@ -146,6 +146,7 @@ $(document).ready(() => {
     
         // #region News
         const $news = {
+            section: $('#news-content'),
             title: $('#news-title'),
             date: $('#news-date'),
             body: $('#news-body')
@@ -153,12 +154,15 @@ $(document).ready(() => {
 
         $('#news-list div.item').on('click', (e) => {
             const id = $(e.target).closest('div.item').data('id');
+
+            $('#news-list div.item').removeClass('active');
+            $(e.target).closest('div.item').addClass('active');
             
             fetch(`controllers/news/read_single.php?id=${ id }`)
             .then(response => response.json())
             .then(article => {
                 $($news['title']).text(article.title);
-                $($news['date']).text(article.created_at);
+                $($news['date']).text(article.created_at_formated);
                 $($news['body']).text(article.body);
             });
         });

@@ -267,44 +267,55 @@
                             <h3>News</h3>
 
                             <div class="ui grid">
+                                <?php if($news->count() > 0): ?>
 
-                                <!-- News preview. -->
-                                <div class="ten wide column">
-                                    <div id="news-content" class="ui segment">
-                                        <h2 id="news-title">Title</h2>
-                                        <small id="news-date">date</small>
+                                    <!-- News preview. -->
+                                    <div class="ten wide column">
+                                        <div id="news-content" class="ui segment">
+                                            <?php
+                                                $news->get(1);
+                                            ?>
+                                            <h2 id="news-title">
+                                                <?php echo $news->title; ?>
+                                            </h2>
+                                            <small id="news-date">
+                                            <?php echo $news->created_at; ?>
+                                            </small>
 
-                                        <div class="ui divider"></div>
+                                            <div class="ui divider"></div>
 
-                                        <p id="news-body"></p>
-                                    </div>
-                                </div>
-
-                                <!-- News list. -->
-                                <div class="six wide column">
-                                    <div id="news-list" class="ui segment">
-                                        <div class="ui relaxed divided selection list">
-                                            <?php 
-                                                $articles = $news->read_all();
-
-                                                if($articles->rowCount() > 0) {
-                                                    while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
-                                                        extract($article);
-                                                
-                                                        $item = '<div class="item" data-id="' . $id . '">';
-                                                        $item .=    '<div class="content">';
-                                                        $item .=        '<div class="header">' . $title . '</div>';
-                                                        $item .=         '<small>' . $created_at_formated . '</small>';
-                                                        $item .=     '</div>';
-                                                        $item .= '</div>';
-
-                                                        echo $item;
-                                                    }
-                                                }
-                                            ?>                                            
+                                            <p id="news-body">
+                                                <?php echo $news->body; ?>
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <!-- News list. -->
+                                    <div class="six wide column">
+                                        <div id="news-list" class="ui segment">
+                                            <div class="ui relaxed divided selection list">
+                                                <?php 
+                                                    $articles = $news->read_all();
+
+                                                    if($articles->rowCount() > 0) {
+                                                        while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
+                                                            extract($article);
+                                                    
+                                                            $item = '<div class="item" data-id="' . $id . '">';
+                                                            $item .=    '<div class="content">';
+                                                            $item .=        '<div class="header">' . $title . '</div>';
+                                                            $item .=         '<small>' . $created_at_formated . '</small>';
+                                                            $item .=     '</div>';
+                                                            $item .= '</div>';
+
+                                                            echo $item;
+                                                        }
+                                                    }
+                                                ?>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </section>

@@ -28,8 +28,24 @@ section#news {
     height: 500px;
 }
 
+
 section#news > div.segment {
     height: 100%;
+    position: relative;
+}
+
+section#news > div.segment::before {
+    background-image: url(../img/backgrounds/news-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: "";
+    filter: grayscale(100%);
+    height: 100%;
+    left: 0;
+    opacity: .05;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 section#news div#news-content, section#news div#news-list {
@@ -39,6 +55,10 @@ section#news div#news-content, section#news div#news-list {
 
 section#news div#news-list div.item small, section#news div#news-content small {
     color: #afafaf;
+}
+
+section#news div#news-list {
+    background-color: transparent !important;
 }
 
 /* #endregion */

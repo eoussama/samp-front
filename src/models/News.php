@@ -128,13 +128,13 @@
         }
 
         /**
-         * Get a single news article's information.
+         * Gets a single news article's information.
          * 
-         * @param $id: The id of the news article you want to fetch.
+         * @param Int $id: The id of the news article you want to fetch.
          */
         public function read_single($id) {
             // Creating the query.
-            $query = "SELECT `title`, `body`, `created_at` FROM `$this->table` WHERE `id` = ?";
+            $query = "SELECT `title`, `body`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM `$this->table` WHERE `id` = ?";
 
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
@@ -152,7 +152,34 @@
             $this->id = $id;
             $this->title = $article['title'];
             $this->body = $article['body'];
-            $this->created_at = $article['created_at'];
+            $this->created_at = $article['created_at_formated'];
+        }
+
+        /**
+         * Gets the news article at a given slot.
+         * 
+         * @param Int $pos: The position of the news article you want fetch.
+         * 
+         * @return News: The wanted news article.
+         */
+        public function get($pos) {
+            // Creating the query.
+            $query = "SELECT `id`, `title`, `body`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM `$this->table` ORDER BY `created_at` LIMIT ".( $pos - 1) . ", $pos;";
+
+            // Preparing the statement.
+            $stmt = $this->conn->prepare($query);
+
+            // Executing the query.
+            $stmt->execute();
+
+            // Fetching the data.
+            $article = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Setting the properties.
+            $this->id = $article['id'];
+            $this->title = $article['title'];
+            $this->body = $article['body'];
+            $this->created_at = $article['created_at_formated'];
         }
 
         /**
@@ -248,6 +275,27 @@
                 throw new Exception($stmt->error);
                 return false;
             }
+        }
+
+        /**
+         * Gets the number of news articles stored in the database.
+         * 
+         * @return Int: The count of news articles stored in the database.
+         */
+        public function count() {
+            // Creating the query.
+            $query = "SELECT COUNT(`id`) AS `count` FROM `$this->table`;";
+            
+            // Preparing the statement.
+            $stmt = $this->conn->prepare($query);
+
+            // Executing the query.
+            $stmt->execute();
+
+            // Returning the news articles.
+            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $results['count'];
         }
         
         #endregion
