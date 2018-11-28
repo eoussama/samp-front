@@ -52,4 +52,24 @@ $(document).ready(() => {
         origin: 'right'
     });
     // #endregion
+
+    // #region News
+    ScrollReveal().reveal('#news', {
+        delay: 300,
+        distance: '20px',
+        origin: 'bottom'
+    });
+
+    ScrollReveal().reveal('#news-content', {
+        delay: 300,
+        distance: '20px',
+        origin: 'left'
+    });
+
+    ScrollReveal().reveal('#news-list', {
+        delay: 300,
+        distance: '20px',
+        origin: 'right'
+    });
+    // #endregion
 });

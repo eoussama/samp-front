@@ -45,6 +45,14 @@ $(document).ready(() => {
         });
         // #endregion
     
+        // #region Scroll to news
+        $('#news-btn').on('click', () => {
+            $('html').animate({
+                scrollTop: $('#news').offset().top - 100
+            }, config['scrollSpeed']);
+        });
+        // #endregion
+
         // #region Scroll to gallery
         $('#gallery-btn').on('click', () => {
             $('html').animate({
@@ -135,8 +143,16 @@ $(document).ready(() => {
             });
         }, config['liveUpdateInterval']);
         // #endregion
-    });
+    
+        // #region News
 
+        $('#news-list div.item').on('click', (e) => {
+            console.log(e);
+        });
+
+        // #endregion
+    
+    });
 });
 
 $(document).on('scroll', (e) => {

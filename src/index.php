@@ -20,7 +20,8 @@
     require_once "utils/SampQueryAPI.php";
     require_once "utils/icons.php";
 
-    $conn = new Database();
+    $db   = new Database();
+    $conn = $db->connect();
     $news = new News($conn);
 
     $config = unserialize(CONFIG);
@@ -282,13 +283,25 @@
                                 <!-- News list. -->
                                 <div class="six wide column">
                                     <div id="news-list" class="ui segment">
-                                        <div class="ui relaxed divided list">
-                                            <div class="item">
-                                                <div class="content">
-                                                    <div class="header">Title</div>
-                                                    date
-                                                </div>
-                                            </div>
+                                        <div class="ui relaxed divided selection list">
+                                            <?php 
+                                                $articles = $news->read_all();
+
+                                                if($articles->rowCount() > 0) {
+                                                    while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
+                                                        extract($article);
+                                                
+                                                        $item = '<div class="item" data-id="' . $id . '">';
+                                                        $item .=    '<div class="content">';
+                                                        $item .=        '<div class="header">' . $title . '</div>';
+                                                        $item .=         '<small>' . $created_at . '</small>';
+                                                        $item .=     '</div>';
+                                                        $item .= '</div>';
+
+                                                        echo $item;
+                                                    }
+                                                }
+                                            ?>                                            
                                         </div>
                                     </div>
                                 </div>

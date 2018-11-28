@@ -37,6 +37,10 @@ section#news div#news-content, section#news div#news-list {
     overflow-y: auto;
 }
 
+section#news div#news-list div.item small {
+    color: rgb(175, 175, 175);
+}
+
 /* #endregion */
 
 /* #region Gallery */
