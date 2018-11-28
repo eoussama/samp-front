@@ -271,12 +271,12 @@
                                 <!-- News preview. -->
                                 <div class="ten wide column">
                                     <div id="news-content" class="ui segment">
-                                        <h2>Title</h2>
-                                        <small>date</small>
+                                        <h2 id="news-title">Title</h2>
+                                        <small id="news-date">date</small>
 
                                         <div class="ui divider"></div>
 
-                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci odio laudantium asperiores explicabo aut tenetur, vel, quis iure molestias dolorum autem magni repudiandae alias nesciunt? Provident sit eveniet ratione similique!</p>
+                                        <p id="news-body"></p>
                                     </div>
                                 </div>
 
@@ -294,7 +294,7 @@
                                                         $item = '<div class="item" data-id="' . $id . '">';
                                                         $item .=    '<div class="content">';
                                                         $item .=        '<div class="header">' . $title . '</div>';
-                                                        $item .=         '<small>' . $created_at . '</small>';
+                                                        $item .=         '<small>' . $created_at_formated . '</small>';
                                                         $item .=     '</div>';
                                                         $item .= '</div>';
 

@@ -6,7 +6,7 @@ $(document).ready(() => {
             liveUpdateInterval: response.liveUpdateInterval,
             scrollSpeed: response.scrollSpeed
         }
-        
+
         return config;
     })
     .then(config => {
@@ -145,13 +145,24 @@ $(document).ready(() => {
         // #endregion
     
         // #region News
+        const $news = {
+            title: $('#news-title'),
+            date: $('#news-date'),
+            body: $('#news-body')
+        };
 
         $('#news-list div.item').on('click', (e) => {
-            console.log(e);
+            const id = $(e.target).closest('div.item').data('id');
+            
+            fetch(`controllers/news/read_single.php?id=${ id }`)
+            .then(response => response.json())
+            .then(article => {
+                $($news['title']).text(article.title);
+                $($news['date']).text(article.created_at);
+                $($news['body']).text(article.body);
+            });
         });
-
         // #endregion
-    
     });
 });
 

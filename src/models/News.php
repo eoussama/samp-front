@@ -115,7 +115,7 @@
          */
         public function read_all() {
             // Creating the query.
-            $query = "SELECT `id`, `title`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at` FROM $this->table;";
+            $query = "SELECT `id`, `title`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM $this->table ORDER BY `created_at`;";
             
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
@@ -134,27 +134,25 @@
          */
         public function read_single($id) {
             // Creating the query.
-            $query = "SELECT * FROM `$this->table` WHERE `id` = ?";
+            $query = "SELECT `title`, `body`, `created_at` FROM `$this->table` WHERE `id` = ?";
 
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
             // Binding the id parameter.
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(1, $id);
 
             // Executing the query.
             $stmt->execute();
 
             // Fetching the data.
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Setting the properties.
-            extract($row);
-
             $this->id = $id;
-            $this->title = $title;
-            $this->body = $body;
-            $this->created_at = $created_at;
+            $this->title = $article['title'];
+            $this->body = $article['body'];
+            $this->created_at = $article['created_at'];
         }
 
         /**
