@@ -45,6 +45,9 @@
         <!-- Scrollreveal. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
 
+        <!-- Slick. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
         <!-- The main script -->
         <script src="assets/js/main.js"></script>
         <script src="assets/js/scrollreveal.js"></script>

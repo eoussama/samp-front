@@ -267,9 +267,21 @@
                 <div class="row">
 
                     <!-- Gallery. -->
-                    <section style="background: red;" class="eleven wide column">
+                    <section class="eleven wide column">
                         <div id="gallery" class="ui segment">
                             <h3>Gallery</h3>
+
+                            <div id="gallery-carousel">
+                                <img src="assets/img/gallery/1.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/2.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/3.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/4.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/5.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/6.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/7.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/8.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/9.jpg" alt="Gallery image.">
+                            </div>
                         </div>
                     </section>
 

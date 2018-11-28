@@ -14,6 +14,10 @@
         <!-- Semantic UI. -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
+        <!-- Slick. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+        
         <!-- The main stylesheet. -->
         <link rel="stylesheet" href="assets/css/header.css">
         <link rel="stylesheet" href="assets/css/main.css">

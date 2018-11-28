@@ -22,6 +22,10 @@ section {
     position: relative;
 }
 
+div#gallery {
+    height: 100% !important;
+}
+
 /* #region Intro */
 
 section#intro img {
