@@ -44,14 +44,50 @@
         <!-- The website's title -->
         <title><?php echo $config['name']; ?></title>
     </head>
-
+   
     <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
-        <main class="ui container">
-            
-        </main>
+        
+        <!-- The burger button's menu. -->
+        <nav class="ui <?php echo $inverted; ?> borderless top attached menu">
+            <a class="item" id="burger-btn">
+                <i class="sidebar icon"></i>
+            </a>
+
+            <div class="item">
+                <b>Dashboard</b>
+            </div>
+        </nav>
+
+        <!-- The page's content -->
+        <div id="context" class="ui bottom attached segment pushable">
+
+            <!-- The sidebar. -->
+            <aside id="sidebar" class="ui <?php echo $inverted; ?> labeled icon left inline vertical sidebar menu">
+                <a class="item" href="./../index.php">
+                    <i class="home icon"></i>
+                    Home
+                </a>
+                <a class="item">
+                    <i class="block layout icon"></i>
+                    News
+                </a>
+            </aside>
+
+            <!-- Actuall content -->
+            <div class="pusher">
+                <div class="ui container">
+                    <div class="ui basic segment">
+                        <h3 class="ui header">Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, error.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- JQuery. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Semantic UI. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
         <!-- The main script -->
         <script src="../assets/js/dashboard.js"></script>
