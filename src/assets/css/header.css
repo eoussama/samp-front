@@ -75,6 +75,14 @@ header {
     transition-property: margin;
 }
 
+body.dark header h1 {
+    color: var(--color-dark) !important;
+}
+
+body.dark header h4 {
+    color: var(--color-dark-light) !important;
+}
+
 header.sticky {
     margin-top: 50px !important;
 }
