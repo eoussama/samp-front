@@ -14,14 +14,20 @@
      */
     error_reporting(E_ALL);
 
+    // Requiring all dependencies.
     require_once "config/Database.php";
     require_once "config/config.php";
     require_once "models/News.php";
     require_once "utils/SampQueryAPI.php";
     require_once "utils/icons.php";
 
+    // Instantiating a new Database object.
     $db   = new Database();
+
+    // Creating a connection object.
     $conn = $db->connect();
+
+    // Instantiating a new News object.
     $news = new News($conn);
 
     /**
@@ -30,14 +36,83 @@
      */
     // $news->seed();
 
+    // Loading the website's configurations.
     $config = unserialize(CONFIG);
+
+    // Connecting to the SA:MP server associated with the website.
     $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
     $isOnline = $query->isOnline();
 
+    // Setting up the $inverted string, used to make the dark mode
+    // work if enabled.
     $inverted = $config['darkMode'] ? 'inverted' : '';
-
-    include "views/partials/_header.php";
 ?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <!-- The meta data -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="EOussama">
+        <meta name="application-name" content="Samp Front">
+        <meta name="description" content="A starter landing page template for samp servers.">
+        <meta name="keywords" content="template, landing-page, samp, samp-server, samp-website">
+        
+        <!-- Semantic UI. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+        <!-- Slick. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+        
+        <!-- The main stylesheet. -->
+        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/footer.css">
+
+        <!-- The website's favicon. -->
+        <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+
+        <!-- The website's title -->
+        <title><?php echo $config['name']; ?></title>
+    </head>
+
+    <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
+
+        <!-- The loader. -->
+        <div id="loader" class="ui inverted active dimmer">
+            <div class="ui text loader"><?php echo $config['name']; ?></div>
+        </div>
+
+        <!-- The navbar. -->
+        <nav class="ui <?php echo $inverted; ?> stackable borderless menu">
+            <div class="ui container">
+
+                <!-- The community's logo. -->
+                <div class="left menu">
+                    <a class="item" href="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <img class="ui avatar image" src="./assets/img/logo.png">
+                        <span class="community-name"> <?php echo $config['name']; ?> <span>
+                    </a>
+                </div>
+
+                <!-- The reset of the links. -->
+                <div class="right menu">
+                    <a class="item" href="views/dashboard.php">Dashboard</a>
+                    <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
+                    <a class="item" id="live-stats-btn">Live stats</a>
+                    <a class="item" id="news-btn">News</a>
+                    <a class="item" id="gallery-btn">Gallery</a>
+                    <a class="item" id="about-btn">About</a>
+                    <a class="item" href="<?php echo $config['links']['donation']; ?>">Donate</a>
+                </div>
+            </div>
+        </nav>
+
         <!-- Fullscreen image container. -->
         <div id="fullscreen-container" class="ui page dimmer">
             <i id="fullscreen-close-btn" class="big inverted close icon"></i>
@@ -374,4 +449,57 @@
             <i class="huge <?php echo $inverted; ?> angle up icon"></i>
         </div>
         
-<?php include "views/partials/_footer.php"; ?>
+        <!-- The footer. -->
+        <footer class="ui placeholder segment">
+            <div class="ui stackable grid container">
+
+                <!-- The about section. -->
+                <div id="about" class="twelve wide column">
+                    <div class="ui big header">About</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit voluptates eligendi nostrum consectetur laudantium, labore corrupti saepe eveniet incidunt fugit optio ratione sequi possimus ut reiciendis facilis, tempora quod eius iste architecto. Minima, iste! Nemo reiciendis, fugiat facilis saepe illum, fugit repudiandae rem quia officiis, corrupti eos iure libero expedita voluptate! Sit animi magni illo soluta dolorum veniam, at laborum itaque inventore recusandae repellendus, hic dicta tempora, architecto sint. Odio odit aliquam nihil doloribus, delectus iste sapiente eius commodi maxime magnam eligendi reiciendis aperiam dolorum facere consectetur voluptatibus ducimus, veritatis amet iusto. Tempora eligendi recusandae cum voluptatem, aut eum facere deleniti suscipit hic optio. Excepturi, commodi quae. Nisi dolorem quae ipsam cupiditate sint voluptate, autem itaque aliquid ad repellendus possimus adipisci facilis sapiente, inventore porro doloribus blanditiis temporibus, excepturi architecto ducimus velit sit amet. Blanditiis, debitis, reiciendis assumenda odit maxime iusto illo dolor dignissimos veritatis cumque, aspernatur porro ut excepturi!</p>
+                </div>
+
+                <!-- The community's links -->
+                <div class="four wide column">
+                    <div class="ui big header">Community links</div>
+
+                    <div class="ui middle aligned animated relaxed list">
+                        <?php foreach($config['links']['community'] as $label => $link): ?>
+                            <div class="item">
+                                <i class="large <?php echo get_icon($label); ?> icon"></i>
+                                <div class="content">
+                                    <a href="<?php echo $link; ?>" target="_blank">
+                                        <div class="header community-link-label"><?php echo $label; ?></div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trademark -->
+            <div class="ui segment trademark">
+                <small>
+                    <a href="https://github.com/EOussama/samp-front">Samp Front</a> by <a href="https://github.com/EOussama">EOussama</a>
+                </small>
+            </div>
+        </footer>
+        
+        <!-- JQuery. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Semantic UI. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+        <!-- Scrollreveal. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
+
+        <!-- Slick. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+        <!-- The main script -->
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/scrollreveal.js"></script>
+    </body>
+</html>
