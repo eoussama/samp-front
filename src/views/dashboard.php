@@ -121,15 +121,18 @@
                                             if($articles->rowCount() > 0) {
                                                 while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
                                                     extract($article);
-                                            
-                                                    $item = '<div class="item" data-id="' . $id . '">';
-                                                    $item .=    '<div class="content">';
-                                                    $item .=        '<div class="header">' . $title . '</div>';
-                                                    $item .=         '<small>Article ID: <b>' . $id . '</b></small>';
-                                                    $item .=     '</div>';
-                                                    $item .= '</div>';
-
-                                                    echo $item;
+                                                    
+                                                    echo '
+                                                        <label class="item" data-id="' . $id . '">
+                                                            <div class="ui checkbox">
+                                                                <input id="' . $id . '" type="checkbox" tabindex="0" class="hidden">
+                                                                <label for="' . $id . '" class="content">
+                                                                    <div class="header">' . $title . '</div>
+                                                                    <small>Article ID: <b>' . $id . '</b></small>
+                                                                </label>
+                                                            </div>
+                                                        </label>
+                                                    ';
                                                 }
                                             }
                                         ?>                                            

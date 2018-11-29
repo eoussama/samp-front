@@ -385,15 +385,15 @@
                                                     if($articles->rowCount() > 0) {
                                                         while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
                                                             extract($article);
-                                                    
-                                                            $item = '<div class="item" data-id="' . $id . '">';
-                                                            $item .=    '<div class="content">';
-                                                            $item .=        '<div class="header">' . $title . '</div>';
-                                                            $item .=         '<small>' . $created_at_formated . '</small>';
-                                                            $item .=     '</div>';
-                                                            $item .= '</div>';
 
-                                                            echo $item;
+                                                            echo '
+                                                                <div class="item" data-id="' . $id . '">
+                                                                    <div class="content">
+                                                                        <div class="header">' . $title . '</div>
+                                                                        <small>' . $created_at_formated . '</small>
+                                                                    </div>
+                                                                </div>
+                                                            ';
                                                         }
                                                     }
                                                 ?>                                            
