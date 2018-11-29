@@ -12,3 +12,7 @@ body.dark div.pusher {
 body.dark * {
     color: var(--color-light);
 }
+
+section {
+    margin-top: 60px !important;
+}

@@ -70,9 +70,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
         
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="assets/css/header.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/footer.css">
+        <link rel="stylesheet" href="assets/css/main/header.css">
+        <link rel="stylesheet" href="assets/css/main/main.css">
+        <link rel="stylesheet" href="assets/css/main/footer.css">
 
         <!-- The website's favicon. -->
         <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
@@ -499,7 +499,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
         <!-- The main script -->
-        <script src="assets/js/main.js"></script>
-        <script src="assets/js/scrollreveal.js"></script>
+        <script src="assets/js/main/main.js"></script>
+        <script src="assets/js/main/scrollreveal.js"></script>
     </body>
 </html>

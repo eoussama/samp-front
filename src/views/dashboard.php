@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="../assets/css/dashboard.css">
+        <link rel="stylesheet" href="../assets/css/dashboard/dashboard.css">
 
         <!-- The website's favicon. -->
         <link rel="shortcut icon" type="image/png" href="../assets/img/logo.png">
@@ -76,7 +76,30 @@
             <!-- Actuall content -->
             <div class="pusher">
                 <main class="ui container">
-                    a
+                    <div class="ui grid">
+
+                        <!-- News. -->
+                        <section id="new" class="ui row grid">
+
+                            <!-- Title. -->
+                            <div class="row">
+                                <div class="column">
+                                    <h1 class="ui header">
+                                        <i class="block layout icon"></i>
+                                        News
+                                    </h1>
+
+                                    <div class="ui divider"></div>
+                                </div>                            
+                            </div>
+
+                            <div class="row">
+                                <div class="column">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aliquam ex perferendis assumenda quaerat praesentium! Nihil, molestias sunt ut impedit beatae rem minima error, ex dignissimos aut odit nesciunt repudiandae.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </main>
             </div>
         </div>
@@ -88,6 +111,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
         <!-- The main script -->
-        <script src="../assets/js/dashboard.js"></script>
+        <script src="../assets/js/dashboard/dashboard.js"></script>
     </body>
 </html>

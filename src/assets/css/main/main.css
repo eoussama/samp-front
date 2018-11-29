@@ -17,7 +17,7 @@ body.dark {
 }
 
 body::before {
-    background-image: url('../img/backgrounds/beach-bg.jpg');
+    background-image: url('../../img/backgrounds/beach-bg.jpg');
     background-repeat: repeat-y;
     background-size: cover;
     background-attachment: fixed;
@@ -58,7 +58,7 @@ section#news > div.segment {
 }
 
 section#news > div.segment::before {
-    background-image: url(../img/backgrounds/news-bg.jpg);
+    background-image: url(../../img/backgrounds/news-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     content: "";
