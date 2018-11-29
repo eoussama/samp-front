@@ -24,6 +24,12 @@
     $conn = $db->connect();
     $news = new News($conn);
 
+    /**
+     * Only uncomment this if you want to seed some
+     * dummy articles in your database for testing purposes.
+     */
+    // $news->seed();
+
     $config = unserialize(CONFIG);
     $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
     $isOnline = $query->isOnline();

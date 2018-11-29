@@ -63,21 +63,17 @@
 
             // Executing the query.
             $stmt->execute();
-
-            // Only uncomment this if you want to seed some
-            // dummy articles in your database for testing purposes.
-            // $this->seed();
         }
 
         #endregion
 
-        #region Private methods
+        #region Public methods
 
         /**
          * Seeds the database with dummy data.
          * Used only for testing purposes.
          */
-        private function seed() {
+        public function seed() {
             // Creating the query.
             $query = "INSERT INTO `$this->table`(`id`, `title`, `body`) VALUES";
             $query .= "(UUID(), 'Big news!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non est ac augue finibus ultricies quis quis ipsum. Integer accumsan risus sed diam sollicitudin varius. Nam mollis urna vitae dictum consequat. Suspendisse lectus lacus, ultricies sit amet leo eu, tempus gravida dolor. Sed elementum, augue quis bibendum lacinia, mi lorem eleifend felis, a egestas enim lorem nec est. Donec euismod risus mauris, ac pharetra libero condimentum a. Proin porta risus pellentesque nunc scelerisque, a interdum urna imperdiet. Vestibulum fermentum massa sit amet felis maximus, fermentum rutrum magna porta. Etiam eu blandit nibh. Donec sodales sapien sed tellus rutrum, id laoreet augue rhoncus. Nunc purus dolor, volutpat a pretium sed, tincidunt quis arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam eu auctor magna, non interdum purus. Morbi quis consequat erat.'),";
@@ -103,10 +99,6 @@
                 return false;
             }
         }
-
-        #endregion
-
-        #region Public methods
 
         /**
          * Gets all news articles in the database.
