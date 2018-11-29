@@ -56,17 +56,13 @@
                 <h1><?php echo $config['name']; ?></h1>
 
                 <p>Page doesn't exist!</p>
-                <!--<div>
-                    <button class="ui left attached button">Home page</button>
-                    <button class="right attached ui button">Go back</button>
-                </div>-->
 
                 <div class="ui divider"></div>
 
                 <div class="ui large buttons">
-                    <button class="ui button">Home</button>
+                    <button id="home-btn" class="ui <?php echo $inverted; ?> button">Home</button>
                     <div class="or"></div>
-                    <button class="ui button">Back</button>
+                    <button id="back-btn" class="ui <?php echo $inverted; ?> button">Back</button>
                 </div>
             </div>
         </main>
