@@ -75,6 +75,10 @@ header {
     transition-property: margin;
 }
 
+body.dark header {
+    filter: grayscale(100%);
+}
+
 body.dark header h1 {
     color: var(--color-dark) !important;
 }
