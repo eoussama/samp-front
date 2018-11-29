@@ -1,7 +1,7 @@
 /* #region Loader */
 
 #loader {
-    background-color: rgb(207, 207, 207);
+    background-color: var(--color-light);
 }
 
 #loader::before {
@@ -16,6 +16,14 @@
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+body.dark #loader {
+    background-color: var(--color-dark-light);
+}
+
+body.dark #loader * {
+    color: var(--color-light) !important;
 }
 
 /* #endregion */

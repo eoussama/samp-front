@@ -30,13 +30,15 @@
         <title><?php echo $config['name']; ?></title>
     </head>
 
-    <body>
+    <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
+
+        <!-- The loader. -->
         <div id="loader" class="ui inverted active dimmer">
             <div class="ui text loader"><?php echo $config['name']; ?></div>
         </div>
 
         <!-- The navbar. -->
-        <nav class="ui stackable borderless menu">
+        <nav class="ui <?php echo $inverted; ?> stackable borderless menu">
             <div class="ui container">
 
                 <!-- The community's logo. -->

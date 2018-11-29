@@ -59,13 +59,13 @@
             /**
              * The discord server's ID.
              */
-            "id"    =>  "231799104731217931",
-
-            /**
-             * The discord widget's theme; (light/dark).
-             */
-            "theme" =>  "light"
+            "id"    =>  "231799104731217931"
         ),
+
+        /**
+         * Whether or not to use a dark theme for the website.
+         */
+        "darkMode" => false,
 
         /**
          * The auto scroll's speed in milliseconds.

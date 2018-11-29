@@ -1,7 +1,8 @@
 /* #region Global */
 
 :root {
-    --color-dark: black;
+    --color-dark-light: #2E2E2E;
+    --color-dark: #212121;
     --color-gray: gray;
     --color-light: #afafaf;
 }
@@ -9,6 +10,10 @@
 body {
     overflow: hidden;
     position: relative;
+}
+
+body.dark {
+    background-color: var(--color-dark-light);
 }
 
 body::before {
@@ -28,6 +33,14 @@ body::before {
 section {
     margin: 50px 0 !important;
     position: relative;
+}
+
+body.dark .segment {
+    background-color: var(--color-dark);
+}
+
+body.dark .segment * {
+    color: var(--color-light);
 }
 
 /* #endregion */
@@ -227,6 +240,11 @@ div#players-live-stats {
 span#player-count {
     color: var(--color-gray);
     float: right;
+}
+
+body.dark div#live-stats table {
+    background-color: var(--color-dark-light);
+    color: var(--color-light);
 }
 
 /* #endregion */

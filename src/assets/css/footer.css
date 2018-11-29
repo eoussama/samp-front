@@ -4,6 +4,14 @@ footer {
     position: relative;
 }
 
+body.dark footer {
+    background-color: var(--color-dark-light) !important;
+}
+
+body.dark footer * {
+    color: var(--color-light) !important;
+}
+
 footer::before {
     background-attachment: fixed;
     background-image: url(../img/backgrounds/beach-bg.jpg);
@@ -47,6 +55,10 @@ div.trademark {
     position: absolute !important;
     text-align: center;
     width: 100%;
+}
+
+body.dark div.trademark a {
+    color: var(--color-gray) !important;
 }
 
 /* #endregion */

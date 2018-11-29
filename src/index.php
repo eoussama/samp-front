@@ -34,6 +34,8 @@
     $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
     $isOnline = $query->isOnline();
 
+    $inverted = $config['darkMode'] ? 'inverted' : '';
+
     include "views/partials/_header.php";
 ?>
         <!-- Fullscreen image container. -->
@@ -228,15 +230,17 @@
                             ?>
 
                             <div class="content">
-                                <h3>Players <span id="player-count">
-                                    <?php
-                                        if ($isOnline) {
-                                            echo count($players) . " / " . $server_info['maxplayers'];
-                                        }
-                                    ?>
-                                </span></h3>
+                                <h3>Players
+                                    <span id="player-count">
+                                        <?php
+                                            if ($isOnline) {
+                                                echo count($players) . " / " . $server_info['maxplayers'];
+                                            }
+                                        ?>
+                                    </span>
+                                </h3>
     
-                                <table class="ui celled table">
+                                <table class="ui <?php echo $inverted; ?> table">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -298,7 +302,7 @@
                                     <!-- News list. -->
                                     <div class="six wide column">
                                         <div id="news-list" class="ui segment">
-                                            <div class="ui relaxed divided selection list">
+                                            <div class="ui <?php echo $inverted; ?> relaxed divided selection list">
                                                 <?php 
                                                     $articles = $news->read_all();
 
@@ -339,7 +343,7 @@
                         <div id="gallery" class="ui segment">
                             <h3>Gallery</h3>
 
-                            <i class="big image icon" id="fullscreen-btn"></i>
+                            <i class="big <?php echo $inverted; ?> image icon" id="fullscreen-btn"></i>
 
                             <div id="gallery-carousel">
                                 <img src="assets/img/gallery/1.jpg" alt="A cop arresting a robber.">
@@ -358,7 +362,7 @@
                     <!-- Discord section. -->
                     <section id="discord" class="five wide column">
                         <div class="ui segment discord-section">
-                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['discord']['theme']; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['darkMode'] ? 'dark' : 'light'; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
                     </section>
                 </div>
@@ -367,7 +371,7 @@
 
         <!-- Scroll to top button. -->
         <div id="scroll-top">
-            <i class="huge angle up icon"></i>
+            <i class="huge <?php echo $inverted; ?> angle up icon"></i>
         </div>
         
 <?php include "views/partials/_footer.php"; ?>

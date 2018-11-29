@@ -15,6 +15,7 @@ $(document).ready(() => {
 
         // #region Carousel
         $('#gallery-carousel').slick({
+            arrows: false,
             autoplay: true,
             autoplaySpeed: 5000,
             dots: true
