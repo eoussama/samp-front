@@ -1,33 +1,3 @@
-/* #region Loader */
-
-#loader {
-    background-color: var(--color-light);
-}
-
-#loader::before {
-    background-image: url(../../img/backgrounds/beach-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: "";
-    filter: grayscale(100%);
-    height: 100%;
-    left: 0;
-    opacity: .1;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-body.dark #loader {
-    background-color: var(--color-dark-light);
-}
-
-body.dark #loader * {
-    color: var(--color-light) !important;
-}
-
-/* #endregion */
-
 /* #region Nav */
 
 nav{

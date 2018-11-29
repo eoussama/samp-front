@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
+        <link rel="stylesheet" href="../assets/css/loader.css">
         <link rel="stylesheet" href="../assets/css/dashboard/dashboard.css">
 
         <!-- The website's favicon. -->
@@ -58,6 +59,11 @@
             </div>
         </nav>
 
+        <!-- The loader. -->
+        <div id="loader" class="ui inverted active dimmer">
+            <div class="ui text loader"><?php echo $config['name']; ?></div>
+        </div>
+
         <!-- The page's content -->
         <div id="context" class="ui bottom attached segment pushable">
 
@@ -67,7 +73,7 @@
                     <i class="home icon"></i>
                     Home
                 </a>
-                <a class="item">
+                <a class="item" id="news-btn">
                     <i class="block layout icon"></i>
                     News
                 </a>
@@ -79,7 +85,7 @@
                     <div class="ui grid">
 
                         <!-- News. -->
-                        <section id="new" class="ui row grid">
+                        <section id="news" class="ui row grid">
 
                             <!-- Title. -->
                             <div class="row">

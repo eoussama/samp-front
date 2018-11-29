@@ -5,6 +5,10 @@
     --color-light: #afafaf;
 }
 
+body {
+    overflow: hidden;
+}
+
 body.dark div.pusher {
     background-color: var(--color-dark-light);
 }

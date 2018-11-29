@@ -70,6 +70,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
         
         <!-- The main stylesheet. -->
+        <link rel="stylesheet" href="assets/css/loader.css">
         <link rel="stylesheet" href="assets/css/main/header.css">
         <link rel="stylesheet" href="assets/css/main/main.css">
         <link rel="stylesheet" href="assets/css/main/footer.css">
