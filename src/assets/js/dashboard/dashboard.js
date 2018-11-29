@@ -16,7 +16,7 @@ $(document).ready(() => {
         $('#sidebar').sidebar({
             context: $('#context')
         }).sidebar('attach events', '#burger-btn');
-        // #enregion
+        // #endregion
 
         // #region Scroll to news
         const newsSection = $('section#news');

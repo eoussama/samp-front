@@ -8,7 +8,18 @@
      */
 
     // Requiring all dependencies.
+    require_once "../config/Database.php";
     require_once "../config/config.php";
+    require_once "../models/News.php";
+
+    // Instantiating a new Database object.
+    $db   = new Database();
+
+    // Creating a connection object.
+    $conn = $db->connect();
+
+    // Instantiating a new News object.
+    $news = new News($conn);
 
     // Loading the website's configurations.
     $config = unserialize(CONFIG);
@@ -92,7 +103,7 @@
                                 <div class="column">
                                     <h1 class="ui header">
                                         <i class="block layout icon"></i>
-                                        News
+                                        News [<?php echo $news->count(); ?>]
                                     </h1>
 
                                     <div class="ui divider"></div>
@@ -100,8 +111,67 @@
                             </div>
 
                             <div class="row">
-                                <div class="column">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aliquam ex perferendis assumenda quaerat praesentium! Nihil, molestias sunt ut impedit beatae rem minima error, ex dignissimos aut odit nesciunt repudiandae.</p>
+
+                                <!-- News list. -->
+                                <div class="twelve wide column">
+                                    <div class="ui <?php echo $inverted; ?> relaxed divided selection list">
+                                        <?php 
+                                            $articles = $news->read_all();
+
+                                            if($articles->rowCount() > 0) {
+                                                while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
+                                                    extract($article);
+                                            
+                                                    $item = '<div class="item" data-id="' . $id . '">';
+                                                    $item .=    '<div class="content">';
+                                                    $item .=        '<div class="header">' . $title . '</div>';
+                                                    $item .=         '<small>Article ID: <b>' . $id . '</b></small>';
+                                                    $item .=     '</div>';
+                                                    $item .= '</div>';
+
+                                                    echo $item;
+                                                }
+                                            }
+                                        ?>                                            
+                                    </div>
+                                </div>
+
+                                <!-- News controls. -->
+                                <div class="four wide column">
+                                    <div class="ui <?php echo $inverted; ?> selection list">
+                                        <div class="item">
+                                            <div class="content">
+                                                <div class="header">
+                                                    <i class="plus circle icon"></i>
+                                                    Add a new news article
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="content">
+                                                <div class="header">
+                                                    <i class="check circle icon"></i>
+                                                    Select all news articles
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="content">
+                                                <div class="header">
+                                                    <i class="circle outline icon"></i>
+                                                    Unselect all news articles
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="content">
+                                                <div class="header">
+                                                    <i class="times circle icon"></i>
+                                                    Delete selected news articles
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
