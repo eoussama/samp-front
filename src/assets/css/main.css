@@ -1,3 +1,11 @@
+/* #region Global */
+
+:root {
+    --color-dark: black;
+    --color-gray: gray;
+    --color-light: #afafaf;
+}
+
 body {
     overflow: hidden;
     position: relative;
@@ -21,6 +29,8 @@ section {
     margin: 50px 0 !important;
     position: relative;
 }
+
+/* #endregion */
 
 /* #region News */
 
@@ -54,7 +64,7 @@ section#news div#news-content, section#news div#news-list {
 }
 
 section#news div#news-list div.item small, section#news div#news-content small {
-    color: #afafaf;
+    color: var(--color-light);
 }
 
 section#news div#news-list {
@@ -63,7 +73,7 @@ section#news div#news-list {
 
 section#news div#no-articles {
     align-items: center;
-    color: #afafaf;
+    color: var(--color-light);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -196,7 +206,7 @@ div#server-live-stats + div img {
 
 div.server-offline {
     align-items: center;
-    color: gray;
+    color: var(--color-gray);
     display: none;
     flex-direction: column;
     height: 100%;
@@ -215,7 +225,7 @@ div#players-live-stats {
 }
 
 span#player-count {
-    color: gray;
+    color: var(--color-gray);
     float: right;
 }
 
