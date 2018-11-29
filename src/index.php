@@ -36,6 +36,14 @@
 
     include "views/partials/_header.php";
 ?>
+        <!-- Fullscreen image container. -->
+        <div id="fullscreen-container" class="ui page dimmer">
+            <i id="fullscreen-close-btn" class="big inverted close icon"></i>
+            <div class="content">
+                <img src="" alt="No image" class="ui rounded fluid image">
+            </div>
+        </div>
+
         <!-- The header. -->
         <header class="ui vertical center aligned segment">
             <div class="ui container">
@@ -331,16 +339,18 @@
                         <div id="gallery" class="ui segment">
                             <h3>Gallery</h3>
 
+                            <i class="big image icon" id="fullscreen-btn"></i>
+
                             <div id="gallery-carousel">
-                                <img src="assets/img/gallery/1.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/2.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/3.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/4.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/5.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/6.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/7.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/8.jpg" alt="Gallery image.">
-                                <img src="assets/img/gallery/9.jpg" alt="Gallery image.">
+                                <img src="assets/img/gallery/1.jpg" alt="A cop arresting a robber.">
+                                <img src="assets/img/gallery/2.jpg" alt="A water tank knocking down robbers.">
+                                <img src="assets/img/gallery/3.jpg" alt="Tram highjack.">
+                                <img src="assets/img/gallery/4.jpg" alt="Parachute dive.">
+                                <img src="assets/img/gallery/5.jpg" alt="Helicopter patrol.">
+                                <img src="assets/img/gallery/6.jpg" alt="Gas station confrontation.">
+                                <img src="assets/img/gallery/7.jpg" alt="Las Venturas hot pursuit.">
+                                <img src="assets/img/gallery/8.jpg" alt="Police trail.">
+                                <img src="assets/img/gallery/9.jpg" alt="Sneak attack.">
                             </div>
                         </div>
                     </section>

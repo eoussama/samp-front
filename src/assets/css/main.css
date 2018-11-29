@@ -81,6 +81,7 @@ section#news div#no-articles i {
 
 div#gallery {
     height: 100% !important;
+    position: relative;
 }
 
 div#gallery-carousel {
@@ -98,6 +99,25 @@ div#gallery-carousel img {
 div#gallery-carousel img:hover {
     filter: grayscale(0%);
 } 
+
+i#fullscreen-btn, i#fullscreen-close-btn {
+    cursor: pointer;
+    opacity: .4;
+    position: absolute;
+    right: 30px;
+    top: 60px;
+    transition-duration: .3s;
+    transition-property: opacity;
+    z-index: 5;
+}
+
+i#fullscreen-close-btn {
+    top: 30px;
+}
+
+i#fullscreen-btn:hover, i#fullscreen-close-btn:hover {
+    opacity: .8;
+}
 
 /* #endregion */
 

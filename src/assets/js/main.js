@@ -19,6 +19,27 @@ $(document).ready(() => {
             autoplaySpeed: 5000,
             dots: true
         });
+
+        const fullscreenDimmer = {
+            dimmer: $('#fullscreen-container'),
+            image: $('#fullscreen-container img')
+        }
+
+        $('i#fullscreen-btn').on('click', () => {
+            let
+                currentIndex = $('#gallery-carousel').slick('slickCurrentSlide'),
+                currentImage = $('#gallery-carousel img').eq(currentIndex + 1)[0];
+
+                fullscreenDimmer["image"].attr('src', currentImage.src);
+                fullscreenDimmer["image"].attr('alt', currentImage.alt);
+                fullscreenDimmer["dimmer"].addClass('active');
+                $('body').css('overflow-y', 'hidden');
+        });
+
+        $('i#fullscreen-close-btn').on('click', () => {
+            fullscreenDimmer["dimmer"].removeClass('active');
+            $('body').css('overflow-y', 'auto');
+        });
         // #endregion
 
         // #region Scroll down button press.
