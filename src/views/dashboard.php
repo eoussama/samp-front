@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="../assets/css/error.css">
+        <link rel="stylesheet" href="../assets/css/dashboard.css">
 
         <!-- The website's favicon. -->
         <link rel="shortcut icon" type="image/png" href="../assets/img/logo.png">
@@ -47,28 +47,13 @@
 
     <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
         <main class="ui container">
-
-            <!-- The page's content -->
-            <div class="content-wrapper">
-                <img src="../assets/img/logo.png" alt="Community logo.">
-                <h1><?php echo $config['name']; ?></h1>
-
-                <p>Page doesn't exist!</p>
-
-                <div class="ui divider"></div>
-
-                <div class="ui large buttons">
-                    <button id="home-btn" class="ui <?php echo $inverted; ?> button">Home</button>
-                    <div class="or"></div>
-                    <button id="back-btn" class="ui <?php echo $inverted; ?> button">Back</button>
-                </div>
-            </div>
+            
         </main>
 
         <!-- JQuery. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- The main script -->
-        <script src="../assets/js/error.js"></script>
+        <script src="../assets/js/dashboard.js"></script>
     </body>
 </html>
