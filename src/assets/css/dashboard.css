@@ -1,0 +1,14 @@
+:root {
+    --color-dark-light: #2E2E2E;
+    --color-dark: #212121;
+    --color-gray: gray;
+    --color-light: #afafaf;
+}
+
+body.dark div.pusher {
+    background-color: var(--color-dark-light);
+}
+
+body.dark * {
+    color: var(--color-light);
+}

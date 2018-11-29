@@ -75,11 +75,9 @@
 
             <!-- Actuall content -->
             <div class="pusher">
-                <div class="ui container">
-                    <div class="ui basic segment">
-                        <h3 class="ui header">Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, error.</h3>
-                    </div>
-                </div>
+                <main class="ui container">
+                    a
+                </main>
             </div>
         </div>
 
