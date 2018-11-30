@@ -1,0 +1,31 @@
+/**
+* @name:       Samp Front
+* @version:    0.5.0
+* @author:     EOussama (eoussama.github.io)
+* @license     MIT
+* @source:     github.com/EOussama/samp-front
+*/
+
+
+:root {
+    --color-dark-light: #2E2E2E;
+    --color-gray: gray;
+}
+
+div.content-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+div.content-wrapper p {
+    color: var(--color-gray);
+}
+
+body.dark {
+    background-color: var(--color-dark-light);
+}
