@@ -74,12 +74,12 @@
         </nav>
 
         <!-- The loader. -->
-        <div id="loader" class="ui inverted active dimmer">
+        <div id="loader" class="ui <?php echo $inverted; ?> active dimmer">
             <div class="ui text loader"><?php echo $config['name']; ?></div>
         </div>
 
-        <!-- Text editor. -->
-        <div id="text-editor" class="ui modal">
+        <!-- Creation text editor. -->
+        <div id="text-editor-create" class="ui modal">
             <div class="header">
                 Add a new news article
             </div>

@@ -38,7 +38,7 @@ $(document).ready(() => {
         const editorForm = $('#editor-form');
 
         $('#add-btn').on('click', () => {
-            $('#text-editor')
+            $('#text-editor-create')
             .modal({
                 onApprove: () => {
                     $(editorForm).trigger('submit');
@@ -95,7 +95,7 @@ $(document).ready(() => {
                 .done((data) => {
                     console.log(data);
                     if (!data.hasOwnProperty('error')) {
-                        alert(`A new news article was created.`)
+                        alert(`A new news article was created.`);
                     } else {
                         alert(`Error: ${ data.error }`);
                     }
