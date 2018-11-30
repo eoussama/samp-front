@@ -10,16 +10,59 @@ body {
     overflow: hidden;
 }
 
-body.dark div.pusher {
-    background-color: var(--color-dark-light);
-}
-
 body.dark * {
     color: var(--color-light) !important;
 }
 
+body.dark div.pusher {
+    background-color: var(--color-dark-light);
+}
+
 section {
     margin-top: 100px !important;
+}
+
+/* #endregion */
+
+/* #region Sidebar */
+
+#sidebar {
+    box-sizing: border-box;
+    padding-top: 40px !important;
+}
+
+/* #endregion */
+
+/* #region Footer */
+
+footer {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body.dark footer {
+    background-color: var(--color-dark) !important;
+}
+
+#context {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+/* #endregion */
+
+/* #region Trademark */
+
+div.trademark {
+    background-color: transparent !important;
+    border: none !important;
+    text-align: center;
+    width: 100%;
+}
+
+body.dark div.trademark a {
+    color: var(--color-gray) !important;
 }
 
 /* #endregion */

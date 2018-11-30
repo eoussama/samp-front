@@ -182,6 +182,17 @@
                 </main>
             </div>
         </div>
+        
+        <!-- The footer. -->
+        <footer class="ui basic segment">
+            
+            <!-- Trademark -->
+            <div class="ui basic segment trademark">
+                <small>
+                    <a href="https://github.com/EOussama/samp-front">Samp Front</a> by <a href="https://github.com/EOussama">EOussama</a>
+                </small>
+            </div>
+        </footer>
 
         <!-- JQuery. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
