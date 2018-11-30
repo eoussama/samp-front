@@ -29,25 +29,33 @@ $(document).ready(() => {
         // #endregion
     
         // #region Quill
-        const quill = new Quill('#editor', {
-            theme: 'snow'
-        });
+        const
+            quillCreate = new Quill('#editor-create', {
+                theme: 'snow'
+            }),
+            quillEdit = new Quill('#editor-edit', {
+                theme: 'snow'
+            });
         // #endregion
 
         // #region CRUD
-        const editorForm = $('#editor-form');
+        const
+            editorFormCreate = $('#editor-form-create'),
+            editorFormEdit = $('#editor-form-edit');
+
+        let articleToEdit = '';
 
         $('#add-btn').on('click', () => {
             $('#text-editor-create')
             .modal({
                 onApprove: () => {
-                    $(editorForm).trigger('submit');
+                    $(editorFormCreate).trigger('submit');
                 }
             })
             .modal('show');
 
-            $(editorForm).find('input[name="title"]').val('');
-            quill.deleteText(0, quill.getLength());
+            $(editorFormCreate).find('input[name="title"]').val('');
+            quillCreate.deleteText(0, quillCreate.getLength());
         });
 
         $('#select-btn').on('click', () => {
@@ -82,20 +90,61 @@ $(document).ready(() => {
             }
         });
 
-        $(editorForm).on('submit', (e) => {
+        $('.edit-btn').on('click', (e) => {
+            articleToEdit = $($(e.target).closest('.item')).data('id');
+            
+            $('#text-editor-edit')
+            .modal({
+                onApprove: () => {
+                    $(editorFormEdit).trigger('submit');
+                }
+            })
+            .modal('show');
+
+            fetch(`./../controllers/news/read_single.php?id=${ articleToEdit }`)
+            .then(response => response.json())
+            .then(article => {
+                $(editorFormEdit).find('input[name="title"]').val(article.title);
+                $(quillEdit.root).html($.parseHTML(article.body));
+            });
+        });
+
+        $(editorFormCreate).on('submit', (e) => {
             e.preventDefault();
 
-            if ($(editorForm).find('input[name="title"]').val().length == 0) {
+            if ($(editorFormCreate).find('input[name="title"]').val().length == 0) {
                 alert('Make sure provide a valid title for the news article.');
             } else {
                 $.post('../controllers/news/create.php', {
-                    title: $(editorForm).find('input[name="title"]').val(),
-                    body: quill.root.innerHTML
+                    title: $(editorFormCreate).find('input[name="title"]').val(),
+                    body: quillCreate.root.innerHTML
                 })
                 .done((data) => {
-                    console.log(data);
                     if (!data.hasOwnProperty('error')) {
                         alert(`A new news article was created.`);
+                    } else {
+                        alert(`Error: ${ data.error }`);
+                    }
+
+                    window.location.reload();
+                });
+            }
+        });
+
+        $(editorFormEdit).on('submit', (e) => {
+            e.preventDefault();
+
+            if ($(editorFormEdit).find('input[name="title"]').val().length == 0) {
+                alert('Make sure provide a valid title for the news article.');
+            } else {
+                $.post('./../controllers/news/update.php', {
+                    id: articleToEdit,
+                    title: $(editorFormEdit).find('input[name="title"]').val(),
+                    body: quillEdit.root.innerHTML
+                })
+                .done((data) => {
+                    if (!data.hasOwnProperty('error')) {
+                        alert(`The news article was successfully edited.`);
                     } else {
                         alert(`Error: ${ data.error }`);
                     }

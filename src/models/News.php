@@ -177,7 +177,7 @@
         /**
          * Creats a new news article.
          * 
-         * @param String $title: The of the new news article.
+         * @param String $title: The title of the new news article.
          * @param String $body: The body of the new news article.
          * 
          * @return Boolean: whether or not the news article was created.
@@ -210,8 +210,12 @@
 
         /**
          * Updates a news article.
+         * 
+         * @param Int $id: The id of the news article you want to update.
+         * @param String $title: The new title of the news article.
+         * @param String $body: The nez body of the news article.
          */
-        public function update() {
+        public function update($id, $title, $body) {
             // Creating the query.
             $query = "UPDATE `$this->table` SET ";
             $query .= "`title` = :title,";
@@ -221,14 +225,11 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            // Sanitizing the data.
-            $this->title = htmlspecialchars(strip_tags($this->title));
-            $this->body = htmlspecialchars(strip_tags($this->body));
-            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->id = $id;
 
             // Binding the data.
-            $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':body', $this->body);
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':body', $body);
             $stmt->bindParam(':id', $this->id);
 
             try {

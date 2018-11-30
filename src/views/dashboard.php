@@ -85,7 +85,7 @@
             </div>
             <div class="content">
                 <div class="description">
-                    <form id="editor-form" class="ui form">
+                    <form id="editor-form-create" class="ui form">
 
                         <!-- Title. -->
                         <div class="required field">
@@ -96,7 +96,7 @@
                         <!-- Body. -->
                         <div class="field">
                             <label>Body</label>
-                            <div id="editor"></div>
+                            <div id="editor-create"></div>
                         </div>
                     </form>
                 </div>
@@ -107,6 +107,40 @@
                 </div>
                 <div class="ui positive right labeled icon button">
                     Create
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edition text editor. -->
+        <div id="text-editor-edit" class="ui modal">
+            <div class="header">
+                Edit news article
+            </div>
+            <div class="content">
+                <div class="description">
+                    <form id="editor-form-edit" class="ui form">
+
+                        <!-- Title. -->
+                        <div class="required field">
+                            <label>Title</label>
+                            <input name="title" type="text" placeholder="Some interesting title...">
+                        </div>
+
+                        <!-- Body. -->
+                        <div class="field">
+                            <label>Body</label>
+                            <div id="editor-edit"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Close
+                </div>
+                <div class="ui positive right labeled icon button">
+                    Edit
                     <i class="checkmark icon"></i>
                 </div>
             </div>
@@ -161,6 +195,12 @@
                                                     
                                                     echo '
                                                         <label class="item" data-id="' . $id . '">
+                                                            <div class="right floated content">
+                                                                <div class="ui button edit-btn">
+                                                                    <i class="large middle aligned edit icon"></i>
+                                                                    Edit
+                                                                </div>
+                                                            </div>
                                                             <div class="ui checkbox">
                                                                 <input id="' . $id . '" type="checkbox" tabindex="0" class="hidden">
                                                                 <label for="' . $id . '" class="content">
