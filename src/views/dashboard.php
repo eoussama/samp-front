@@ -114,7 +114,7 @@
 
                                 <!-- News list. -->
                                 <div class="twelve wide column">
-                                    <div class="ui <?php echo $inverted; ?> relaxed divided selection list">
+                                    <div id="news-list" class="ui <?php echo $inverted; ?> relaxed divided selection list">
                                         <?php 
                                             $articles = $news->read_all();
 
@@ -142,7 +142,7 @@
                                 <!-- News controls. -->
                                 <div class="four wide column">
                                     <div class="ui <?php echo $inverted; ?> selection list">
-                                        <div class="item">
+                                        <div id="add-btn" class="item">
                                             <div class="content">
                                                 <div class="header">
                                                     <i class="plus circle icon"></i>
@@ -150,7 +150,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div id="select-btn" class="item">
                                             <div class="content">
                                                 <div class="header">
                                                     <i class="check circle icon"></i>
@@ -158,7 +158,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div id="unselect-btn" class="item">
                                             <div class="content">
                                                 <div class="header">
                                                     <i class="circle outline icon"></i>
@@ -166,7 +166,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div id="delete-btn" class="item">
                                             <div class="content">
                                                 <div class="header">
                                                     <i class="times circle icon"></i>

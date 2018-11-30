@@ -27,5 +27,29 @@ $(document).ready(() => {
             }, config['scrollSpeed']);
         });
         // #endregion
+    
+        // #region CRUD
+        const newsList = $('#news-list');
+
+        $('#add-btn').on('click', () => {
+            console.log('Adding...');
+        });
+
+        $('#select-btn').on('click', () => {
+            $('input[type="checkbox"]').prop('checked', true);
+        });
+
+        $('#unselect-btn').on('click', () => {
+            $('input[type="checkbox"]').prop('checked', false);
+        });
+
+        $('#delete-btn').on('click', () => {
+            if ($('input[type="checkbox"]:checked').length === 0) {
+                alert("No news articles are selected!");
+            } else {
+                console.log('Deleting...');
+            }
+        });
+        // #endregion
     });
 });
