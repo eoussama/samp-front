@@ -55,10 +55,13 @@ $(document).ready(() => {
                     articleIds.push($($($checkedArticles).get(i).closest('.item')).data('id'));
                 });
 
-                if (confirm(`Are you sure you want to delete ${ (articleIds.length > 1 ? `these ${ articleIds.length }` : 'this') } news articles?`)) {
+                if (confirm(`Are you sure you want to delete ${ (articleIds.length > 1 ? `these ${ articleIds.length }` : 'this') } news article(s)?`)) {
                     $.post( "../controllers/news/delete.php", { ids: articleIds })
                     .done((data) => {
-                        console.log(data);
+                        data = $.parseJSON(data);
+
+                        alert(`${ data.deleted } out of ${ articleIds.length } news article(s) were successfully deleted!`);
+                        window.location.reload();
                     });
                 }
             }

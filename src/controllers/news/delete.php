@@ -18,10 +18,7 @@
                     }
                 }
 
-                $data = array(
-                    "recieved"  => count($ids),
-                    "deleted"   => $deleted
-                );
+                $data = array("deleted"   => $deleted);
             } else {
                 throw new Exception("Invalid data format.");
             }
