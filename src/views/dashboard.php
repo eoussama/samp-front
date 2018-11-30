@@ -50,11 +50,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="./../assets/css/loader.css">
-        <link rel="stylesheet" href="./../assets/css/dashboard/dashboard.css">
+        <link rel="stylesheet" href="<?php echo $config['root']; ?>/assets/css/loader.css">
+        <link rel="stylesheet" href="<?php echo $config['root']; ?>/assets/css/dashboard/dashboard.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="./../assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="<?php echo $config['root']; ?>/assets/img/logo.png">
 
         <!-- The website's title -->
         <title><?php echo $config['name']; ?></title>
@@ -64,7 +64,7 @@
         
         <!-- The burger button's menu. -->
         <nav class="ui <?php echo $inverted; ?> borderless top fixed menu">
-            <a class="item" href="./../index.php">
+            <a class="item" href="<?php echo $config['root']; ?>/index.php">
                 <b>Home</b>
             </a>
 
@@ -262,6 +262,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
 
         <!-- The main script -->
-        <script src="./../assets/js/dashboard/dashboard.js"></script>
+        <script src="<?php echo $config['root']; ?>/assets/js/dashboard/dashboard.js"></script>
     </body>
 </html>

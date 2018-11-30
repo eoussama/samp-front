@@ -83,9 +83,17 @@
         /**
          * The live stats update interval in milliseconds.
          */
-        "liveUpdateInterval" => 10000
+        "liveUpdateInterval" => 10000,
+
+        /**
+         * Don't touch this unless you know what you're doing.
+         */
+        "root" => dirname(dirname($_SERVER['SCRIPT_NAME']))
     )));
 
+    /**
+     * Returns the configurations if requested.
+     */
     if (isset($_GET['q'])) {
         echo json_encode(unserialize(CONFIG));
     }
