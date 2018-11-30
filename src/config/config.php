@@ -86,6 +86,12 @@
         "liveUpdateInterval" => 10000,
 
         /**
+         * The password used to access the dashboard, make sure this isn't shared
+         * or somebody might have your website's news section as their diary.
+         */
+        "dashboardPassword" => 'CHANGE_THIS',
+
+        /**
          * Don't touch this unless you know what you're doing.
          */
         "root" => dirname(dirname($_SERVER['SCRIPT_NAME']))

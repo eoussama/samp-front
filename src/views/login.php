@@ -19,7 +19,7 @@
     if (isset($_POST['password']) && !empty($_POST['password'])) {
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
-        if ($password == '123') {
+        if ($password == $config['dashboardPassword']) {
             session_start();
             $_SESSION['loggedIn'] = true;
 
