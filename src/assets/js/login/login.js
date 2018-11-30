@@ -7,5 +7,9 @@
 */
 
 $(document).ready(() => {
-    console.log('Hello, world!');
+    // #region Closing the message popup.
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+    // #endregion
 });

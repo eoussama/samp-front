@@ -7,6 +7,13 @@
      * @source:     github.com/EOussama/samp-front
      */
 
+    session_start();
+
+    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
+        header('Location: ./login.php');
+        die();
+    }
+
     // Requiring all dependencies.
     require_once "./../config/Database.php";
     require_once "./../config/config.php";

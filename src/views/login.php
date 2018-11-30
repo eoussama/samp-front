@@ -13,6 +13,22 @@
     // Loading the website's configurations.
     $config = unserialize(CONFIG);
 
+    // The error reporter.
+    $error = false;
+
+    if (isset($_POST['password']) && !empty($_POST['password'])) {
+        $password = htmlspecialchars(strip_tags($_POST['password']));
+
+        if ($password == '123') {
+            session_start();
+            $_SESSION['loggedIn'] = true;
+
+            header('Location: ./dashboard.php');
+        } else {
+            $error = true;
+        }
+    }
+
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.
     $inverted = $config['darkMode'] ? 'inverted' : '';
@@ -56,11 +72,21 @@
 
                 <div class="ui divider"></div>
 
-                <form class="ui <?php echo $inverted; ?> form">
+                <?php if ($error): ?>
+                    <div class="ui negative message">
+                        <i class="close icon"></i>
+                        <div class="header">Error</div>
+                        <p>The password you've provided is wrong.</p>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Logging-in form. -->
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="ui <?php echo $inverted; ?> form">
                     <div class="field">
                         <label>Input the dashboard's password below</label>
                         <input type="password" name="password" placeholder="Password..." required>
                     </div>
+
                     <button class="ui <?php echo $inverted; ?> fluid button" type="submit">Login</button>
                 </form>
             </div>
@@ -75,6 +101,9 @@
 
         <!-- JQuery. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Semantic UI. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
         <!-- The main script -->
         <script src="<?php echo $config['root']; ?>/assets/js/login/login.js"></script>

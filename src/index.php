@@ -103,7 +103,7 @@
 
                 <!-- The reset of the links. -->
                 <div class="right menu">
-                    <a class="item" href="views/login.php">Dashboard</a>
+                    <a class="item" href="views/dashboard.php">Dashboard</a>
                     <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
                     <a class="item" id="live-stats-btn">Live stats</a>
                     <a class="item" id="news-btn">News</a>
