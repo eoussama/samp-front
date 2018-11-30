@@ -60,7 +60,7 @@
     <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
         
         <!-- The burger button's menu. -->
-        <nav class="ui <?php echo $inverted; ?> borderless top attached menu">
+        <nav class="ui <?php echo $inverted; ?> borderless top fixed menu">
             <a class="item" id="burger-btn">
                 <i class="sidebar icon"></i>
             </a>
