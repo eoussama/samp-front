@@ -56,15 +56,22 @@
 
                 <div class="ui divider"></div>
 
-                <form class="ui form">
+                <form class="ui <?php echo $inverted; ?> form">
                     <div class="field">
                         <label>Input the dashboard's password below</label>
                         <input type="password" name="password" placeholder="Password...">
                     </div>
-                    <button class="ui fluid button" type="submit">Login</button>
+                    <button class="ui <?php echo $inverted; ?> fluid button" type="submit">Login</button>
                 </form>
             </div>
         </main>
+
+         <!-- The footer. -->
+         <footer class="ui basic segment">
+            
+            <!-- Trademark -->
+            <?php require_once "./partials/_trademark.php"; ?>
+        </footer>
 
         <!-- JQuery. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

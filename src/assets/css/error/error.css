@@ -6,6 +6,8 @@
 * @source:     github.com/EOussama/samp-front
 */
 
+/* #region Global */
+
 :root {
     --color-dark-light: #2E2E2E;
     --color-gray: gray;
@@ -28,3 +30,20 @@ div.content-wrapper p {
 body.dark {
     background-color: var(--color-dark-light);
 }
+
+/* #endregion */
+
+/* #region Trademark */
+
+div.trademark {
+    background-color: transparent !important;
+    border: none !important;
+    text-align: center;
+    width: 100%;
+}
+
+body.dark div.trademark a {
+    color: var(--color-gray) !important;
+}
+
+/* #endregion */
