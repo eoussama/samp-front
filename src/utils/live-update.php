@@ -62,7 +62,7 @@
         }
     }
     catch(Exception $e) {
-        $data = array("error" => htmlspecialchars($e->getMessage()));
+        $data = array("error" => htmlspecialchars(strip_tags($e->getMessage())));
     }
     finally {
         echo json_encode($data);

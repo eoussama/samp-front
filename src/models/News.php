@@ -243,8 +243,10 @@
 
         /**
          * Deletes a news article.
+         * 
+         * @param Int $id: The id of the news article you want to delete.
          */
-        public function delete() {
+        public function delete($id) {
             // Creating the query.
             $query = "DELETE FROM `$this->table` WHERE `id` = :id";
 
@@ -252,7 +254,7 @@
             $stmt = $this->conn->prepare($query);
 
             // Sanitizing the data.
-            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->id = htmlspecialchars(strip_tags($id));
 
             // Binding the data.
             $stmt->bindParam(':id', $this->id);
