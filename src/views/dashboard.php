@@ -8,9 +8,9 @@
      */
 
     // Requiring all dependencies.
-    require_once "../config/Database.php";
-    require_once "../config/config.php";
-    require_once "../models/News.php";
+    require_once "./../config/Database.php";
+    require_once "./../config/config.php";
+    require_once "./../models/News.php";
 
     // Instantiating a new Database object.
     $db   = new Database();
@@ -50,11 +50,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="../assets/css/loader.css">
-        <link rel="stylesheet" href="../assets/css/dashboard/dashboard.css">
+        <link rel="stylesheet" href="./../assets/css/loader.css">
+        <link rel="stylesheet" href="./../assets/css/dashboard/dashboard.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="../assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="./../assets/img/logo.png">
 
         <!-- The website's title -->
         <title><?php echo $config['name']; ?></title>
@@ -262,6 +262,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
 
         <!-- The main script -->
-        <script src="../assets/js/dashboard/dashboard.js"></script>
+        <script src="./../assets/js/dashboard/dashboard.js"></script>
     </body>
 </html>

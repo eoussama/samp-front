@@ -15,11 +15,11 @@
     error_reporting(E_ALL);
 
     // Requiring all dependencies.
-    require_once "config/Database.php";
-    require_once "config/config.php";
-    require_once "models/News.php";
-    require_once "utils/SampQueryAPI.php";
-    require_once "utils/icons.php";
+    require_once "./config/Database.php";
+    require_once "./config/config.php";
+    require_once "./models/News.php";
+    require_once "./utils/SampQueryAPI.php";
+    require_once "./utils/icons.php";
 
     // Instantiating a new Database object.
     $db   = new Database();
@@ -70,13 +70,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
         
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="assets/css/loader.css">
-        <link rel="stylesheet" href="assets/css/main/header.css">
-        <link rel="stylesheet" href="assets/css/main/main.css">
-        <link rel="stylesheet" href="assets/css/main/footer.css">
+        <link rel="stylesheet" href="./assets/css/loader.css">
+        <link rel="stylesheet" href="./assets/css/main/header.css">
+        <link rel="stylesheet" href="./assets/css/main/main.css">
+        <link rel="stylesheet" href="./assets/css/main/footer.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="./assets/img/logo.png">
 
         <!-- The website's title -->
         <title><?php echo $config['name']; ?></title>
@@ -500,7 +500,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
         <!-- The main script -->
-        <script src="assets/js/main/main.js"></script>
-        <script src="assets/js/main/scrollreveal.js"></script>
+        <script src="./assets/js/main/main.js"></script>
+        <script src="./assets/js/main/scrollreveal.js"></script>
     </body>
 </html>

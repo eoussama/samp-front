@@ -42,7 +42,7 @@ nav.sticky {
 
 header {
     background-attachment: fixed !important;
-    background-image: url('../../img/backgrounds/header-bg.jpg') !important;
+    background-image: url('./../../img/backgrounds/header-bg.jpg') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     filter: grayscale(50%);

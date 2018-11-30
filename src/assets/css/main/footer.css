@@ -22,7 +22,7 @@ body.dark footer * {
 
 footer::before {
     background-attachment: fixed;
-    background-image: url(../../img/backgrounds/beach-bg.jpg);
+    background-image: url(./../../img/backgrounds/beach-bg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -36,10 +36,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="../assets/css/error/error.css">
+        <link rel="stylesheet" href="./../assets/css/error/error.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="../assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="./../assets/img/logo.png">
 
         <!-- The website's title -->
         <title><?php echo $config['name']; ?></title>
@@ -69,6 +69,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- The main script -->
-        <script src="../assets/js/error/error.js"></script>
+        <script src="./../assets/js/error/error.js"></script>
     </body>
 </html>

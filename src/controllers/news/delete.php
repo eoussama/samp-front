@@ -7,8 +7,8 @@
      * @source:     github.com/EOussama/samp-front
      */
 
-    require_once "../../config/Database.php";
-    require_once "../../models/News.php";
+    require_once "./../../config/Database.php";
+    require_once "./../../models/News.php";
     try {
         if (isset($_POST['ids'])) {
             $ids    = $_POST['ids'];

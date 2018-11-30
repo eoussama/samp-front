@@ -9,6 +9,7 @@
 /* #region Global */
 
 :root {
+    --color-dark-link: #6573ad;
     --color-dark-light: #2E2E2E;
     --color-dark: #212121;
     --color-gray: gray;
@@ -25,7 +26,7 @@ body.dark {
 }
 
 body::before {
-    background-image: url('../../img/backgrounds/beach-bg.jpg');
+    background-image: url('./../../img/backgrounds/beach-bg.jpg');
     background-repeat: repeat-y;
     background-size: cover;
     background-attachment: fixed;
@@ -51,6 +52,10 @@ body.dark .segment * {
     color: var(--color-light);
 }
 
+body.dark main a {
+    color: var(--color-dark-link) !important;
+}
+
 /* #endregion */
 
 /* #region News */
@@ -59,14 +64,13 @@ section#news {
     height: 500px;
 }
 
-
 section#news > div.segment {
     height: 100%;
     position: relative;
 }
 
 section#news > div.segment::before {
-    background-image: url(../../img/backgrounds/news-bg.jpg);
+    background-image: url(./../../img/backgrounds/news-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     content: "";

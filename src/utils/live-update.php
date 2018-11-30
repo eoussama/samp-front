@@ -14,8 +14,8 @@
      */
     error_reporting(0);
 
-    require_once "../config/config.php";
-    require_once "../utils/SampQueryAPI.php";
+    require_once "./../config/config.php";
+    require_once "./../utils/SampQueryAPI.php";
     
     /**
      * Sanitizes the server's rules and information.
