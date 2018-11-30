@@ -419,7 +419,7 @@
                         <div id="gallery" class="ui segment">
                             <h3>Gallery</h3>
 
-                            <i class="big <?php echo $inverted; ?> image icon" id="fullscreen-btn"></i>
+                            <i class="big <?php echo $inverted; ?> expand icon" id="fullscreen-btn"></i>
 
                             <div id="gallery-carousel">
                                 <img src="assets/img/gallery/1.jpg" alt="A cop arresting a robber.">
