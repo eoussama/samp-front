@@ -17,7 +17,7 @@ div.content-wrapper {
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 80vh;
     justify-content: center;
     margin: auto;
     width: 100%;
@@ -34,6 +34,13 @@ body.dark {
 /* #endregion */
 
 /* #region Trademark */
+
+footer {
+    bottom: 0;
+    left: 0;
+    position: absolute !important;
+    width: 100%;
+}
 
 div.trademark {
     background-color: transparent !important;

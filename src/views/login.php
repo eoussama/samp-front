@@ -59,7 +59,7 @@
                 <form class="ui <?php echo $inverted; ?> form">
                     <div class="field">
                         <label>Input the dashboard's password below</label>
-                        <input type="password" name="password" placeholder="Password...">
+                        <input type="password" name="password" placeholder="Password..." required>
                     </div>
                     <button class="ui <?php echo $inverted; ?> fluid button" type="submit">Login</button>
                 </form>

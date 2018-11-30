@@ -73,7 +73,7 @@
         /**
          * Whether or not to use a dark theme for the website.
          */
-        "darkMode" => true,
+        "darkMode" => false,
 
         /**
          * The auto scroll's speed in milliseconds.
