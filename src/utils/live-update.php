@@ -1,5 +1,13 @@
 <?php
     /**
+     * @name:       Samp Front
+     * @version:    0.5.0
+     * @author:     EOussama (eoussama.github.io)
+     * @license     MIT
+     * @source:     github.com/EOussama/samp-front
+     */
+
+    /**
      * Only disable errors if you're pushing this
      * into a production environment.
      * In order to disable it, change `E_ALL` to `0`.

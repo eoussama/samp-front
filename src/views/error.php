@@ -1,7 +1,7 @@
 <?php
     /**
      * @name:       Samp Front
-     * @version:    0.2.0
+     * @version:    0.5.0
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
