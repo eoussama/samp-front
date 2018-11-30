@@ -177,18 +177,20 @@
         /**
          * Creats a new news article.
          * 
+         * @param String $title: The of the new news article.
+         * @param String $body: The body of the new news article.
+         * 
          * @return Boolean: whether or not the news article was created.
          */
-        public function create() {
+        public function create($title, $body) {
             // Creating the query.
             $query = "INSERT INTO `$this->table`(`id`, `title`, `body`) VALUES(UUID(), :title, :body);";
 
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            // Sanitizing the data.
-            $this->title = htmlspecialchars(strip_tags($this->title));
-            $this->body = htmlspecialchars(strip_tags($this->body));
+            $this->title = $title;
+            $this->body = $body;
 
             // Binding the data.
             $stmt->bindParam(':title', $this->title);

@@ -46,6 +46,9 @@
         <!-- Semantic UI. -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
+        <!-- Quill -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.min.css">
+
         <!-- The main stylesheet. -->
         <link rel="stylesheet" href="../assets/css/loader.css">
         <link rel="stylesheet" href="../assets/css/dashboard/dashboard.css">
@@ -73,6 +76,40 @@
         <!-- The loader. -->
         <div id="loader" class="ui inverted active dimmer">
             <div class="ui text loader"><?php echo $config['name']; ?></div>
+        </div>
+
+        <!-- Text editor. -->
+        <div id="text-editor" class="ui modal">
+            <div class="header">
+                Add a new news article
+            </div>
+            <div class="content">
+                <div class="description">
+                    <form id="editor-form" class="ui form">
+
+                        <!-- Title. -->
+                        <div class="required field">
+                            <label>Title</label>
+                            <input name="title" type="text" placeholder="Some interesting title...">
+                        </div>
+
+                        <!-- Body. -->
+                        <div class="field">
+                            <label>Body</label>
+                            <div id="editor"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Close
+                </div>
+                <div class="ui positive right labeled icon button">
+                    Create
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
         </div>
 
         <!-- The page's content -->
@@ -199,6 +236,9 @@
 
         <!-- Semantic UI. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+        <!-- Quill. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
 
         <!-- The main script -->
         <script src="../assets/js/dashboard/dashboard.js"></script>

@@ -184,8 +184,8 @@ $(document).ready(() => {
             .then(response => response.json())
             .then(article => {
                 $($news['title']).text(article.title);
-                $($news['date']).text(article.created_at_formated);
-                $($news['body']).text(article.body);
+                $($news['date']).text(article.created_at);
+                $($news['body']).html($.parseHTML(article.body));
             });
         });
 

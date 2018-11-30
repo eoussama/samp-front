@@ -8,5 +8,6 @@
     $news   = new News($conn);
 
     $news->read_single($id);
+    $news->body = htmlspecialchars_decode($news->body);
 
     echo json_encode($news);
