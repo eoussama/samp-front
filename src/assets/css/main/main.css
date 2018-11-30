@@ -127,8 +127,8 @@ i#fullscreen-btn, i#fullscreen-close-btn {
     cursor: pointer;
     opacity: .4;
     position: absolute;
-    right: 30px;
-    top: 60px;
+    right: 20px;
+    top: 63px;
     transition-duration: .3s;
     transition-property: opacity;
     z-index: 5;
