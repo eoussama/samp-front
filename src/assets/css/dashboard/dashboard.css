@@ -10,11 +10,11 @@ body {
     overflow: hidden;
 }
 
-body.dark * {
+body.dark main *, body.dark footer * {
     color: var(--color-light) !important;
 }
 
-body.dark div.pusher {
+body.dark {
     background-color: var(--color-dark-light);
 }
 
@@ -24,30 +24,19 @@ section {
 
 /* #endregion */
 
-/* #region Sidebar */
-
-#sidebar {
-    box-sizing: border-box;
-    padding-top: 40px !important;
-}
-
-/* #endregion */
-
 /* #region Footer */
 
 footer {
+    bottom: 0;
+    left: 0;
     margin: 0 !important;
     padding: 0 !important;
+    position: absolute !important;
+    width: 100%;
 }
 
 body.dark footer {
     background-color: var(--color-dark) !important;
-}
-
-#context {
-    border: none;
-    border-radius: 0;
-    margin-bottom: 0;
 }
 
 /* #endregion */

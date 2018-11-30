@@ -64,13 +64,13 @@
         
         <!-- The burger button's menu. -->
         <nav class="ui <?php echo $inverted; ?> borderless top fixed menu">
-            <a class="item" id="burger-btn">
-                <i class="sidebar icon"></i>
+            <a class="item" href="./../index.php">
+                <b>Home</b>
             </a>
 
-            <div class="item">
+            <a class="item" href="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <b>Dashboard</b>
-            </div>
+            </a>
         </nav>
 
         <!-- The loader. -->
@@ -146,119 +146,100 @@
             </div>
         </div>
 
-        <!-- The page's content -->
-        <div id="context" class="ui bottom attached segment pushable">
+        <main class="ui container">
+            <div class="ui grid">
 
-            <!-- The sidebar. -->
-            <aside id="sidebar" class="ui <?php echo $inverted; ?> labeled icon left inline vertical sidebar menu">
-                <a class="item" href="./../index.php">
-                    <i class="home icon"></i>
-                    Home
-                </a>
-                <a class="item" id="news-btn">
-                    <i class="block layout icon"></i>
-                    News
-                </a>
-            </aside>
+                <!-- News. -->
+                <section id="news" class="ui row grid">
 
-            <!-- Actuall content -->
-            <div class="pusher">
-                <main class="ui container">
-                    <div class="ui grid">
+                    <!-- Title. -->
+                    <div class="row">
+                        <div class="column">
+                            <h1 class="ui header">
+                                <i class="block layout icon"></i>
+                                News [<?php echo $news->count(); ?>]
+                            </h1>
 
-                        <!-- News. -->
-                        <section id="news" class="ui row grid">
-
-                            <!-- Title. -->
-                            <div class="row">
-                                <div class="column">
-                                    <h1 class="ui header">
-                                        <i class="block layout icon"></i>
-                                        News [<?php echo $news->count(); ?>]
-                                    </h1>
-
-                                    <div class="ui divider"></div>
-                                </div>                            
-                            </div>
-
-                            <div class="row">
-
-                                <!-- News list. -->
-                                <div class="twelve wide column">
-                                    <div id="news-list" class="ui <?php echo $inverted; ?> relaxed divided selection list">
-                                        <?php 
-                                            $articles = $news->read_all();
-
-                                            if($articles->rowCount() > 0) {
-                                                while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
-                                                    extract($article);
-                                                    
-                                                    echo '
-                                                        <label class="item" data-id="' . $id . '">
-                                                            <div class="right floated content">
-                                                                <div class="ui button edit-btn">
-                                                                    <i class="large middle aligned edit icon"></i>
-                                                                    Edit
-                                                                </div>
-                                                            </div>
-                                                            <div class="ui checkbox">
-                                                                <input id="' . $id . '" type="checkbox" tabindex="0" class="hidden">
-                                                                <label for="' . $id . '" class="content">
-                                                                    <div class="header">' . $title . '</div>
-                                                                    <small>Article ID: <b>' . $id . '</b></small>
-                                                                </label>
-                                                            </div>
-                                                        </label>
-                                                    ';
-                                                }
-                                            }
-                                        ?>                                            
-                                    </div>
-                                </div>
-
-                                <!-- News controls. -->
-                                <div class="four wide column">
-                                    <div class="ui <?php echo $inverted; ?> selection list">
-                                        <div id="add-btn" class="item">
-                                            <div class="content">
-                                                <div class="header">
-                                                    <i class="plus circle icon"></i>
-                                                    Add a new news article
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="select-btn" class="item">
-                                            <div class="content">
-                                                <div class="header">
-                                                    <i class="check circle icon"></i>
-                                                    Select all news articles
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="unselect-btn" class="item">
-                                            <div class="content">
-                                                <div class="header">
-                                                    <i class="circle outline icon"></i>
-                                                    Unselect all news articles
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="delete-btn" class="item">
-                                            <div class="content">
-                                                <div class="header">
-                                                    <i class="times circle icon"></i>
-                                                    Delete selected news articles
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                            <div class="ui divider"></div>
+                        </div>                            
                     </div>
-                </main>
+
+                    <div class="row">
+
+                        <!-- News list. -->
+                        <div class="twelve wide column">
+                            <div id="news-list" class="ui <?php echo $inverted; ?> relaxed divided selection list">
+                                <?php 
+                                    $articles = $news->read_all();
+
+                                    if($articles->rowCount() > 0) {
+                                        while($article = $articles->fetch(PDO::FETCH_ASSOC)) {
+                                            extract($article);
+                                            
+                                            echo '
+                                                <label class="item" data-id="' . $id . '">
+                                                    <div class="right floated content">
+                                                        <div class="ui button ' . $inverted . ' edit-btn">
+                                                            <i class="large middle aligned edit icon"></i>
+                                                            Edit
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui checkbox">
+                                                        <input id="' . $id . '" type="checkbox" tabindex="0" class="hidden">
+                                                        <label for="' . $id . '" class="content">
+                                                            <div class="header">' . $title . '</div>
+                                                            <small>Article ID: <b>' . $id . '</b></small>
+                                                        </label>
+                                                    </div>
+                                                </label>
+                                            ';
+                                        }
+                                    }
+                                ?>                                            
+                            </div>
+                        </div>
+
+                        <!-- News controls. -->
+                        <div class="four wide column">
+                            <div class="ui <?php echo $inverted; ?> selection list">
+                                <div id="add-btn" class="item">
+                                    <div class="content">
+                                        <div class="header">
+                                            <i class="plus circle icon"></i>
+                                            Add a new news article
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="select-btn" class="item">
+                                    <div class="content">
+                                        <div class="header">
+                                            <i class="check circle icon"></i>
+                                            Select all news articles
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="unselect-btn" class="item">
+                                    <div class="content">
+                                        <div class="header">
+                                            <i class="circle outline icon"></i>
+                                            Unselect all news articles
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="delete-btn" class="item">
+                                    <div class="content">
+                                        <div class="header">
+                                            <i class="times circle icon"></i>
+                                            Delete selected news articles
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
+        </main>
         
         <!-- The footer. -->
         <footer class="ui basic segment">
