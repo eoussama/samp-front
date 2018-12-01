@@ -55,6 +55,7 @@
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.
     $inverted = $config['website']['darkMode'] ? 'inverted' : '';
+    $discordTheme = ($config['discord']['autoMatch'] ? ($config['website']['darkMode'] ? "dark" : "light") : $config['discord']['theme']);
 ?>
 
 <!DOCTYPE html>
@@ -447,7 +448,7 @@
                     <!-- Discord section. -->
                     <section id="discord" class="five wide column">
                         <div class="ui segment discord-section">
-                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['website']['darkMode'] ? 'dark' : 'light'; ?>" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $discordTheme ? 'dark' : 'light'; ?>" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
                     </section>
                 </div>

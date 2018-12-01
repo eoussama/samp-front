@@ -9,6 +9,7 @@
 /* #region Global */
 
 :root {
+    --color-dark-link: #6573ad;
     --color-dark-light: #2E2E2E;
     --color-gray: gray;
 }
@@ -50,7 +51,7 @@ div.trademark {
 }
 
 body.dark div.trademark a {
-    color: var(--color-gray) !important;
+    color: var(--color-dark-link) !important;
 }
 
 /* #endregion */
