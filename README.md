@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="src/assets/img/logo.png">
+    <img src="src/public/assets/img/logo.png">
     <h1 align="center">Samp Front</h1>
 </p>
 
