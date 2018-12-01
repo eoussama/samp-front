@@ -58,7 +58,7 @@
                 <div class="ui divider"></div>
 
                 <div class="ui large buttons">
-                    <button id="home-btn" class="ui <?php echo $inverted; ?> button">Home</button>
+                    <a id="home-btn" href="<?php echo $config['root']; ?>/index.php" class="ui <?php echo $inverted; ?> button">Home</a>
                     <div class="or"></div>
                     <button id="back-btn" class="ui <?php echo $inverted; ?> button">Back</button>
                 </div>

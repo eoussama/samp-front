@@ -13,6 +13,13 @@
     // Loading the website's configurations.
     $config = unserialize(CONFIG);
 
+    session_start();
+
+    if (isset($_SESSION['loggedIn']) &&$_SESSION['loggedIn'] == true) {
+        header('Location: ./dashboard.php');
+        die();
+    }
+
     // The error reporter.
     $error = false;
 
@@ -20,7 +27,7 @@
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
         if ($password == $config['dashboardPassword']) {
-            session_start();
+            
             $_SESSION['loggedIn'] = true;
 
             header('Location: ./dashboard.php');
