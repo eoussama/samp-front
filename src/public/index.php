@@ -15,11 +15,11 @@
     error_reporting(E_ALL);
 
     // Requiring all dependencies.
-    require_once "./config/Database.php";
-    require_once "./config/config.php";
-    require_once "./models/News.php";
-    require_once "./utils/SampQueryAPI.php";
-    require_once "./utils/icons.php";
+    require_once "./../config/Database.php";
+    require_once "./../config/config.php";
+    require_once "./../models/News.php";
+    require_once "./../utils/SampQueryAPI.php";
+    require_once "./../utils/icons.php";
 
     // Instantiating a new Database object.
     $db   = new Database();

@@ -61,7 +61,7 @@ $(document).ready(() => {
             });
 
             if (confirm(`Are you sure you want to delete ${ (articleIds.length > 1 ? `these ${ articleIds.length }` : 'this') } news article(s)?`)) {
-                $.post( "../controllers/news/delete.php", { ids: articleIds })
+                $.post( "./../../controllers/news/delete.php", { ids: articleIds })
                 .done((data) => {
                     data = $.parseJSON(data);
 
@@ -83,7 +83,7 @@ $(document).ready(() => {
         })
         .modal('show');
 
-        fetch(`./../controllers/news/read_single.php?id=${ articleToEdit }`)
+        fetch(`./../../controllers/news/read_single.php?id=${ articleToEdit }`)
         .then(response => response.json())
         .then(article => {
             $(editorFormEdit).find('input[name="title"]').val(article.title);
@@ -97,7 +97,7 @@ $(document).ready(() => {
         if ($(editorFormCreate).find('input[name="title"]').val().length == 0) {
             alert('Make sure provide a valid title for the news article.');
         } else {
-            $.post('../controllers/news/create.php', {
+            $.post('./../../controllers/news/create.php', {
                 title: $(editorFormCreate).find('input[name="title"]').val(),
                 body: quillCreate.root.innerHTML
             })
@@ -119,7 +119,7 @@ $(document).ready(() => {
         if ($(editorFormEdit).find('input[name="title"]').val().length == 0) {
             alert('Make sure provide a valid title for the news article.');
         } else {
-            $.post('./../controllers/news/update.php', {
+            $.post('./../../controllers/news/update.php', {
                 id: articleToEdit,
                 title: $(editorFormEdit).find('input[name="title"]').val(),
                 body: quillEdit.root.innerHTML

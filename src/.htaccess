@@ -1,1 +1,1 @@
-ErrorDocument 404 /samp-front/src/views/error.php/
+ErrorDocument 404 /samp-front/src/public/views/error.php/

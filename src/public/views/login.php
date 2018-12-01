@@ -8,7 +8,7 @@
      */
 
     // Requiring all dependencies.
-    require_once "../config/config.php";
+    require_once "./../../config/config.php";
 
     // Loading the website's configurations.
     $config = unserialize(CONFIG);

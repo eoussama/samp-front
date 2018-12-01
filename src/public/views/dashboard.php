@@ -15,9 +15,9 @@
     }
 
     // Requiring all dependencies.
-    require_once "./../config/Database.php";
-    require_once "./../config/config.php";
-    require_once "./../models/News.php";
+    require_once "./../../config/Database.php";
+    require_once "./../../config/config.php";
+    require_once "./../../models/News.php";
 
     // Instantiating a new Database object.
     $db   = new Database();

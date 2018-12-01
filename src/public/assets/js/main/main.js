@@ -7,7 +7,7 @@
 */
 
 $(document).ready(() => {
-    fetch('./config/config.php?q')
+    fetch('./../config/config.php?q')
     .then(response => response.json())
     .then(response => {
         const config = {
@@ -118,7 +118,7 @@ $(document).ready(() => {
             };
     
         setInterval(() => {
-            fetch('./utils/live-update.php')
+            fetch('./../utils/live-update.php')
             .then(response => response.json())
             .then(data => {
                 if (data.error === undefined) {
@@ -188,7 +188,7 @@ $(document).ready(() => {
             $('#news-list div.item').removeClass('active');
             $(e.target).closest('div.item').addClass('active');
             
-            fetch(`controllers/news/read_single.php?id=${ id }`)
+            fetch(`./../controllers/news/read_single.php?id=${ id }`)
             .then(response => response.json())
             .then(article => {
                 $($news['title']).text(article.title);

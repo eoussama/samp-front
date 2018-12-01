@@ -23,13 +23,13 @@
         "slogan"  =>  "Lorem ipsum, dolor sit consectetur adipisicing",
 
         /**
-         * The server's information.
+         * The SA:MP server's information.
          */
         "server" => array(
             /**
              * The server's IP address.
              */
-            "ip"    =>  "176.32.37.208",
+            "ip"    =>  "137.74.179.193",
 
             /**
              * The server's port.
