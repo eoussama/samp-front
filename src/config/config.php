@@ -7,99 +7,99 @@
      * @source:     github.com/EOussama/samp-front
      */
     
+    // Loading the configurations from the config.ini file.
+    $conf = parse_ini_file('config.ini', true);
+
     /**
-     * Samp Front configurations.
+    * Don't touch this unless you know what you're doing.
+    * Getting the root folder of the website.
+    */
+    $_path = dirname(dirname($_SERVER['SCRIPT_NAME'])) . '/';
+
+    /**
+     * The paths to different parts of the website.
      */
-    define('CONFIG', serialize(array(
+    $conf['path'] = array(
 
         /**
-         * The name of the community.
+         * The path of the root folder.
          */
-        "name"  =>  "My Community Name",
+        "root"      => $_path,
 
         /**
-         * Optional community slogan.
+         * The path to the folder that serves public files.
          */
-        "slogan"  =>  "Lorem ipsum, dolor sit consectetur adipisicing",
+        "public"    => $_path . 'public/',
 
         /**
-         * The SA:MP server's information.
+         * The path to the folder that contains views.
          */
-        "server" => array(
-            /**
-             * The server's IP address.
-             */
-            "ip"    =>  "137.74.179.193",
-
-            /**
-             * The server's port.
-             */
-            "port"  =>  "7777"
-        ),
+        "views"     => $_path . 'public/views/',
 
         /**
-         * All community related external links.
+         * The path to the folder that contains javascript files.
          */
-        "links" => array(
-
-            /**
-             * The community's links.
-             */
-            "community" => array(
-                "forum"     =>  "http://forum.sa-mp.com",
-                "discord"   =>  "https://discord.gg/uaU2KBz",
-                "youtube"   =>  "https://www.youtube.com/",
-                "twitter"   =>  "https://www.twitter.com/",
-                "facebook"  =>  "https://www.facebook.com/",
-                "reddit"    =>  "https://www.reddit.com/r/samp/"
-            ),
-
-            /**
-             * The donation redirect link.
-             */
-            "donation" => "javascript:void(0)"
-        ),
+        "js"        => $_path . 'public/assets/js/',
 
         /**
-         * The discord server's information.
+         * The path to the folder that contains stylesheet files.
          */
-        "discord" => array(
-            /**
-             * The discord server's ID.
-             */
-            "id"    =>  "231799104731217931"
-        ),
+        "css"       => $_path . 'public/assets/css/',
 
         /**
-         * Whether or not to use a dark theme for the website.
+         * The path to the folder that contains images.
          */
-        "darkMode" => false,
+        "img"       => $_path . 'public/assets/img/'
+    );
 
-        /**
-         * The auto scroll's speed in milliseconds.
-         */
-        "scrollSpeed" => 500,
-
-        /**
-         * The live stats update interval in milliseconds.
-         */
-        "liveUpdateInterval" => 10000,
-
-        /**
-         * The password used to access the dashboard, make sure this isn't shared
-         * or somebody might have your website's news section as their diary.
-         */
-        "dashboardPassword" => 'CHANGE_THIS',
-
-        /**
-         * Don't touch this unless you know what you're doing.
-         */
-        "root" => dirname(dirname($_SERVER['SCRIPT_NAME']))
-    )));
+    /**
+     * Samp Front's configurations.
+     */
+    define('CONFIG', serialize($conf));    
 
     /**
      * Returns the configurations if requested.
      */
     if (isset($_GET['q'])) {
-        echo json_encode(unserialize(CONFIG));
+        $tmp = unserialize(CONFIG);
+
+        $data = array(
+            "scrollSpeed"           => $tmp['scrollSpeed'],
+            "liveUpdateInterval"    => $tmp['liveUpdateInterval']
+        );
+
+        echo json_encode($data);
     }
+
+    echo '<table border>';
+    foreach ($conf as $k => $v ) {
+        echo '<tr>';
+        echo '<td>';
+        echo '<h4>'.$k.'<h4>';
+        echo '</td>';
+        echo '<td>';
+        echo '<table border>';
+        foreach ($v as $_k => $_v) {
+            echo '<tr>';
+            echo '<td>'.$_k.'</td>';
+            if (is_array($_v)) {
+                echo '<td>';
+                echo '<table border>';
+                foreach ($_v as $__k => $__v) {
+                    echo '<tr>';
+                    echo '<td>'.$__k.'</td>;';
+                    echo '<td>'.$__v.'</td>;';
+                    echo '</tr>';
+                }
+                echo '</table>';
+                echo '</td>';
+            } else {
+                echo '<td>'.$_v.'</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+        echo '</td>';
+        echo '</tr>';
+    }
+    echo '</table>';    

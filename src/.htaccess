@@ -1,1 +1,6 @@
+# Redirect to the error page.
 ErrorDocument 404 /samp-front/src/public/views/error.php/
+ErrorDocument 403 /samp-front/src/public/views/error.php/
+
+# Forbid folder navigartion.
+Options -Indexes

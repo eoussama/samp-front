@@ -22,17 +22,17 @@
         /**
          * The hostname.
          */
-        private $db_host = 'localhost';
+        private $db_host = '';
 
         /**
          * The database's name.
          */
-        private $db_name = 'samp_front';
+        private $db_name = '';
 
         /**
          * The username.
          */
-        private $db_username = 'root';
+        private $db_username = '';
 
         /**
          * The database's password.
@@ -44,7 +44,28 @@
         #region Constructors.
 
         /**
-         * Parameterless constructor.
+         * Constructor with database information.
+         * 
+         * @param string $host: The host's name.
+         * @param string $name: The database's name.
+         * @param string $user: The username.
+         * @param string $pass: The database's password.
+         */
+        function __construct ($host, $name, $user, $pass) {
+            $this->db_host = $host;
+            $this->db_name = $name;
+            $this->db_username = $user;
+            $this->db_password = $pass;
+        }
+
+        #endregion
+
+        #region Public methods
+
+        /**
+         * The connection methods.
+         * 
+         * @return PDO
          */
         public function connect() {
             $this->conn = null;
