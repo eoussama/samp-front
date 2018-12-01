@@ -4,6 +4,10 @@
 * @author:     EOussama (eoussama.github.io)
 * @license     MIT
 * @source:     github.com/EOussama/samp-front
+*
+* This javascript file is what gives the souless page the
+* energy needed to feel dynamic, for instance, auto scrolling
+* and live updates for the server's stats.
 */
 
 $(document).ready(() => {
@@ -11,8 +15,15 @@ $(document).ready(() => {
     .then(response => response.json())
     .then(response => {
         const config = {
-            liveUpdateInterval: response.liveUpdateInterval,
-            scrollSpeed: response.scrollSpeed
+            path: {
+                controllers: response.path.controllers,
+                site: response.path.site,
+                utils: response.path.utils,
+            },
+            website: {
+                liveUpdateInterval: response.website.liveUpdateInterval,
+                scrollSpeed: response.website.scrollSpeed
+            }
         }
 
         return config;
@@ -55,7 +66,7 @@ $(document).ready(() => {
         $('#scroll-down-btn').on('click', () => {
             $('html').animate({
                 scrollTop: ($('header').outerHeight() + $('nav').outerHeight()) + 1
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
     
@@ -63,7 +74,7 @@ $(document).ready(() => {
         $('#about-btn').on('click', () => {
             $('html').animate({
                 scrollTop: $('footer').offset().top
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
     
@@ -71,7 +82,7 @@ $(document).ready(() => {
         $('#live-stats-btn').on('click', () => {
             $('html').animate({
                 scrollTop: $('#live-stats').offset().top - 80
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
     
@@ -79,7 +90,7 @@ $(document).ready(() => {
         $('#news-btn').on('click', () => {
             $('html').animate({
                 scrollTop: $('#news').offset().top - 100
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
 
@@ -87,7 +98,7 @@ $(document).ready(() => {
         $('#gallery-btn').on('click', () => {
             $('html').animate({
                 scrollTop: $('#gallery').offset().top - 90
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
 
@@ -95,7 +106,7 @@ $(document).ready(() => {
         $('#scroll-top').on('click', () => {
             $('html').animate({
                 scrollTop: 0
-            }, config['scrollSpeed']);
+            }, config['website']['scrollSpeed']);
         });
         // #endregion
     
@@ -118,7 +129,7 @@ $(document).ready(() => {
             };
     
         setInterval(() => {
-            fetch('./../utils/live-update.php')
+            fetch(`${ config['path']['site'] }${ config['path']['utils'] }live-update.php`)
             .then(response => response.json())
             .then(data => {
                 if (data.error === undefined) {
@@ -171,7 +182,7 @@ $(document).ready(() => {
     
                 console.error(`Samp Front: ${ err }.`);
             });
-        }, config['liveUpdateInterval']);
+        }, config['website']['liveUpdateInterval']);
         // #endregion
     
         // #region News
@@ -188,7 +199,7 @@ $(document).ready(() => {
             $('#news-list div.item').removeClass('active');
             $(e.target).closest('div.item').addClass('active');
             
-            fetch(`./../controllers/news/read_single.php?id=${ id }`)
+            fetch(`${ config['path']['site'] }${ config['path']['controllers'] }news/read_single.php?id=${ id }`)
             .then(response => response.json())
             .then(article => {
                 $($news['title']).text(article.title);

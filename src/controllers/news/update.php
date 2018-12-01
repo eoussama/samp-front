@@ -7,18 +7,30 @@
      * @source:     github.com/EOussama/samp-front
      */
 
-    require_once "./../../config/Database.php";
-    require_once "./../../models/News.php";
+    // Requiring the configurations.
+    require_once "./../../config/config.php";
+    // Loading the website's configurations.
+    $config = unserialize(CONFIG);
+
+    // Requiring all dependencies.
+    require_once pathfy('models', 'root') . "Database.php";
+    require_once pathfy('models', 'root') . "News.php";
 
     try {
         if (isset($_POST['id']) && isset($_POST['title']) && isset($_POST['body'])) {
+            // Sanitizing the data.
             $id  = htmlspecialchars(strip_tags($_POST['id']));
             $title  = htmlspecialchars(strip_tags($_POST['title']));
             $body   = htmlspecialchars($_POST['body']);
 
-            $db     = new Database();
-            $conn   = $db->connect();
-            $news   = new News($conn);
+            $db = new Database(
+                $config['database']['host'],
+                $config['database']['name'],
+                $config['database']['user'],
+                $config['database']['pass']
+            );
+            $conn = $db->connect();
+            $news = new News($conn);
 
             if (!$news->update($id, $title, $body)) {
                 throw new Exception("News article was not updated.");

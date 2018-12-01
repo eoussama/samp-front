@@ -5,6 +5,9 @@
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * This is the trademark footer that's appened to the bottom of
+     * each page to link to the github repo of Samp Front.
      */
 ?>
 

@@ -7,15 +7,45 @@
      * @source:     github.com/EOussama/samp-front
      */
 
-    require_once "./../../config/Database.php";
-    require_once "./../../models/News.php";
+     /**
+     * Only disable errors if you're pushing this
+     * into a production environment.
+     * In order to disable it, change `E_ALL` to `0`.
+     */
+    error_reporting(E_ALL);
 
-    $id     = htmlspecialchars(strip_tags($_GET['id']));
-    $db     = new Database();
-    $conn   = $db->connect();
-    $news   = new News($conn);
+    // Requiring the configurations.
+    require_once "./../../config/config.php";
 
+    // Loading the configurations.
+    $config = unserialize(CONFIG);
+
+    // Requiring all dependancies.
+    require_once pathfy('models') . "Database.php";
+    require_once pathfy('models') . "News.php";
+
+    // Sanitizing the id.
+    $id = htmlspecialchars(strip_tags($_GET['id']));
+
+    // Instantiating a new database connection.
+    $db = new Database(
+        $config['database']['host'],
+        $config['database']['name'],
+        $config['database']['user'],
+        $config['database']['pass']
+    );
+
+    // Getting a connection object.
+    $conn = $db->connect();
+
+    // Instantiating a new News object.
+    $news = new News($conn);
+
+    // Getting the news article's data.
     $news->read_single($id);
+
+    // Decoding the html body.
     $news->body = htmlspecialchars_decode($news->body);
 
+    // Sending the fetched data.
     echo json_encode($news);

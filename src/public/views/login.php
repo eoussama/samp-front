@@ -5,17 +5,19 @@
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * The login page that redirects to the dashboard.
      */
 
-    // Requiring all dependencies.
+    // Requiring the configurations.
     require_once "./../../config/config.php";
 
-    // Loading the website's configurations.
+    // Loading the configurations.
     $config = unserialize(CONFIG);
 
     session_start();
 
-    if (isset($_SESSION['loggedIn']) &&$_SESSION['loggedIn'] == true) {
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
         header('Location: ./dashboard.php');
         die();
     }
@@ -26,7 +28,7 @@
     if (isset($_POST['password']) && !empty($_POST['password'])) {
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
-        if ($password == $config['dashboardPassword']) {
+        if ($password == $config['website']['dashboardPassword']) {
             
             $_SESSION['loggedIn'] = true;
 
@@ -38,7 +40,7 @@
 
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.
-    $inverted = $config['darkMode'] ? 'inverted' : '';
+    $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 ?>
 
 <!DOCTYPE html>
@@ -59,22 +61,22 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="<?php echo $config['root']; ?>/assets/css/login/login.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site'); ?>login/login.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="<?php echo $config['root']; ?>/assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="<?php echo pathfy('img', 'site') ?>logo.png">
 
         <!-- The website's title -->
-        <title><?php echo $config['name']; ?></title>
+        <title><?php echo $config['general']['name']; ?></title>
     </head>
 
-    <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
+    <body class="<?php echo $config['website']['darkMode'] ? "dark" : "";  ?>">
         <main class="ui container">
 
             <!-- The page's content -->
             <div class="content-wrapper">
-                <img src="<?php echo $config['root']; ?>/assets/img/logo.png" alt="Community logo.">
-                <h1><?php echo $config['name']; ?></h1>
+                <img src="<?php echo pathfy('img', 'site'); ?>logo.png" alt="<?php echo $config['general']['name'] ?>'s' logo.">
+                <h1><?php echo $config['general']['name']; ?></h1>
                 <p>In order to access the dashboard, a password is required.</p>
 
                 <div class="ui divider"></div>
@@ -113,6 +115,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
         <!-- The main script -->
-        <script src="<?php echo $config['root']; ?>/assets/js/login/login.js"></script>
+        <script src="<?php echo pathfy('js', 'site'); ?>login/login.js"></script>
     </body>
 </html>

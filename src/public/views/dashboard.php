@@ -5,6 +5,8 @@
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * The website's dashboard that manages all of the news articles.
      */
 
     session_start();
@@ -14,13 +16,23 @@
         die();
     }
 
-    // Requiring all dependencies.
-    require_once "./../../config/Database.php";
+    // Requiring the configurations.
     require_once "./../../config/config.php";
-    require_once "./../../models/News.php";
+
+    // Loading the website's configurations.
+    $config = unserialize(CONFIG);
+
+    // Requiring all dependencies.
+    require_once pathfy('models', 'root') . "Database.php";
+    require_once pathfy('models', 'root') . "News.php";
 
     // Instantiating a new Database object.
-    $db   = new Database();
+    $db = new Database(
+        $config['database']['host'],
+        $config['database']['name'],
+        $config['database']['user'],
+        $config['database']['pass']
+    );
 
     // Creating a connection object.
     $conn = $db->connect();
@@ -28,12 +40,9 @@
     // Instantiating a new News object.
     $news = new News($conn);
 
-    // Loading the website's configurations.
-    $config = unserialize(CONFIG);
-
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.
-    $inverted = $config['darkMode'] ? 'inverted' : '';
+    $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +66,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.min.css">
 
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="<?php echo $config['root']; ?>/assets/css/loader.css">
-        <link rel="stylesheet" href="<?php echo $config['root']; ?>/assets/css/dashboard/dashboard.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site') ?>loader.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site') ?>dashboard/dashboard.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="<?php echo $config['root']; ?>/assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="<?php echo pathfy('img', 'site'); ?>logo.png">
 
         <!-- The website's title -->
-        <title><?php echo $config['name']; ?></title>
+        <title><?php echo $config['general']['name']; ?></title>
     </head>
    
-    <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
+    <body class="<?php echo $config['website']['darkMode'] ? "dark" : "";  ?>">
         
         <!-- The burger button's menu. -->
         <nav class="ui <?php echo $inverted; ?> borderless top fixed menu">
-            <a class="item" href="<?php echo $config['root']; ?>/index.php">
+            <a class="item" href="<?php echo pathfy('', 'site'); ?>index.php">
                 <b>Home</b>
             </a>
 
@@ -82,7 +91,7 @@
 
         <!-- The loader. -->
         <div id="loader" class="ui <?php echo $inverted; ?> active dimmer">
-            <div class="ui text loader"><?php echo $config['name']; ?></div>
+            <div class="ui text loader"><?php echo $config['general']['name']; ?></div>
         </div>
 
         <!-- Creation text editor. -->
@@ -252,7 +261,7 @@
         <footer class="ui basic segment">
             
             <!-- Trademark -->
-            <?php require_once "./partials/_trademark.php"; ?>
+            <?php require_once pathfy('views', 'root', true) . "partials/_trademark.php"; ?>
         </footer>
 
         <!-- JQuery. -->
@@ -265,6 +274,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
 
         <!-- The main script -->
-        <script src="<?php echo $config['root']; ?>/assets/js/dashboard/dashboard.js"></script>
+        <script src="<?php echo pathfy('js', 'site'); ?>dashboard/dashboard.js"></script>
     </body>
 </html>

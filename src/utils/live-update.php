@@ -5,6 +5,10 @@
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * This script is responsible on fetching the data of the related
+     * SA:MP server and sending it for the website's index page to be
+     * processed.
      */
 
     /**
@@ -12,10 +16,16 @@
      * into a production environment.
      * In order to disable it, change `E_ALL` to `0`.
      */
-    error_reporting(0);
+    error_reporting(E_ALL);
 
+    // Requiring the configurations.
     require_once "./../config/config.php";
-    require_once "./../utils/SampQueryAPI.php";
+
+    // Loading the configurations.
+    $config = unserialize(CONFIG);
+
+    // Requiring the SampQueryAPI that does all the magic.
+    require_once pathfy('utils') . "SampQueryAPI.php";
     
     /**
      * Sanitizes the server's rules and information.
@@ -52,8 +62,7 @@
     }
 
     try {
-        $config = unserialize(CONFIG);
-        $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
+        $query = new SampQueryAPI($config['samp']['ip'], $config['samp']['port']);
     
         $server_info    = sanitizeInfo($query->getInfo());
         $server_rules   = sanitizeInfo($query->getRules());

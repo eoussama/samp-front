@@ -5,24 +5,36 @@
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * This is the index file of the website, the front and the entry point, also, the
+     * only page that the average user should interact with.
      */
 
     /**
-     * Only disable errors if you're pushing this
-     * into a production environment.
+     * Only disable errors if you're pushing this into a production environment.
      * In order to disable it, change `E_ALL` to `0`.
      */
     error_reporting(E_ALL);
 
-    // Requiring all dependencies.
-    require_once "./../config/Database.php";
+    // Requiring the configurations.
     require_once "./../config/config.php";
-    require_once "./../models/News.php";
-    require_once "./../utils/SampQueryAPI.php";
-    require_once "./../utils/icons.php";
+
+    // Loading the configurations.
+    $config = unserialize(CONFIG);
+
+    // Requiring all dependencies.
+    require_once pathfy('models') . "Database.php";
+    require_once pathfy('models') . "News.php";
+    require_once pathfy('utils') . "SampQueryAPI.php";
+    require_once pathfy('utils') . "icons.php";
 
     // Instantiating a new Database object.
-    $db   = new Database();
+    $db   = new Database(
+        $config['database']['host'],
+        $config['database']['name'],
+        $config['database']['user'],
+        $config['database']['pass']
+    );
 
     // Creating a connection object.
     $conn = $db->connect();
@@ -36,16 +48,13 @@
      */
     // $news->seed();
 
-    // Loading the website's configurations.
-    $config = unserialize(CONFIG);
-
     // Connecting to the SA:MP server associated with the website.
-    $query = new SampQueryAPI($config['server']['ip'], $config['server']['port']);
+    $query = new SampQueryAPI($config['samp']['ip'], $config['samp']['port']);
     $isOnline = $query->isOnline();
 
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.
-    $inverted = $config['darkMode'] ? 'inverted' : '';
+    $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 ?>
 
 <!DOCTYPE html>
@@ -70,23 +79,23 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
         
         <!-- The main stylesheet. -->
-        <link rel="stylesheet" href="./assets/css/loader.css">
-        <link rel="stylesheet" href="./assets/css/main/header.css">
-        <link rel="stylesheet" href="./assets/css/main/main.css">
-        <link rel="stylesheet" href="./assets/css/main/footer.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site', true) ?>loader.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site', true) ?>main/header.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site', true) ?>main/main.css">
+        <link rel="stylesheet" href="<?php echo pathfy('css', 'site', true) ?>main/footer.css">
 
         <!-- The website's favicon. -->
-        <link rel="shortcut icon" type="image/png" href="./assets/img/logo.png">
+        <link rel="shortcut icon" type="image/png" href="<?php echo pathfy('img', 'site', true) ?>logo.png">
 
         <!-- The website's title -->
-        <title><?php echo $config['name']; ?></title>
+        <title><?php echo $config['general']['name']; ?></title>
     </head>
 
-    <body class="<?php echo $config['darkMode'] ? "dark" : "";  ?>">
+    <body class="<?php echo $config['website']['darkMode'] ? "dark" : "";  ?>">
 
         <!-- The loader. -->
         <div id="loader" class="ui inverted active dimmer">
-            <div class="ui text loader"><?php echo $config['name']; ?></div>
+            <div class="ui text loader"><?php echo $config['general']['name']; ?></div>
         </div>
 
         <!-- The navbar. -->
@@ -96,20 +105,20 @@
                 <!-- The community's logo. -->
                 <div class="left menu">
                     <a class="item" href="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <img class="ui avatar image" src="./assets/img/logo.png">
-                        <span class="community-name"> <?php echo $config['name']; ?> <span>
+                        <img class="ui avatar image" src="<?php echo pathfy('img', 'site', true); ?>logo.png">
+                        <span class="community-name"> <?php echo $config['general']['name']; ?> <span>
                     </a>
                 </div>
 
                 <!-- The reset of the links. -->
                 <div class="right menu">
-                    <a class="item" href="views/dashboard.php">Dashboard</a>
-                    <a class="item" href="<?php echo $config['links']['community']['forum']; ?>">Forum</a>
+                    <a class="item" href="<?php echo pathfy('views', 'site', true); ?>dashboard.php">Dashboard</a>
+                    <a class="item" href="<?php echo $config['website']['links']['forum']; ?>">Forum</a>
                     <a class="item" id="live-stats-btn">Live stats</a>
                     <a class="item" id="news-btn">News</a>
                     <a class="item" id="gallery-btn">Gallery</a>
                     <a class="item" id="about-btn">About</a>
-                    <a class="item" href="<?php echo $config['links']['donation']; ?>">Donate</a>
+                    <a class="item" href="<?php echo $config['website']['links']['donation']; ?>">Donate</a>
                 </div>
             </div>
         </nav>
@@ -127,10 +136,10 @@
             <div class="ui container">
 
                 <!-- Community name -->
-                <h1 class="ui header"><?php echo $config['name']; ?></h1>
+                <h1 class="ui header"><?php echo $config['general']['name']; ?></h1>
 
                 <!-- Community slogan. -->
-                <h4 class="ui grey header"><?php echo $config['slogan']; ?></h4>
+                <h4 class="ui grey header"><?php echo $config['general']['slogan']; ?></h4>
 
                 <!-- Scroll down button. -->
                 <p class="icon-wrapper">
@@ -438,7 +447,7 @@
                     <!-- Discord section. -->
                     <section id="discord" class="five wide column">
                         <div class="ui segment discord-section">
-                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['darkMode'] ? 'dark' : 'light'; ?>" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+                            <iframe src="https://discordapp.com/widget?id=<?php echo $config['discord']['id']; ?>&theme=<?php echo $config['website']['darkMode'] ? 'dark' : 'light'; ?>" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
                     </section>
                 </div>
@@ -465,15 +474,17 @@
                     <div class="ui big header">Community links</div>
 
                     <div class="ui middle aligned animated relaxed list">
-                        <?php foreach($config['links']['community'] as $label => $link): ?>
-                            <div class="item">
-                                <i class="large <?php echo get_icon($label); ?> icon"></i>
-                                <div class="content">
-                                    <a href="<?php echo $link; ?>" target="_blank">
-                                        <div class="header community-link-label"><?php echo $label; ?></div>
-                                    </a>
+                        <?php foreach($config['website']['links'] as $label => $link): ?>
+                            <?php if ($label != "donation"): ?>
+                                <div class="item">
+                                    <i class="large <?php echo get_icon($label); ?> icon"></i>
+                                    <div class="content">
+                                        <a href="<?php echo $link; ?>" target="_blank">
+                                            <div class="header community-link-label"><?php echo $label; ?></div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -500,7 +511,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
         <!-- The main script -->
-        <script src="./assets/js/main/main.js"></script>
-        <script src="./assets/js/main/scrollreveal.js"></script>
+        <script src="<?php echo pathfy('js', 'site', true) ?>main/main.js"></script>
+        <script src="<?php echo pathfy('js', 'site', true) ?>main/scrollreveal.js"></script>
     </body>
 </html>
