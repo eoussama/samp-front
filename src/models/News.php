@@ -139,6 +139,9 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
+            // Escaping the data.
+            $id = mysql_real_escape_string($id);
+
             // Binding the id parameter.
             $stmt->bindParam(1, $id);
 
@@ -197,8 +200,9 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            $this->title = $title;
-            $this->body = $body;
+            // Escaping the data.
+            $this->title = mysql_real_escape_string($title);
+            $this->body = mysql_real_escape_string($body);
 
             // Binding the data.
             $stmt->bindParam(':title', $this->title);
@@ -233,7 +237,10 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            $this->id = $id;
+            // Escaping the data.
+            $this->id = mysql_real_escape_string($id);
+            $title = mysql_real_escape_string($title);
+            $body = mysql_real_escape_string($title);
 
             // Binding the data.
             $stmt->bindParam(':title', $title);
@@ -266,6 +273,9 @@
 
             // Sanitizing the data.
             $this->id = htmlspecialchars(strip_tags($id));
+
+            // Escaping the data.
+            $this->id = mysql_real_escape_string($this->id);
 
             // Binding the data.
             $stmt->bindParam(':id', $this->id);

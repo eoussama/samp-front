@@ -6,11 +6,12 @@
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
      * 
-     * This script is responsible on creating news articles.
+     * This script is responsible for creating news articles.
      */
 
     // Requiring the configurations.
     require_once "./../../config/config.php";
+    
     // Loading the website's configurations.
     $config = unserialize(CONFIG);
 
