@@ -25,8 +25,8 @@
     // Requiring all dependencies.
     require_once pathfy('models') . "Database.php";
     require_once pathfy('models') . "News.php";
-    require_once pathfy('utils') . "SampQueryAPI.php";
-    require_once pathfy('utils') . "icons.php";
+    require_once pathfy('lib') . "SampQueryAPI.php";
+    require_once pathfy('helpers') . "icons.php";
 
     // Instantiating a new Database object.
     $db   = new Database(

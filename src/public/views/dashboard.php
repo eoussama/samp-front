@@ -262,7 +262,7 @@
         <footer class="ui basic segment">
             
             <!-- Trademark -->
-            <?php require_once pathfy('views', 'root', true) . "partials/_trademark.php"; ?>
+            <?php require_once pathfy('templates', 'root') . "_trademark.php"; ?>
         </footer>
 
         <!-- JQuery. -->

@@ -28,7 +28,7 @@
     $config = unserialize(CONFIG);
 
     // Requiring the SampQueryAPI that does all the magic.
-    require_once pathfy('utils') . "SampQueryAPI.php";
+    require_once pathfy('lib') . "SampQueryAPI.php";
     
     /**
      * Sanitizes the server's rules and information.

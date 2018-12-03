@@ -50,6 +50,7 @@
 
         <!-- The meta data. -->
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="EOussama">
@@ -105,7 +106,7 @@
          <footer class="ui basic segment">
             
             <!-- Trademark -->
-            <?php require_once "./partials/_trademark.php"; ?>
+            <?php require_once pathfy('templates', 'root') . "_trademark.php"; ?>
         </footer>
 
         <!-- JQuery. -->

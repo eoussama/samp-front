@@ -43,19 +43,34 @@
         "controllers"     => 'controllers/',
 
         /**
+         * The path to the folder that contains the helper funtions.
+         */
+        "helpers"     => 'helpers/',
+
+        /**
+         * The path to the folder that contains 3rd party scripts.
+         */
+        "lib"     => 'lib/',
+
+        /**
          * The path to the folder that contains models.
          */
         "models"     => 'models/',
 
         /**
-         * The path to the folder that contains utility scripts.
+         * The path to the folder that process scripts.
          */
-        "utils"     => 'utils/',
+        "process"     => 'process/',
 
         /**
          * The path to the folder that serves public files.
          */
         "public"    => 'public/',
+
+        /**
+         * The path to the folder that contains reusable components.
+         */
+        "templates"     => 'templates/',
 
         /**
          * The path to the folder that contains views.
@@ -95,7 +110,7 @@
             "path" => array(
                 "controllers" => $config['path']['controllers'],
                 "site" => $config['path']['site'],
-                "utils" => $config['path']['utils']
+                "process" => $config['path']['process']
             ),
             "website" => array(
                 "scrollSpeed"           => $config['website']['scrollSpeed'],

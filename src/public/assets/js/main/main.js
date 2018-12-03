@@ -18,7 +18,7 @@ $(document).ready(() => {
                 path: {
                     controllers: response.path.controllers,
                     site: response.path.site,
-                    utils: response.path.utils,
+                    process: response.path.process,
                 },
                 website: {
                     liveUpdateInterval: response.website.liveUpdateInterval,
@@ -129,7 +129,7 @@ $(document).ready(() => {
                 };
 
             setInterval(() => {
-                fetch(`${config['path']['site']}${config['path']['utils']}live-update.php`)
+                fetch(`${config['path']['site']}${config['path']['process']}live-update.php`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.error === undefined) {
