@@ -6,7 +6,7 @@
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
      */
-
+    
     // Setting the header.
     header('Content-type: application/json');
 
@@ -38,6 +38,8 @@
 
             if (!$news->update($id, $title, $body)) {
                 throw new Exception("News article was not updated.");
+            } else {
+                $data = array("id" => $id);
             }
         } else {
             throw new Exception("Insufficient data recieved.");

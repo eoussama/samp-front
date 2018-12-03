@@ -139,9 +139,6 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            // Escaping the data.
-            $id = $id;
-
             // Binding the id parameter.
             $stmt->bindParam(1, $id);
 
@@ -200,13 +197,9 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            // Escaping the data.
-            $this->title = $title;
-            $this->body = $body;
-
             // Binding the data.
-            $stmt->bindParam(':title', $this->title);
-            $stmt->bindParam(':body', $this->body);
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':body', $body);
 
             try {
                 // Executing the query.
@@ -237,15 +230,10 @@
             // Preparing the statement.
             $stmt = $this->conn->prepare($query);
 
-            // Escaping the data.
-            $this->id = $id;
-            $title = $title;
-            $body = $body;
-
             // Binding the data.
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':body', $body);
-            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':id', $id);
 
             try {
                 // Executing the query.
@@ -273,9 +261,6 @@
 
             // Sanitizing the data.
             $this->id = htmlspecialchars(strip_tags($id));
-
-            // Escaping the data.
-            $this->id = $this->id;
 
             // Binding the data.
             $stmt->bindParam(':id', $this->id);
