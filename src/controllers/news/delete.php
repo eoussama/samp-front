@@ -9,6 +9,9 @@
      * The script that deletes the news articles.
      */
 
+    // Setting the header.
+    header('Content-type: application/json');
+
     // Requiring the configurations.
     require_once "./../../config/config.php";
     // Loading the website's configurations.

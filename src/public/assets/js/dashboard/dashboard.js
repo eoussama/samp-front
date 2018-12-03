@@ -146,12 +146,14 @@ $(document).ready(() => {
                     body: quillEdit.root.innerHTML
                 })
                 .done((data) => {
+                    console.log(data);
                     if (!data.hasOwnProperty('error')) {
                         alert(`The news article was successfully edited.`);
                     } else {
                         alert(`Error: ${ data.error }`);
                     }
     
+                    console.log('ssss');
                     window.location.reload();
                 });
             }

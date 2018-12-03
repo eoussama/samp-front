@@ -9,6 +9,9 @@
      * This script is responsible for creating news articles.
      */
 
+    // Setting the header.
+    header('Content-type: application/json');
+
     // Requiring the configurations.
     require_once "./../../config/config.php";
     

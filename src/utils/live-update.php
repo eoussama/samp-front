@@ -11,6 +11,9 @@
      * processed.
      */
 
+    // Setting the header.
+    header('Content-type: application/json');
+
     /**
      * Only disable errors if you're pushing this
      * into a production environment.

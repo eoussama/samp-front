@@ -7,8 +7,12 @@
      * @source:     github.com/EOussama/samp-front
      */
 
+    // Setting the header.
+    header('Content-type: application/json');
+
     // Requiring the configurations.
     require_once "./../../config/config.php";
+
     // Loading the website's configurations.
     $config = unserialize(CONFIG);
 
