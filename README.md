@@ -12,7 +12,7 @@ The installation is pretty easy, navigate to the config folder, there you'll fin
 The installation is pretty easy, navigate to the config folder, there you'll find a file named `config.ini`, open it up on edit mode and tweaks the settings in there to your liking, then simply save it and the website will reflect those changes.
 As for the logo, replace the `logo.png` file that's located under `public/assets/img`.
 
-# Features.
+# Features
 - Live server/players statistic preview.
 - Dark/Light themes.
 - Discord sever embed.
