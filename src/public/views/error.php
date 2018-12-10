@@ -30,10 +30,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="EOussama">
-        <meta name="application-name" content="Samp Front">
-        <meta name="description" content="A starter landing page template for samp servers.">
-        <meta name="keywords" content="template, landing-page, samp, samp-server, samp-website">
+        <meta name="author" content="<?php echo $config['general']['owner']; ?>">
+        <meta name="application-name" content="<?php echo $config['general']['name']; ?>">
+        <meta name="description" content="<?php echo $config['general']['slogan']; ?>">
+        <meta name="keywords" content="<?php echo join(', ', $config['general']['keywords']); ?>">
         
         <!-- Semantic UI. -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
