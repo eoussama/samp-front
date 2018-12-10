@@ -38,7 +38,7 @@
     $conn = $db->connect();
 
     // Instantiating a new News object.
-    $news = new News($conn);
+    $news = new News($conn, $config['database']['newsTable']);
 
     // Setting up the $inverted string, used to make the dark mode
     // work if enabled.

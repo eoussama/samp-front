@@ -53,8 +53,10 @@
          * Constuctor with database.
          * 
          * @param $conn: The connection object to pass.
+         * @param $table: The table where the news articles are going to be stored.
          */
-        public function __construct($conn) {
+        public function __construct($conn, $table) {
+            $this->table = $table;
             $this->conn = $conn;
 
             // Creating the query.

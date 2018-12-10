@@ -40,7 +40,7 @@
     $conn = $db->connect();
 
     // Instantiating a new News object.
-    $news = new News($conn);
+    $news = new News($conn, $config['database']['newsTable']);
 
     /**
      * Only uncomment this if you want to seed some

@@ -34,7 +34,7 @@
                 $config['database']['pass']
             );
             $conn = $db->connect();
-            $news = new News($conn);
+            $news = new News($conn, $config['database']['newsTable']);
 
             if (!$news->create($title, $body)) {
                 throw new Exception("News article was not created.");

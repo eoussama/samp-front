@@ -33,7 +33,7 @@
                 $config['database']['pass']
             );
             $conn = $db->connect();
-            $news = new News($conn);
+            $news = new News($conn, $config['database']['newsTable']);
 
             if (is_array($ids)) {
                 $deleted = 0;

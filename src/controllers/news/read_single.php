@@ -42,7 +42,7 @@
     $conn = $db->connect();
 
     // Instantiating a new News object.
-    $news = new News($conn);
+    $news = new News($conn, $config['database']['newsTable']);
 
     // Getting the news article's data.
     $news->read_single($id);
