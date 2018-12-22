@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -30,42 +31,42 @@
         /**
          * The absolute path of the website's folder.
          */
-        "root"      => $_root,
+        "root"          => $_root,
         
         /**
          * The path of the root website.
          */
-        "site"      => $_site,
+        "site"          => $_site,
 
         /**
          * The path to the folder that contains controllers.
          */
-        "controllers"     => 'controllers/',
+        "controllers"   => 'controllers/',
 
         /**
          * The path to the folder that contains the helper funtions.
          */
-        "helpers"     => 'helpers/',
+        "helpers"       => 'helpers/',
 
         /**
          * The path to the folder that contains 3rd party scripts.
          */
-        "lib"     => 'lib/',
+        "lib"           => 'lib/',
 
         /**
          * The path to the folder that contains models.
          */
-        "models"     => 'models/',
+        "models"        => 'models/',
 
         /**
          * The path to the folder that process scripts.
          */
-        "process"     => 'process/',
+        "process"       => 'process/',
 
         /**
          * The path to the folder that serves public files.
          */
-        "public"    => 'public/',
+        "public"        => 'public/',
 
         /**
          * The path to the folder that contains reusable components.
@@ -75,22 +76,22 @@
         /**
          * The path to the folder that contains views.
          */
-        "views"     => 'views/',
+        "views"         => 'views/',
 
         /**
          * The path to the folder that contains javascript files.
          */
-        "js"        => 'assets/js/',
+        "js"            => 'assets/js/',
 
         /**
          * The path to the folder that contains stylesheet files.
          */
-        "css"       => 'assets/css/',
+        "css"           => 'assets/css/',
 
         /**
          * The path to the folder that contains images.
          */
-        "img"       => 'assets/img/'
+        "img"           => 'assets/img/'
     );
 
     /**
@@ -106,6 +107,7 @@
      * Returns the configurations if requested.
      */
     if (isset($_GET['q'])) {
+
         $data = array(
             "path" => array(
                 "controllers" => $config['path']['controllers'],
@@ -134,6 +136,7 @@
      * @return string The combination of the two paths.
      */
     function pathfy($dest, $root = 'root', $public = false) {
+
         global $config;
 
         $dest = (empty($dest) ? '' : $config['path'][$dest]);

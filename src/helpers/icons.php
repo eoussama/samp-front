@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -11,6 +12,7 @@
      * Returns the appropriate icon name.
      */
     function get_icon($label) {
+        
         return (in_array($label, array(
                 "accusoft",
                 "adn",

@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0

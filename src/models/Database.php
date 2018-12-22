@@ -1,10 +1,13 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * The database's model.
      */
     
     /**
@@ -12,12 +15,12 @@
      */
     class Database {
 
+        #region Fields
+
         /**
          * The connection object.
          */
         private $conn;
-
-        #region Fields
 
         /**
          * The hostname.
@@ -52,6 +55,7 @@
          * @param string $pass: The database's password.
          */
         function __construct ($host, $name, $user, $pass) {
+
             $this->db_host = $host;
             $this->db_name = $name;
             $this->db_username = $user;
@@ -68,13 +72,16 @@
          * @return PDO
          */
         public function connect() {
+
             $this->conn = null;
 
             try { 
+
                 $this->conn = new PDO("mysql: host=$this->db_host; dbname=$this->db_name", $this->db_username, $this->db_password);
                 $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             } catch(PDOException $e) {
+
                 throw new Exception('Connection Error: ' . $e->getMessage());
             }
 

@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -9,9 +10,20 @@
      * The website's dashboard that manages all of the news articles.
      */
 
+    /**
+     * Only disable errors if you're pushing this
+     * into a production environment.
+     * In order to disable it, change `E_ALL` to `0`.
+     */
+    error_reporting(E_ALL);
+
+    // Starting the session.
     session_start();
 
+    // CHecking if the user is logged In and redirecting them
+    // back to the index page incase they weren't.
     if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
+
         header('Location: ./login.php');
         die();
     }

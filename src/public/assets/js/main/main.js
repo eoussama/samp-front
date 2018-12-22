@@ -1,19 +1,22 @@
 /**
-* @name:       Samp Front
-* @version:    0.5.0
-* @author:     EOussama (eoussama.github.io)
-* @license     MIT
-* @source:     github.com/EOussama/samp-front
-*
-* This javascript file is what gives the souless page the
-* energy needed to feel dynamic, for instance, auto scrolling
-* and live updates for the server's stats.
-*/
+ * @name:       Samp Front
+ * @version:    0.5.0
+ * @author:     EOussama (eoussama.github.io)
+ * @license     MIT
+ * @source:     github.com/EOussama/samp-front
+ *
+ * This javascript file is what gives the souless page the
+ * energy needed to feel dynamic, for instance, auto scrolling
+ * and live updates for the server's stats.
+ */
+
 
 $(document).ready(() => {
+
     fetch('./../config/config.php?q')
         .then(response => response.json())
         .then(response => {
+
             const config = {
                 path: {
                     controllers: response.path.controllers,
@@ -29,6 +32,7 @@ $(document).ready(() => {
             return config;
         })
         .then(config => {
+
             $('#loader').removeClass('active');
             $('body').css('overflow-y', 'auto');
 
@@ -46,6 +50,7 @@ $(document).ready(() => {
             }
 
             $('i#fullscreen-btn').on('click', () => {
+
                 let
                     currentIndex = $('#gallery-carousel').slick('slickCurrentSlide'),
                     currentImage = $('#gallery-carousel img').eq(currentIndex + 1)[0];
@@ -57,6 +62,7 @@ $(document).ready(() => {
             });
 
             $('i#fullscreen-close-btn').on('click', () => {
+
                 fullscreenDimmer["dimmer"].removeClass('active');
                 $('body').css('overflow-y', 'auto');
             });
@@ -64,6 +70,7 @@ $(document).ready(() => {
 
             // #region Scroll down button press.
             $('#scroll-down-btn').on('click', () => {
+
                 $('html').animate({
                     scrollTop: ($('header').outerHeight() + $('nav').outerHeight()) + 1
                 }, config['website']['scrollSpeed']);
@@ -72,6 +79,7 @@ $(document).ready(() => {
 
             // #region Scroll to about
             $('#about-btn').on('click', () => {
+                
                 $('html').animate({
                     scrollTop: $('footer').offset().top
                 }, config['website']['scrollSpeed']);
@@ -80,6 +88,7 @@ $(document).ready(() => {
 
             // #region Scroll to live stats
             $('#live-stats-btn').on('click', () => {
+
                 $('html').animate({
                     scrollTop: $('#live-stats').offset().top - 80
                 }, config['website']['scrollSpeed']);
@@ -88,6 +97,7 @@ $(document).ready(() => {
 
             // #region Scroll to news
             $('#news-btn').on('click', () => {
+
                 $('html').animate({
                     scrollTop: $('#news').offset().top - 100
                 }, config['website']['scrollSpeed']);
@@ -96,6 +106,7 @@ $(document).ready(() => {
 
             // #region Scroll to gallery
             $('#gallery-btn').on('click', () => {
+
                 $('html').animate({
                     scrollTop: $('#gallery').offset().top - 90
                 }, config['website']['scrollSpeed']);
@@ -104,6 +115,7 @@ $(document).ready(() => {
 
             // #region Scroll to top
             $('#scroll-top').on('click', () => {
+
                 $('html').animate({
                     scrollTop: 0
                 }, config['website']['scrollSpeed']);
@@ -129,14 +141,18 @@ $(document).ready(() => {
                 };
 
             setInterval(() => {
+
                 fetch(`${config['path']['site']}${config['path']['process']}live-update.php`)
                     .then(response => response.json())
                     .then(data => {
+
                         if (data.error === undefined) {
+
                             $serverInfo["section"].removeClass('offline');
                             $playersInfo["section"].removeClass('offline');
 
                             if (data.info !== null) {
+
                                 // Updating the server's info.
                                 $serverInfo["hostname"].text(data.info.hostname);
                                 $serverInfo["language"].text(data.info.mapname);
@@ -149,6 +165,7 @@ $(document).ready(() => {
                             }
 
                             if (data.rules !== null) {
+
                                 // Updating the server's info.
                                 $serverInfo["version"].text(data.rules.version);
                                 $serverInfo["mapname"].text(data.rules.mapname);
@@ -156,8 +173,10 @@ $(document).ready(() => {
 
                             // Updating the players' list.
                             if (data.players !== null) {
+
                                 $playersInfo["stats"].text("");
                                 $.each(data.players, (i, v) => {
+
                                     $playersInfo["stats"].append(`
                                         <tr>
                                             <td>${ v.playerid}</td>
@@ -169,13 +188,16 @@ $(document).ready(() => {
                                 });
                             }
                         } else {
+
                             throw `[error] - ${data.error}`;
                         }
 
                         console.info('Samp Front: Server stats updated.');
                     })
                     .catch(err => {
+                        
                         if (err == "The server is currently offline") {
+
                             $serverInfo["section"].addClass('offline');
                             $playersInfo["section"].addClass('offline');
                         }
@@ -194,6 +216,7 @@ $(document).ready(() => {
             };
 
             $('#news-list div.item').on('click', (e) => {
+
                 const id = $(e.target).closest('div.item').data('id');
 
                 $('#news-list div.item').removeClass('active');
@@ -202,6 +225,7 @@ $(document).ready(() => {
                 fetch(`${config['path']['site']}${config['path']['controllers']}news/read_single.php?id=${id}`)
                     .then(response => response.json())
                     .then(article => {
+
                         $($news['title']).text(article.title);
                         $($news['date']).text(article.created_at);
                         $($news['body']).html($.parseHTML(article.body));
@@ -214,6 +238,7 @@ $(document).ready(() => {
 });
 
 $(document).on('scroll', (e) => {
+    
     if ($(window).scrollTop() > ($('header').outerHeight() + $('nav').outerHeight())) {
 
         // Sticking the navbar.
@@ -238,5 +263,6 @@ $(document).on('scroll', (e) => {
 });
 
 window.addEventListener('beforeunload', () => {
+
     window.scrollTo(0, 0);
 });

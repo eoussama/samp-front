@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -34,8 +35,11 @@
      * Sanitizes the server's rules and information.
      */
     function sanitizeInfo ($info) {
+
         if (is_array($info) || is_object($info)) {
+
             foreach ($info as $key => $value) {
+
                 $info[$key] = htmlspecialchars(strip_tags($value));
             }
 
@@ -49,10 +53,15 @@
      * Sanitizes the players' information.
      */
     function sanitizePlayers ($players) {
+
         if (is_array($players) || is_object($players)) {
+
             foreach ($players as $player) {
+
                 if (is_array($player) || is_object($player)) {
+
                     foreach ($player as $key => $value) {
+
                         $info[$key] = htmlspecialchars(strip_tags($value));
                     }
                 }
@@ -65,6 +74,7 @@
     }
 
     try {
+        
         $query = new SampQueryAPI($config['samp']['ip'], $config['samp']['port']);
     
         $server_info    = sanitizeInfo($query->getInfo());
@@ -72,18 +82,22 @@
         $players        = sanitizePlayers($query->getDetailedPlayers());
 
         if ($query->isOnline()) {
+
             $data = array(
                 "info"      => $server_info,
                 "rules"     => $server_rules,
                 "players"   => $players
             );
         } else {
+
             throw new Exception("The server is currently offline");
         }
     }
     catch(Exception $e) {
+
         $data = array("error" => htmlspecialchars(strip_tags($e->getMessage())));
     }
     finally {
+
         echo json_encode($data);
     }

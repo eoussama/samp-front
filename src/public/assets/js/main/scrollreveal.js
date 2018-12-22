@@ -1,12 +1,15 @@
 /**
-* @name:       Samp Front
-* @version:    0.5.0
-* @author:     EOussama (eoussama.github.io)
-* @license     MIT
-* @source:     github.com/EOussama/samp-front
-*/
+ * @name:       Samp Front
+ * @version:    0.5.0
+ * @author:     EOussama (eoussama.github.io)
+ * @license     MIT
+ * @source:     github.com/EOussama/samp-front
+ * 
+ * What sets up the scroll reveal.
+ */
 
 $(document).ready(() => {
+
     // #region Intro
     ScrollReveal().reveal('section#intro', {
         delay: 300,

@@ -1,4 +1,5 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -8,6 +9,13 @@
      * 
      * The login page that redirects to the dashboard.
      */
+
+    /**
+     * Only disable errors if you're pushing this
+     * into a production environment.
+     * In order to disable it, change `E_ALL` to `0`.
+     */
+    error_reporting(E_ALL);
 
     // Requiring the configurations.
     require_once "./../../config/config.php";

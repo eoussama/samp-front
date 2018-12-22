@@ -1,17 +1,22 @@
 <?php
+
     /**
      * @name:       Samp Front
      * @version:    0.5.0
      * @author:     EOussama (eoussama.github.io)
      * @license     MIT
      * @source:     github.com/EOussama/samp-front
+     * 
+     * The news articles' model.
      */
     
     /**
      * The news model.
      */
     class News {
-        
+       
+        #region Fields
+
         /**
          * The connection object.
          */
@@ -21,9 +26,6 @@
          * The table's name.
          */
         private $table = 'news';
-
-       
-        #region Fields
 
         /**
          * The id of the news article.
@@ -56,6 +58,7 @@
          * @param $table: The table where the news articles are going to be stored.
          */
         public function __construct($conn, $table) {
+
             $this->table = $table;
             $this->conn = $conn;
 
@@ -83,6 +86,7 @@
          * Used only for testing purposes.
          */
         public function seed() {
+
             // Creating the query.
             $query = "INSERT INTO `$this->table`(`id`, `title`, `body`) VALUES";
             $query .= "(UUID(), 'Big news!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non est ac augue finibus ultricies quis quis ipsum. Integer accumsan risus sed diam sollicitudin varius. Nam mollis urna vitae dictum consequat. Suspendisse lectus lacus, ultricies sit amet leo eu, tempus gravida dolor. Sed elementum, augue quis bibendum lacinia, mi lorem eleifend felis, a egestas enim lorem nec est. Donec euismod risus mauris, ac pharetra libero condimentum a. Proin porta risus pellentesque nunc scelerisque, a interdum urna imperdiet. Vestibulum fermentum massa sit amet felis maximus, fermentum rutrum magna porta. Etiam eu blandit nibh. Donec sodales sapien sed tellus rutrum, id laoreet augue rhoncus. Nunc purus dolor, volutpat a pretium sed, tincidunt quis arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam eu auctor magna, non interdum purus. Morbi quis consequat erat.'),";
@@ -116,6 +120,7 @@
          * @return $stmt: A list of all news articles.
          */
         public function read_all() {
+
             // Creating the query.
             $query = "SELECT `id`, `title`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM $this->table ORDER BY `created_at` DESC;";
             
@@ -135,6 +140,7 @@
          * @param Int $id: The id of the news article you want to fetch.
          */
         public function read_single($id) {
+
             // Creating the query.
             $query = "SELECT `title`, `body`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM `$this->table` WHERE `id` = ?";
 
@@ -165,6 +171,7 @@
          * @return News: The wanted news article.
          */
         public function get($pos) {
+
             // Creating the query.
             $query = "SELECT `id`, `title`, `body`, DATE_FORMAT(`created_at`, '%D %M, %Y') AS `created_at_formated` FROM `$this->table` ORDER BY `created_at` LIMIT ".( $pos - 1) . ", $pos;";
 
@@ -193,6 +200,7 @@
          * @return Boolean: whether or not the news article was created.
          */
         public function create($title, $body) {
+
             // Creating the query.
             $query = "INSERT INTO `$this->table`(`id`, `title`, `body`) VALUES(UUID(), :title, :body);";
 
@@ -223,6 +231,7 @@
          * @param String $body: The nez body of the news article.
          */
         public function update($id, $title, $body) {
+
             // Creating the query.
             $query = "UPDATE `$this->table` SET ";
             $query .= "`title` = :title,";
@@ -255,6 +264,7 @@
          * @param Int $id: The id of the news article you want to delete.
          */
         public function delete($id) {
+
             // Creating the query.
             $query = "DELETE FROM `$this->table` WHERE `id` = :id";
 
@@ -285,6 +295,7 @@
          * @return Int: The count of news articles stored in the database.
          */
         public function count() {
+            
             // Creating the query.
             $query = "SELECT COUNT(`id`) AS `count` FROM `$this->table`;";
             
