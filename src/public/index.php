@@ -1,5 +1,4 @@
 <?php
-
     /**
      * @name:       Samp Front
      * @version:    0.5.0
@@ -32,6 +31,7 @@
     // Instantiating a new Database object.
     $db   = new Database(
         $config['database']['host'],
+        $config['database']['port'],
         $config['database']['name'],
         $config['database']['user'],
         $config['database']['pass']

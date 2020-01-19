@@ -1,11 +1,13 @@
 version: "3"
 services:
-  db:
+  mysql:
     container_name: samp-front-db
     image: mysql
     restart: always
     env_file:
       - ./../env/.env
+    ports:
+      - "3306:3306"
   app:
     image: eoussama/samp-front:0.5.0
     container_name: samp-front-app
@@ -14,8 +16,8 @@ services:
       context: ./../
       dockerfile: ./docker/Dockerfile
     ports:
-      - 8080:80
+      - "8080:80"
     volumes:
       - ./../:/var/www/
     depends_on:
-      - db
+      - mysql
