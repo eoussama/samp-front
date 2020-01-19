@@ -1,54 +1,56 @@
 <?php
-    /**
-     * @name:       Samp Front
-     * @version:    0.5.0
-     * @author:     EOussama (eoussama.github.io)
-     * @license     MIT
-     * @source:     github.com/EOussama/samp-front
-     */
 
-    // Setting the header.
-    header('Content-type: application/json');
+/**
+ * @name:       Samp Front
+ * @version:    0.5.0
+ * @author:     EOussama (eoussama.github.io)
+ * @license     MIT
+ * @source:     github.com/EOussama/samp-front
+ */
 
-     /**
-     * Only disable errors if you're pushing this
-     * into a production environment.
-     * In order to disable it, change `E_ALL` to `0`.
-     */
-    error_reporting(E_ALL);
+// Setting the header.
+header('Content-type: application/json');
 
-    // Requiring the configurations.
-    require_once "./../../config/config.php";
+/**
+ * Only disable errors if you're pushing this
+ * into a production environment.
+ * In order to disable it, change `E_ALL` to `0`.
+ */
+error_reporting(E_ALL);
 
-    // Loading the configurations.
-    $config = unserialize(CONFIG);
+// Requiring the configurations.
+require_once "./../../config/config.php";
 
-    // Requiring all dependancies.
-    require_once pathfy('models') . "Database.php";
-    require_once pathfy('models') . "News.php";
+// Loading the configurations.
+$config = unserialize(CONFIG);
 
-    // Sanitizing the id.
-    $id = htmlspecialchars(strip_tags($_GET['id']));
+// Requiring all dependancies.
+require_once pathfy('models', 'Database.php');
+require_once pathfy('models', 'News.php');
 
-    // Instantiating a new database connection.
-    $db = new Database(
-        $config['database']['host'],
-        $config['database']['name'],
-        $config['database']['user'],
-        $config['database']['pass']
-    );
+// Sanitizing the id.
+$id = htmlspecialchars(strip_tags($_GET['id']));
 
-    // Getting a connection object.
-    $conn = $db->connect();
+// Instantiating a new database connection.
+$db = new Database(
+    $config['database']['host'],
+    $config['database']['port'],
+    $config['database']['name'],
+    $config['database']['user'],
+    $config['database']['pass']
+);
 
-    // Instantiating a new News object.
-    $news = new News($conn, $config['database']['newsTable']);
+// Getting a connection object.
+$conn = $db->connect();
 
-    // Getting the news article's data.
-    $news->read_single($id);
+// Instantiating a new News object.
+$news = new News($conn, $config['database']['newsTable']);
 
-    // Decoding the html body.
-    $news->body = htmlspecialchars_decode($news->body);
+// Getting the news article's data.
+$news->read_single($id);
 
-    // Sending the fetched data.
-    echo json_encode($news);
+// Decoding the html body.
+$news->body = htmlspecialchars_decode($news->body);
+
+// Sending the fetched data.
+echo json_encode($news);

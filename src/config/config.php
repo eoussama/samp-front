@@ -98,14 +98,14 @@ define('CONFIG', serialize($config));
 if (isset($_GET['q'])) {
 
 	$data = array(
-		"path" => array(
-			"controllers" => $config['path']['controllers'],
-			"site" => $config['path']['site'],
-			"process" => $config['path']['process']
+		'path' => array(
+			'news' => $config['path']['controllers'] . 'news/',
+			'root' => $_SERVER['HTTP_HOST'] . $config['path']['root'],
+			'liveStats' => $config['path']['process']
 		),
-		"website" => array(
-			"scrollSpeed"           => $config['website']['scrollSpeed'],
-			"liveUpdateInterval"    => $config['website']['liveUpdateInterval']
+		'website' => array(
+			'scrollSpeed'           => $config['website']['scrollSpeed'],
+			'liveUpdateInterval'    => $config['website']['liveUpdateInterval']
 		)
 	);
 

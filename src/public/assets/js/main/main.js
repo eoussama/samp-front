@@ -10,259 +10,253 @@
  * and live updates for the server's stats.
  */
 
-
 $(document).ready(() => {
+	fetch('/../config/config.php?q')
+		.then(response => response.json())
+		.then(response => {
 
-    fetch('./../config/config.php?q')
-        .then(response => response.json())
-        .then(response => {
+			const config = {
+				path: {
+					news: response.path.news,
+					root: response.path.root,
+					liveStats: response.path.liveStats,
+				},
+				website: {
+					liveUpdateInterval: response.website.liveUpdateInterval,
+					scrollSpeed: response.website.scrollSpeed
+				}
+			}
 
-            const config = {
-                path: {
-                    controllers: response.path.controllers,
-                    site: response.path.site,
-                    process: response.path.process,
-                },
-                website: {
-                    liveUpdateInterval: response.website.liveUpdateInterval,
-                    scrollSpeed: response.website.scrollSpeed
-                }
-            }
+			return config;
+		})
+		.then(config => {
 
-            return config;
-        })
-        .then(config => {
+			$('#loader').removeClass('active');
+			$('body').css('overflow-y', 'auto');
 
-            $('#loader').removeClass('active');
-            $('body').css('overflow-y', 'auto');
+			// #region Carousel
+			$('#gallery-carousel').slick({
+				arrows: false,
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true
+			});
 
-            // #region Carousel
-            $('#gallery-carousel').slick({
-                arrows: false,
-                autoplay: true,
-                autoplaySpeed: 5000,
-                dots: true
-            });
+			const fullscreenDimmer = {
+				dimmer: $('#fullscreen-container'),
+				image: $('#fullscreen-container img')
+			}
 
-            const fullscreenDimmer = {
-                dimmer: $('#fullscreen-container'),
-                image: $('#fullscreen-container img')
-            }
+			$('i#fullscreen-btn').on('click', () => {
 
-            $('i#fullscreen-btn').on('click', () => {
+				let
+					currentIndex = $('#gallery-carousel').slick('slickCurrentSlide'),
+					currentImage = $('#gallery-carousel img').eq(currentIndex + 1)[0];
 
-                let
-                    currentIndex = $('#gallery-carousel').slick('slickCurrentSlide'),
-                    currentImage = $('#gallery-carousel img').eq(currentIndex + 1)[0];
+				fullscreenDimmer["image"].attr('src', currentImage.src);
+				fullscreenDimmer["image"].attr('alt', currentImage.alt);
+				fullscreenDimmer["dimmer"].addClass('active');
+				$('body').css('overflow-y', 'hidden');
+			});
 
-                fullscreenDimmer["image"].attr('src', currentImage.src);
-                fullscreenDimmer["image"].attr('alt', currentImage.alt);
-                fullscreenDimmer["dimmer"].addClass('active');
-                $('body').css('overflow-y', 'hidden');
-            });
+			$('i#fullscreen-close-btn').on('click', () => {
 
-            $('i#fullscreen-close-btn').on('click', () => {
+				fullscreenDimmer["dimmer"].removeClass('active');
+				$('body').css('overflow-y', 'auto');
+			});
+			// #endregion
 
-                fullscreenDimmer["dimmer"].removeClass('active');
-                $('body').css('overflow-y', 'auto');
-            });
-            // #endregion
+			// #region Scroll down button press.
+			$('#scroll-down-btn').on('click', () => {
 
-            // #region Scroll down button press.
-            $('#scroll-down-btn').on('click', () => {
+				$('html').animate({
+					scrollTop: ($('header').outerHeight() + $('nav').outerHeight()) + 1
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-                $('html').animate({
-                    scrollTop: ($('header').outerHeight() + $('nav').outerHeight()) + 1
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+			// #region Scroll to about
+			$('#about-btn').on('click', () => {
 
-            // #region Scroll to about
-            $('#about-btn').on('click', () => {
-                
-                $('html').animate({
-                    scrollTop: $('footer').offset().top
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+				$('html').animate({
+					scrollTop: $('footer').offset().top
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-            // #region Scroll to live stats
-            $('#live-stats-btn').on('click', () => {
+			// #region Scroll to live stats
+			$('#live-stats-btn').on('click', () => {
 
-                $('html').animate({
-                    scrollTop: $('#live-stats').offset().top - 80
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+				$('html').animate({
+					scrollTop: $('#live-stats').offset().top - 80
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-            // #region Scroll to news
-            $('#news-btn').on('click', () => {
+			// #region Scroll to news
+			$('#news-btn').on('click', () => {
 
-                $('html').animate({
-                    scrollTop: $('#news').offset().top - 100
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+				$('html').animate({
+					scrollTop: $('#news').offset().top - 100
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-            // #region Scroll to gallery
-            $('#gallery-btn').on('click', () => {
+			// #region Scroll to gallery
+			$('#gallery-btn').on('click', () => {
 
-                $('html').animate({
-                    scrollTop: $('#gallery').offset().top - 90
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+				$('html').animate({
+					scrollTop: $('#gallery').offset().top - 90
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-            // #region Scroll to top
-            $('#scroll-top').on('click', () => {
+			// #region Scroll to top
+			$('#scroll-top').on('click', () => {
 
-                $('html').animate({
-                    scrollTop: 0
-                }, config['website']['scrollSpeed']);
-            });
-            // #endregion
+				$('html').animate({
+					scrollTop: 0
+				}, config['website']['scrollSpeed']);
+			});
+			// #endregion
 
-            // #region Live update
-            const
-                $serverInfo = {
-                    "section": $('#server-live-stats'),
-                    "hostname": $('#server-hostname'),
-                    "version": $('#server-version'),
-                    "gamemode": $('#server-gamemode'),
-                    "mapname": $('#server-mapname'),
-                    "language": $('#server-language'),
-                    "players": $('#server-players'),
-                    "password": $('#server-password')
-                },
-                $playersInfo = {
-                    "section": $('#players-stats'),
-                    "stats": $('#player-stats-content'),
-                    "count": $('#player-count')
-                };
+			// #region Live update
+			const
+				$serverInfo = {
+					"section": $('#server-live-stats'),
+					"hostname": $('#server-hostname'),
+					"version": $('#server-version'),
+					"gamemode": $('#server-gamemode'),
+					"mapname": $('#server-mapname'),
+					"language": $('#server-language'),
+					"players": $('#server-players'),
+					"password": $('#server-password')
+				},
+				$playersInfo = {
+					"section": $('#players-stats'),
+					"stats": $('#player-stats-content'),
+					"count": $('#player-count')
+				};
 
-            setInterval(() => {
+			setInterval(() => {
+				fetch(`./../${config['path']['liveStats']}live-update.php`)
+					.then(response => response.json())
+					.then(data => {
 
-                fetch(`${config['path']['site']}${config['path']['process']}live-update.php`)
-                    .then(response => response.json())
-                    .then(data => {
+						if (data.error === undefined) {
 
-                        if (data.error === undefined) {
+							$serverInfo["section"].removeClass('offline');
+							$playersInfo["section"].removeClass('offline');
 
-                            $serverInfo["section"].removeClass('offline');
-                            $playersInfo["section"].removeClass('offline');
+							if (data.info !== null) {
 
-                            if (data.info !== null) {
+								// Updating the server's info.
+								$serverInfo["hostname"].text(data.info.hostname);
+								$serverInfo["language"].text(data.info.mapname);
+								$serverInfo["gamemode"].text(data.info.gamemode);
+								$serverInfo["players"].text(`${data.players.length} / ${data.info.maxplayers}`);
+								$serverInfo["password"].text(`${data.info.password ? "Yes" : "No"}`);
 
-                                // Updating the server's info.
-                                $serverInfo["hostname"].text(data.info.hostname);
-                                $serverInfo["language"].text(data.info.mapname);
-                                $serverInfo["gamemode"].text(data.info.gamemode);
-                                $serverInfo["players"].text(`${data.players.length} / ${data.info.maxplayers}`);
-                                $serverInfo["password"].text(`${data.info.password ? "Yes" : "No"}`);
+								// Updating the player count.
+								$playersInfo["count"].text(`${data.players.length} / ${data.info.maxplayers}`);
+							}
 
-                                // Updating the player count.
-                                $playersInfo["count"].text(`${data.players.length} / ${data.info.maxplayers}`);
-                            }
+							if (data.rules !== null) {
 
-                            if (data.rules !== null) {
+								// Updating the server's info.
+								$serverInfo["version"].text(data.rules.version);
+								$serverInfo["mapname"].text(data.rules.mapname);
+							}
 
-                                // Updating the server's info.
-                                $serverInfo["version"].text(data.rules.version);
-                                $serverInfo["mapname"].text(data.rules.mapname);
-                            }
+							// Updating the players' list.
+							if (data.players !== null) {
 
-                            // Updating the players' list.
-                            if (data.players !== null) {
+								$playersInfo["stats"].text("");
+								$.each(data.players, (i, v) => {
 
-                                $playersInfo["stats"].text("");
-                                $.each(data.players, (i, v) => {
+									$playersInfo["stats"].append(`
+											<tr>
+													<td>${ v.playerid}</td>
+													<td>${ v.nickname}</td>
+													<td>${ v.score}</td>
+													<td>${ v.ping}</td>
+											</tr>
+									`);
+								});
+							}
+						} else {
 
-                                    $playersInfo["stats"].append(`
-                                        <tr>
-                                            <td>${ v.playerid}</td>
-                                            <td>${ v.nickname}</td>
-                                            <td>${ v.score}</td>
-                                            <td>${ v.ping}</td>
-                                        </tr>
-                                    `);
-                                });
-                            }
-                        } else {
+							throw `[error] - ${data.error}`;
+						}
 
-                            throw `[error] - ${data.error}`;
-                        }
+						console.info('Samp Front: Server stats updated.');
+					})
+					.catch(err => {
+						if (err == "The server is currently offline") {
+							$serverInfo["section"].addClass('offline');
+							$playersInfo["section"].addClass('offline');
+						}
 
-                        console.info('Samp Front: Server stats updated.');
-                    })
-                    .catch(err => {
-                        
-                        if (err == "The server is currently offline") {
+						console.error(`Samp Front: ${err}.`);
+					});
+			}, config['website']['liveUpdateInterval']);
+			// #endregion
 
-                            $serverInfo["section"].addClass('offline');
-                            $playersInfo["section"].addClass('offline');
-                        }
+			// #region News
+			const $news = {
+				section: $('#news-content'),
+				title: $('#news-title'),
+				date: $('#news-date'),
+				body: $('#news-body')
+			};
 
-                        console.error(`Samp Front: ${err}.`);
-                    });
-            }, config['website']['liveUpdateInterval']);
-            // #endregion
+			$('#news-list div.item').on('click', (e) => {
 
-            // #region News
-            const $news = {
-                section: $('#news-content'),
-                title: $('#news-title'),
-                date: $('#news-date'),
-                body: $('#news-body')
-            };
+				const id = $(e.target).closest('div.item').data('id');
 
-            $('#news-list div.item').on('click', (e) => {
+				$('#news-list div.item').removeClass('active');
+				$(e.target).closest('div.item').addClass('active');
 
-                const id = $(e.target).closest('div.item').data('id');
+				fetch(`./../${config['path']['news']}read_single.php?id=${id}`)
+					.then(response => response.json())
+					.then(article => {
 
-                $('#news-list div.item').removeClass('active');
-                $(e.target).closest('div.item').addClass('active');
+						$($news['title']).text(article.title);
+						$($news['date']).text(article.created_at);
+						$($news['body']).html($.parseHTML(article.body));
+					});
+			});
 
-                fetch(`${config['path']['site']}${config['path']['controllers']}news/read_single.php?id=${id}`)
-                    .then(response => response.json())
-                    .then(article => {
-
-                        $($news['title']).text(article.title);
-                        $($news['date']).text(article.created_at);
-                        $($news['body']).html($.parseHTML(article.body));
-                    });
-            });
-
-            $('#news-list div.item:first-of-type').trigger('click');
-            // #endregion
-        });
+			$('#news-list div.item:first-of-type').trigger('click');
+			// #endregion
+		});
 });
 
 $(document).on('scroll', (e) => {
-    
-    if ($(window).scrollTop() > ($('header').outerHeight() + $('nav').outerHeight())) {
 
-        // Sticking the navbar.
-        $('nav').addClass('sticky');
+	if ($(window).scrollTop() > ($('header').outerHeight() + $('nav').outerHeight())) {
 
-        // Adding some margin top to the header.
-        $('header').addClass('sticky');
+		// Sticking the navbar.
+		$('nav').addClass('sticky');
 
-        // Displaying the back to top button.
-        $('#scroll-top').css('display', 'block');
-    } else {
+		// Adding some margin top to the header.
+		$('header').addClass('sticky');
 
-        // Fixing the navbar.
-        $('nav').removeClass('sticky');
+		// Displaying the back to top button.
+		$('#scroll-top').css('display', 'block');
+	} else {
 
-        // Removing the extra margin top from the header.
-        $('header').removeClass('sticky');
+		// Fixing the navbar.
+		$('nav').removeClass('sticky');
 
-        // Hidding the back to top button.
-        $('#scroll-top').css('display', 'none');
-    }
+		// Removing the extra margin top from the header.
+		$('header').removeClass('sticky');
+
+		// Hidding the back to top button.
+		$('#scroll-top').css('display', 'none');
+	}
 });
 
 window.addEventListener('beforeunload', () => {
-
-    window.scrollTo(0, 0);
+	window.scrollTo(0, 0);
 });
