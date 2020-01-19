@@ -1,146 +1,131 @@
 <?php
 
-    /**
-     * @name:       Samp Front
-     * @version:    0.5.0
-     * @author:     EOussama (eoussama.github.io)
-     * @license     MIT
-     * @source:     github.com/EOussama/samp-front
-     * 
-     * This file is responsible on loading the configurations from
-     * the config.ini file and setting them up for use.
-     */
-    
-    #region Setting up the configurations.
+/**
+ * @name:       Samp Front
+ * @version:    0.5.0
+ * @author:     EOussama (eoussama.github.io)
+ * @license     MIT
+ * @source:     github.com/EOussama/samp-front
+ * 
+ * This file is responsible on loading the configurations from
+ * the config.ini file and setting them up for use.
+ */
 
-    // Loading the configurations from the config.ini file.
-    $config = parse_ini_file('config.ini', true);
+#region Setting up the configurations.
 
-    /**
-    * Don't touch this unless you know what you're doing.
-    * Getting the root folder of the website.
-    */
-    $_site = dirname(dirname($_SERVER['SCRIPT_NAME'])) . '/';
-    $_root = dirname(__DIR__) . '/';
+// Loading the configurations from the config.ini file.
+$config = parse_ini_file('config.ini', true);
 
-    /**
-     * The paths to different parts of the website.
-     */
-    $config['path'] = array(
 
-        /**
-         * The absolute path of the website's folder.
-         */
-        "root"          => $_root,
-        
-        /**
-         * The path of the root website.
-         */
-        "site"          => $_site,
+/**
+ * The paths to different parts of the website.
+ */
+$config['path'] = array(
 
-        /**
-         * The path to the folder that contains controllers.
-         */
-        "controllers"   => 'controllers/',
+	/**
+	 * The absolute path of the website's folder.
+	 */
+	'root'          => $_SERVER['DOCUMENT_ROOT'],
 
-        /**
-         * The path to the folder that contains the helper funtions.
-         */
-        "helpers"       => 'helpers/',
+	/**
+	 * The path to the folder that contains controllers.
+	 */
+	'controllers'   => 'controllers/',
 
-        /**
-         * The path to the folder that contains 3rd party scripts.
-         */
-        "lib"           => 'lib/',
+	/**
+	 * The path to the folder that contains the helper funtions.
+	 */
+	'helpers'       => 'helpers/',
 
-        /**
-         * The path to the folder that contains models.
-         */
-        "models"        => 'models/',
+	/**
+	 * The path to the folder that contains 3rd party scripts.
+	 */
+	'lib'           => 'lib/',
 
-        /**
-         * The path to the folder that process scripts.
-         */
-        "process"       => 'process/',
+	/**
+	 * The path to the folder that contains models.
+	 */
+	'models'        => 'models/',
 
-        /**
-         * The path to the folder that serves public files.
-         */
-        "public"        => 'public/',
+	/**
+	 * The path to the folder that process scripts.
+	 */
+	'process'       => 'process/',
 
-        /**
-         * The path to the folder that contains reusable components.
-         */
-        "templates"     => 'templates/',
+	/**
+	 * The path to the folder that serves public files.
+	 */
+	'public'        => 'public/',
 
-        /**
-         * The path to the folder that contains views.
-         */
-        "views"         => 'views/',
+	/**
+	 * The path to the folder that contains reusable components.
+	 */
+	'templates'     => 'templates/',
 
-        /**
-         * The path to the folder that contains javascript files.
-         */
-        "js"            => 'assets/js/',
+	/**
+	 * The path to the folder that contains views.
+	 */
+	'views'         => 'views/',
 
-        /**
-         * The path to the folder that contains stylesheet files.
-         */
-        "css"           => 'assets/css/',
+	/**
+	 * The path to the folder that contains javascript files.
+	 */
+	'js'            => 'assets/js/',
 
-        /**
-         * The path to the folder that contains images.
-         */
-        "img"           => 'assets/img/'
-    );
+	/**
+	 * The path to the folder that contains stylesheet files.
+	 */
+	'css'           => 'assets/css/',
 
-    /**
-     * Samp Front's configurations.
-     */
-    define('CONFIG', serialize($config));
+	/**
+	 * The path to the folder that contains images.
+	 */
+	'img'           => 'assets/img/'
+);
 
-    #endregion
+/**
+ * Samp Front's configurations.
+ */
+define('CONFIG', serialize($config));
 
-    #region Retrieving the configurations.
+#endregion
 
-    /**
-     * Returns the configurations if requested.
-     */
-    if (isset($_GET['q'])) {
+#region Retrieving the configurations.
 
-        $data = array(
-            "path" => array(
-                "controllers" => $config['path']['controllers'],
-                "site" => $config['path']['site'],
-                "process" => $config['path']['process']
-            ),
-            "website" => array(
-                "scrollSpeed"           => $config['website']['scrollSpeed'],
-                "liveUpdateInterval"    => $config['website']['liveUpdateInterval']
-            )
-        );
+/**
+ * Returns the configurations if requested.
+ */
+if (isset($_GET['q'])) {
 
-        echo json_encode($data);
-    }
+	$data = array(
+		"path" => array(
+			"controllers" => $config['path']['controllers'],
+			"site" => $config['path']['site'],
+			"process" => $config['path']['process']
+		),
+		"website" => array(
+			"scrollSpeed"           => $config['website']['scrollSpeed'],
+			"liveUpdateInterval"    => $config['website']['liveUpdateInterval']
+		)
+	);
 
-    #endregion
+	echo json_encode($data);
+}
 
-    /**
-     * Concatenates two paths together.
-     * 
-     * @param string $dest: The first part of the path, must make use of the values stored
-     * in the $config variable.
-     * @param string $root: The second part of the path, can be either “root” or “site”.
-     * @param boolean $public: Whether or not to append the public folder in between both paths.
-     * 
-     * @return string The combination of the two paths.
-     */
-    function pathfy($dest, $root = 'root', $public = false) {
+#endregion
 
-        global $config;
+/**
+ * Concatenates two paths together.
+ * 
+ * @param string $folder: The target folder.
+ * @param string $file: The target file.
+ * @param boolean $public: Whether or not the target file is in the public scope.
+ * 
+ * @return string The combination of the two paths.
+ */
+function pathfy($folder, $file, $public = false)
+{
+	global $config;
 
-        $dest = (empty($dest) ? '' : $config['path'][$dest]);
-        $root = (empty($root) ? '' : $config['path'][$root]);
-
-        return $root . ($public ? $config['path']['public'] : '' ) . $dest;
-    }
+	return ($public ? '' : $config['path']['root']) . $config['path'][$folder] . $file;
+}
