@@ -9,10 +9,8 @@
  */
 
 $(document).ready(() => {
-
     // #region Closing the message popup.
-    $('.message .close').on('click', function() {
-        
+    $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');
     });
     // #endregion

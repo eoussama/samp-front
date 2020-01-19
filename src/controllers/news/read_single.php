@@ -33,11 +33,11 @@ $id = htmlspecialchars(strip_tags($_GET['id']));
 
 // Instantiating a new database connection.
 $db = new Database(
-    $config['database']['host'],
-    $config['database']['port'],
-    $config['database']['name'],
-    $config['database']['user'],
-    $config['database']['pass']
+	$config['database']['host'],
+	$config['database']['port'],
+	$config['database']['name'],
+	$config['database']['user'],
+	$config['database']['pass']
 );
 
 // Getting a connection object.

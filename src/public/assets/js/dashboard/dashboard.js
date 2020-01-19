@@ -11,182 +11,181 @@
 
 
 $(document).ready(() => {
+	fetch('./../../config/config.php?q')
+		.then(response => response.json())
+		.then(response => {
 
-    fetch('./../../config/config.php?q')
-        .then(response => response.json())
-        .then(response => {
+			const config = {
+				path: {
+					news: response.path.news,
+					root: response.path.root
+				}
+			}
 
-            const config = {
-                path: {
-                    controllers: response.path.controllers,
-                    site: response.path.site
-                }
-            }
+			return config;
+		})
+		.then(config => {
 
-            return config;
-        })
-        .then(config => {
+			$('#loader').removeClass('active');
+			$('body').css('overflow-y', 'auto');
 
-            $('#loader').removeClass('active');
-            $('body').css('overflow-y', 'auto');
+			// #region Quill
+			const
+				quillCreate = new Quill('#editor-create', {
+					theme: 'snow'
+				}),
+				quillEdit = new Quill('#editor-edit', {
+					theme: 'snow'
+				});
+			// #endregion
 
-            // #region Quill
-            const
-                quillCreate = new Quill('#editor-create', {
-                    theme: 'snow'
-                }),
-                quillEdit = new Quill('#editor-edit', {
-                    theme: 'snow'
-                });
-            // #endregion
+			// #region CRUD
+			const
+				editorFormCreate = $('#editor-form-create'),
+				editorFormEdit = $('#editor-form-edit');
 
-            // #region CRUD
-            const
-                editorFormCreate = $('#editor-form-create'),
-                editorFormEdit = $('#editor-form-edit');
+			let articleToEdit = '';
 
-            let articleToEdit = '';
+			$('#add-btn').on('click', () => {
 
-            $('#add-btn').on('click', () => {
+				$('#text-editor-create')
+					.modal({
+						onApprove: () => {
 
-                $('#text-editor-create')
-                    .modal({
-                        onApprove: () => {
+							$(editorFormCreate).trigger('submit');
+						}
+					})
+					.modal('show');
 
-                            $(editorFormCreate).trigger('submit');
-                        }
-                    })
-                    .modal('show');
+				$(editorFormCreate).find('input[name="title"]').val('');
+				quillCreate.deleteText(0, quillCreate.getLength());
+			});
 
-                $(editorFormCreate).find('input[name="title"]').val('');
-                quillCreate.deleteText(0, quillCreate.getLength());
-            });
+			$('#select-btn').on('click', () => {
 
-            $('#select-btn').on('click', () => {
+				$('input[type="checkbox"]').prop('checked', true);
+			});
 
-                $('input[type="checkbox"]').prop('checked', true);
-            });
+			$('#unselect-btn').on('click', () => {
 
-            $('#unselect-btn').on('click', () => {
+				$('input[type="checkbox"]').prop('checked', false);
+			});
 
-                $('input[type="checkbox"]').prop('checked', false);
-            });
+			$('#delete-btn').on('click', () => {
 
-            $('#delete-btn').on('click', () => {
+				const $checkedArticles = $('input[type="checkbox"]:checked');
 
-                const $checkedArticles = $('input[type="checkbox"]:checked');
+				if ($checkedArticles.length === 0) {
 
-                if ($checkedArticles.length === 0) {
+					alert("No news articles are selected!");
+				} else {
 
-                    alert("No news articles are selected!");
-                } else {
+					let articleIds = [];
 
-                    let articleIds = [];
+					$($checkedArticles).each((i) => {
 
-                    $($checkedArticles).each((i) => {
+						articleIds.push($($($checkedArticles).get(i).closest('.item')).data('id'));
+					});
 
-                        articleIds.push($($($checkedArticles).get(i).closest('.item')).data('id'));
-                    });
+					if (confirm(`Are you sure you want to delete ${(articleIds.length > 1 ? `these ${articleIds.length}` : 'this')} news article(s)?`)) {
 
-                    if (confirm(`Are you sure you want to delete ${(articleIds.length > 1 ? `these ${articleIds.length}` : 'this')} news article(s)?`)) {
+						$.post(`./../../${config['path']['news']}delete.php`, { ids: articleIds })
+							.done((data) => {
 
-                        $.post(`${config['path']['site']}${config['path']['controllers']}news/delete.php`, { ids: articleIds })
-                            .done((data) => {
+								alert(`${data.deleted} out of ${articleIds.length} news article(s) were successfully deleted!`);
+								window.location.reload();
+							});
+					}
+				}
+			});
 
-                                alert(`${data.deleted} out of ${articleIds.length} news article(s) were successfully deleted!`);
-                                window.location.reload();
-                            });
-                    }
-                }
-            });
+			$('.edit-btn').on('click', (e) => {
 
-            $('.edit-btn').on('click', (e) => {
+				if (!$(e.target).hasClass('loading')) {
 
-                if (!$(e.target).hasClass('loading')) {
+					articleToEdit = $($(e.target).closest('.item')).data('id');
 
-                    articleToEdit = $($(e.target).closest('.item')).data('id');
+					$(e.target).addClass('loading');
 
-                    $(e.target).addClass('loading');
+					fetch(`./../../${config['path']['news']}read_single.php?id=${articleToEdit}`)
+						.then(response => response.json())
+						.then(article => {
 
-                    fetch(`${config['path']['site']}${config['path']['controllers']}news/read_single.php?id=${articleToEdit}`)
-                        .then(response => response.json())
-                        .then(article => {
+							$(editorFormEdit).find('input[name="title"]').val(article.title);
+							$(quillEdit.root).html($.parseHTML(article.body));
+						})
+						.then(() => {
 
-                            $(editorFormEdit).find('input[name="title"]').val(article.title);
-                            $(quillEdit.root).html($.parseHTML(article.body));
-                        })
-                        .then(() => {
+							$(e.target).removeClass('loading');
 
-                            $(e.target).removeClass('loading');
+							$('#text-editor-edit').modal({
 
-                            $('#text-editor-edit').modal({
+								onApprove: () => {
 
-                                onApprove: () => {
+									$(editorFormEdit).trigger('submit');
+								}
+							}).modal('show');
+						});
+				}
+			});
 
-                                    $(editorFormEdit).trigger('submit');
-                                }
-                            }).modal('show');
-                        });
-                }
-            });
+			$(editorFormCreate).on('submit', (e) => {
 
-            $(editorFormCreate).on('submit', (e) => {
+				e.preventDefault();
 
-                e.preventDefault();
+				if ($(editorFormCreate).find('input[name="title"]').val().length == 0) {
 
-                if ($(editorFormCreate).find('input[name="title"]').val().length == 0) {
+					alert('Make sure provide a valid title for the news article.');
+				} else {
 
-                    alert('Make sure provide a valid title for the news article.');
-                } else {
+					$.post(`./../../${config['path']['news']}create.php`, {
 
-                    $.post(`${config['path']['site']}${config['path']['controllers']}news/create.php`, {
+						title: $(editorFormCreate).find('input[name="title"]').val(),
+						body: quillCreate.root.innerHTML
+					})
+						.done((data) => {
 
-                        title: $(editorFormCreate).find('input[name="title"]').val(),
-                        body: quillCreate.root.innerHTML
-                    })
-                        .done((data) => {
+							if (!data.hasOwnProperty('error')) {
 
-                            if (!data.hasOwnProperty('error')) {
+								alert(`A new news article was created.`);
+							} else {
 
-                                alert(`A new news article was created.`);
-                            } else {
+								alert(`Error: ${data.error}`);
+							}
 
-                                alert(`Error: ${data.error}`);
-                            }
+							window.location.reload();
+						});
+				}
+			});
 
-                            window.location.reload();
-                        });
-                }
-            });
+			$(editorFormEdit).on('submit', (e) => {
 
-            $(editorFormEdit).on('submit', (e) => {
+				e.preventDefault();
 
-                e.preventDefault();
+				if ($(editorFormEdit).find('input[name="title"]').val().length == 0) {
 
-                if ($(editorFormEdit).find('input[name="title"]').val().length == 0) {
+					alert('Make sure provide a valid title for the news article.');
+				} else {
 
-                    alert('Make sure provide a valid title for the news article.');
-                } else {
+					$.post(`./../../${config['path']['news']}update.php`, {
 
-                    $.post(`${config['path']['site']}${config['path']['controllers']}news/update.php`, {
+						id: articleToEdit,
+						title: $(editorFormEdit).find('input[name="title"]').val(),
+						body: quillEdit.root.innerHTML
+					}).done((data) => {
 
-                        id: articleToEdit,
-                        title: $(editorFormEdit).find('input[name="title"]').val(),
-                        body: quillEdit.root.innerHTML
-                    }).done((data) => {
+						if (!data.hasOwnProperty('error')) {
 
-                        if (!data.hasOwnProperty('error')) {
+							alert(`The news article was successfully edited.`);
+						} else {
 
-                            alert(`The news article was successfully edited.`);
-                        } else {
+							alert(`Error: ${data.error}`);
+						}
 
-                            alert(`Error: ${data.error}`);
-                        }
-
-                        window.location.reload();
-                    });
-                }
-            });
-        });
-    // #endregion
+						window.location.reload();
+					});
+				}
+			});
+		});
+	// #endregion
 });
