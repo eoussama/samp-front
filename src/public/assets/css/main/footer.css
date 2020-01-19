@@ -1,45 +1,45 @@
 /**
  * @name:       Samp Front
- * @version:    0.5.0
+ * @version:    0.5.1
  * @author:     EOussama (eoussama.github.io)
  * @license     MIT
  * @source:     github.com/EOussama/samp-front
  */
 
 footer {
-    margin: 50px 0 0 0 !important;
-    padding: 80px 0 120px 0 !important;
-    position: relative;
+  margin: 50px 0 0 0 !important;
+  padding: 80px 0 120px 0 !important;
+  position: relative;
 }
 
 body.dark footer {
-    background-color: var(--color-dark-light) !important;
+  background-color: var(--color-dark-light) !important;
 }
 
 body.dark footer * {
-    color: var(--color-light) !important;
+  color: var(--color-light) !important;
 }
 
 footer::before {
-    background-attachment: fixed;
-    background-image: url(./../../img/backgrounds/beach-bg.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: "";
-    filter: grayscale(70%);
-    height: 100%;
-    left: 0;
-    opacity: .1;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  background-attachment: fixed;
+  background-image: url(./../../img/backgrounds/beach-bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  filter: grayscale(70%);
+  height: 100%;
+  left: 0;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 /* #region Links */
 
 footer div.community-link-label {
-    text-transform: capitalize !important;
+  text-transform: capitalize !important;
 }
 
 /* #endregion */
@@ -47,8 +47,8 @@ footer div.community-link-label {
 /* #region About */
 
 div#about {
-    padding-right: 100px !important;
-    text-align: justify;
+  padding-right: 100px !important;
+  text-align: justify;
 }
 
 /* #endregion */
@@ -56,17 +56,17 @@ div#about {
 /* #region Trademark */
 
 div.trademark {
-    background-color: transparent !important;
-    border: none !important;
-    bottom: 0;
-    left: 0;
-    position: absolute !important;
-    text-align: center;
-    width: 100%;
+  background-color: transparent !important;
+  border: none !important;
+  bottom: 0;
+  left: 0;
+  position: absolute !important;
+  text-align: center;
+  width: 100%;
 }
 
 body.dark div.trademark a {
-    color: var(--color-gray) !important;
+  color: var(--color-gray) !important;
 }
 
 /* #endregion */

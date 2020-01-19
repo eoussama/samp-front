@@ -1,6 +1,6 @@
 /**
  * @name:       Samp Front
- * @version:    0.5.0
+ * @version:    0.5.1
  * @author:     EOussama (eoussama.github.io)
  * @license     MIT
  * @source:     github.com/EOussama/samp-front
@@ -9,27 +9,27 @@
  */
 
 #loader {
-    background-color: var(--color-light);
+  background-color: var(--color-light);
 }
 
 #loader::before {
-    background-image: url(./../img/backgrounds/beach-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: "";
-    filter: grayscale(100%);
-    height: 100%;
-    left: 0;
-    opacity: .1;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  background-image: url(./../img/backgrounds/beach-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  filter: grayscale(100%);
+  height: 100%;
+  left: 0;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 body.dark #loader {
-    background-color: var(--color-dark-light);
+  background-color: var(--color-dark-light);
 }
 
 body.dark #loader * {
-    color: var(--color-light) !important;
+  color: var(--color-light) !important;
 }

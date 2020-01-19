@@ -1,6 +1,6 @@
 /**
 * @name:       Samp Front
-* @version:    0.5.0
+* @version:    0.5.1
 * @author:     EOussama (eoussama.github.io)
 * @license     MIT
 * @source:     github.com/EOussama/samp-front
@@ -9,51 +9,51 @@
 /* #region Global */
 
 :root {
-    --color-dark-link: #6573ad;
-    --color-dark-light: #2E2E2E;
-    --color-dark: #212121;
-    --color-gray: gray;
-    --color-light: #afafaf;
+  --color-dark-link: #6573ad;
+  --color-dark-light: #2e2e2e;
+  --color-dark: #212121;
+  --color-gray: gray;
+  --color-light: #afafaf;
 }
 
 body {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 }
 
 body.dark {
-    background-color: var(--color-dark-light);
+  background-color: var(--color-dark-light);
 }
 
 body::before {
-    background-image: url('./../../img/backgrounds/beach-bg.jpg');
-    background-repeat: repeat-y;
-    background-size: cover;
-    background-attachment: fixed;
-    content: "";
-    left: 0;
-    height: 120%;
-    opacity: .2;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  background-image: url("./../../img/backgrounds/beach-bg.jpg");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-attachment: fixed;
+  content: "";
+  left: 0;
+  height: 120%;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 section {
-    margin: 50px 0 !important;
-    position: relative;
+  margin: 50px 0 !important;
+  position: relative;
 }
 
 body.dark .segment {
-    background-color: var(--color-dark);
+  background-color: var(--color-dark);
 }
 
 body.dark .segment * {
-    color: var(--color-light);
+  color: var(--color-light);
 }
 
 body.dark main a {
-    color: var(--color-dark-link) !important;
+  color: var(--color-dark-link) !important;
 }
 
 /* #endregion */
@@ -61,53 +61,55 @@ body.dark main a {
 /* #region News */
 
 section#news {
-    height: 500px;
+  height: 500px;
 }
 
 section#news > div.segment {
-    height: 100%;
-    position: relative;
+  height: 100%;
+  position: relative;
 }
 
 section#news > div.segment::before {
-    background-image: url(./../../img/backgrounds/news-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: "";
-    filter: grayscale(100%);
-    height: 100%;
-    left: 0;
-    opacity: .05;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  background-image: url(./../../img/backgrounds/news-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  filter: grayscale(100%);
+  height: 100%;
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
-section#news div#news-content, section#news div#news-list {
-    height: 430px;
-    overflow-y: auto;
+section#news div#news-content,
+section#news div#news-list {
+  height: 430px;
+  overflow-y: auto;
 }
 
-section#news div#news-list div.item small, section#news div#news-content small {
-    color: var(--color-light);
+section#news div#news-list div.item small,
+section#news div#news-content small {
+  color: var(--color-light);
 }
 
 section#news div#news-list {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 section#news div#no-articles {
-    align-items: center;
-    color: var(--color-light);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 400px;
-    width: 100%;
+  align-items: center;
+  color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
 }
 
 section#news div#no-articles i {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* #endregion */
@@ -115,43 +117,45 @@ section#news div#no-articles i {
 /* #region Gallery */
 
 div#gallery {
-    height: 100% !important;
-    position: relative;
+  height: 100% !important;
+  position: relative;
 }
 
 div#gallery-carousel {
-    height: 408px !important;
+  height: 408px !important;
 }
 
 div#gallery-carousel img {
-    cursor: w-resize;
-    filter: grayscale(70%);
-    height: 400px !important;
-    transition-duration: .5s;
-    transition-property: filter;
+  cursor: w-resize;
+  filter: grayscale(70%);
+  height: 400px !important;
+  transition-duration: 0.5s;
+  transition-property: filter;
 }
 
 div#gallery-carousel img:hover {
-    filter: grayscale(0%);
-} 
+  filter: grayscale(0%);
+}
 
-i#fullscreen-btn, i#fullscreen-close-btn {
-    cursor: pointer;
-    opacity: .4;
-    position: absolute;
-    right: 20px;
-    top: 63px;
-    transition-duration: .3s;
-    transition-property: opacity;
-    z-index: 5;
+i#fullscreen-btn,
+i#fullscreen-close-btn {
+  cursor: pointer;
+  opacity: 0.4;
+  position: absolute;
+  right: 20px;
+  top: 63px;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  z-index: 5;
 }
 
 i#fullscreen-close-btn {
-    top: 30px;
+  top: 30px;
 }
 
-i#fullscreen-btn:hover, i#fullscreen-close-btn:hover {
-    opacity: .8;
+i#fullscreen-btn:hover,
+i#fullscreen-close-btn:hover {
+  opacity: 0.8;
 }
 
 /* #endregion */
@@ -159,8 +163,8 @@ i#fullscreen-btn:hover, i#fullscreen-close-btn:hover {
 /* #region Intro */
 
 section#intro img {
-    width: 180px;
-    transform: rotateY(180deg);
+  width: 180px;
+  transform: rotateY(180deg);
 }
 
 /* #endregion */
@@ -168,33 +172,33 @@ section#intro img {
 /* #region ScrollTop */
 
 div#scroll-top {
-    animation-duration: .3s;
-    animation-name: scroll-top-reveal;
-    bottom: 50px;
-    cursor: pointer;
-    display: none;
-    opacity: .1;
-    position: fixed;
-    right: 50px;
-    transition-duration: .3s;
-    transition-property: opacity;
-    z-index: 10;
+  animation-duration: 0.3s;
+  animation-name: scroll-top-reveal;
+  bottom: 50px;
+  cursor: pointer;
+  display: none;
+  opacity: 0.1;
+  position: fixed;
+  right: 50px;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  z-index: 10;
 }
 
 div#scroll-top:hover {
-    opacity: .6 !important;
+  opacity: 0.6 !important;
 }
 
 @keyframes scroll-top-reveal {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
 
-    to {
-        bottom: 50px;
-        opacity: .1;
-    }
+  to {
+    bottom: 50px;
+    opacity: 0.1;
+  }
 }
 
 /* #endregion */
@@ -202,61 +206,62 @@ div#scroll-top:hover {
 /* #region Live stats */
 
 div#live-stats {
-    height: 430px !important;
+  height: 430px !important;
 }
 
 div#live-stats section > div.segment {
-    height: 362px !important;
+  height: 362px !important;
 }
 
 div#live-stats section div.segment > div {
-    height: 97.3%;
+  height: 97.3%;
 }
 
-
-div#server-live-stats.offline table, section#players-stats.offline div.content {
-    display: none;
+div#server-live-stats.offline table,
+section#players-stats.offline div.content {
+  display: none;
 }
 
-div#server-live-stats.offline div.server-offline, section#players-stats.offline div.server-offline {
-    display: flex;
+div#server-live-stats.offline div.server-offline,
+section#players-stats.offline div.server-offline {
+  display: flex;
 }
 
 div#server-live-stats + div img {
-    bottom: -1px;
-    position: absolute;
-    right: -25px;
-    width: 320px;
+  bottom: -1px;
+  position: absolute;
+  right: -25px;
+  width: 320px;
 }
 
 div.server-offline {
-    align-items: center;
-    color: var(--color-gray);
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    width: 100%;
+  align-items: center;
+  color: var(--color-gray);
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
 div.server-offline i {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 div#players-live-stats {
-    height: 235px !important;
-    margin-top: 0 !important;
-    overflow-y: auto !important;
+  height: 235px !important;
+  margin-top: 0 !important;
+  overflow-y: auto !important;
 }
 
 span#player-count {
-    color: var(--color-gray);
-    float: right;
+  color: var(--color-gray);
+  float: right;
 }
 
 body.dark div#live-stats table {
-    background-color: var(--color-dark-light);
-    color: var(--color-light);
+  background-color: var(--color-dark-light);
+  color: var(--color-light);
 }
 
 /* #endregion */
@@ -264,12 +269,12 @@ body.dark div#live-stats table {
 /* #region Discord section */
 
 div.discord-section {
-    border: none !important;
-    padding: 0 !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 div.discord-section iframe {
-    width: 100%;
+  width: 100%;
 }
 
 /* #endregion */
