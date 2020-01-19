@@ -15,5 +15,7 @@ services:
       dockerfile: ./docker/Dockerfile
     ports:
       - 8080:80
+    volumes:
+      - ./../:/var/www
     depends_on:
       - db
