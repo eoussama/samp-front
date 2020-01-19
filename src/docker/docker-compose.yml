@@ -16,6 +16,6 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./../:/var/www
+      - ./../:/var/www/
     depends_on:
       - db
