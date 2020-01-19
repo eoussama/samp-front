@@ -16,7 +16,6 @@
 // Loading the configurations from the config.ini file.
 $config = parse_ini_file('config.ini', true);
 
-
 /**
  * The paths to different parts of the website.
  */
@@ -120,12 +119,15 @@ if (isset($_GET['q'])) {
  * @param string $folder: The target folder.
  * @param string $file: The target file.
  * @param boolean $public: Whether or not the target file is in the public scope.
+ * @param boolean $view: Whether or not the target file is going ot be loaded in a view page.
  * 
  * @return string The combination of the two paths.
  */
-function pathfy($folder, $file, $public = false)
+function pathfy($folder, $file, $public = false, $view = false)
 {
 	global $config;
 
-	return ($public ? '' : $config['path']['root']) . $config['path'][$folder] . $file;
+	return $view
+		? './../' . $config['path'][$folder] . $file
+		: ($public ? '' : $config['path']['root']) . $config['path'][$folder] . $file;
 }
