@@ -11,6 +11,9 @@ Of course, Samp Front can be customized to meet your needs, that's the reason fo
 The installation is pretty easy, navigate to the config folder, there you'll find a file named `config.ini`, open it up on edit mode and tweaks the settings in there to your liking, then simply save it and the website will reflect those changes.
 As for the logo, replace the `logo.png` file that's located under `public/assets/img`.
 
+# Docker
+Samp-front is docker ready, all you have to do is `cd` into the `src/docker/` folder and run `docker-compose up` and let Docker setup everything for you.
+
 # Features
 - Live server/players statistic preview.
 - Dark/Light themes.
