@@ -22,7 +22,6 @@ require_once "./../../config/config.php";
 
 // Loading the configurations.
 $config = unserialize(CONFIG);
-$host = 'http://' . $config['path']['host'] . 'public/';
 
 // Setting up the $inverted string, used to make the dark mode
 // work if enabled.
@@ -49,10 +48,10 @@ $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
 	<!-- The main stylesheet. -->
-	<link rel="stylesheet" href="<?php echo $host . pathfy('css', 'error/error.css', true); ?>">
+	<link rel="stylesheet" href="<?php echo pathfy('css', 'error/error.css', true); ?>">
 
 	<!-- The website's favicon. -->
-	<link rel="shortcut icon" type="image/png" href="<?php echo $host . pathfy('img', 'logo.png', true); ?>">
+	<link rel="shortcut icon" type="image/png" href="<?php echo pathfy('img', 'logo.png', true); ?>">
 
 	<!-- The website's title -->
 	<title><?php echo $config['general']['name']; ?></title>
@@ -63,7 +62,7 @@ $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 
 		<!-- The page's content -->
 		<div class="content-wrapper">
-			<img src="<?php echo $host . pathfy('img', 'logo.png', true); ?>" alt="<?php echo $config['general']['name']; ?>'s logo.">
+			<img src="<?php echo pathfy('img', 'logo.png', true); ?>" alt="<?php echo $config['general']['name']; ?>'s logo.">
 			<h1><?php echo $config['general']['name']; ?></h1>
 
 			<p>Page doesn't exist!</p>
@@ -88,7 +87,7 @@ $inverted = $config['website']['darkMode'] ? 'inverted' : '';
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!-- The main script -->
-	<script src="<?php echo $host . pathfy('js', 'error/error.js', true); ?>"></script>
+	<script src="<?php echo pathfy('js', 'error/error.js', true); ?>"></script>
 </body>
 
 </html>

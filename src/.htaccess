@@ -1,6 +1,6 @@
 # Redirect to the error page.
-ErrorDocument 404 /public/views/error.php/
-ErrorDocument 403 /public/views/error.php/
+ErrorDocument 404 /public/
+ErrorDocument 403 /public/
 
 # Forbid folder navigartion.
 Options -Indexes

@@ -134,7 +134,7 @@ function pathfy($folder, $file, $public = false, $view = false, $host = false)
 	global $config;
 
 	$host = ($host ? $config['path']['host'] : '');
-	$public = ($public ? '' : $config['path']['root']);
+	$public = ($public ? ('http://' . $config['path']['host']) . 'public/' : $config['path']['root']);
 
 	return $host . $view
 		? './../' . $config['path'][$folder] . $file
