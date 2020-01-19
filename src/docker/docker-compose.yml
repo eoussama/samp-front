@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db:
+    container_name: samp-front-db
+    image: mysql
+    restart: always
+    env_file:
+      - ./../env/.env
+  app:
+    image: eoussama/samp-front:0.5.0
+    container_name: samp-front-app
+    restart: always
+    build:
+      context: ./../
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - db
