@@ -22,6 +22,7 @@ require_once "./../../config/config.php";
 
 // Loading the configurations.
 $config = unserialize(CONFIG);
+$host = 'http://' . $config['path']['host'];
 
 // Setting up the $inverted string, used to make the dark mode
 // work if enabled.
