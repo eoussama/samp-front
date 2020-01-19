@@ -27,6 +27,11 @@ $config['path'] = array(
 	'root'          => $_SERVER['DOCUMENT_ROOT'],
 
 	/**
+	 * The absolute path of the website's folder.
+	 */
+	'host'          => $_SERVER['HTTP_HOST'] . '/',
+
+	/**
 	 * The path to the folder that contains controllers.
 	 */
 	'controllers'   => 'controllers/',
@@ -120,14 +125,18 @@ if (isset($_GET['q'])) {
  * @param string $file: The target file.
  * @param boolean $public: Whether or not the target file is in the public scope.
  * @param boolean $view: Whether or not the target file is going ot be loaded in a view page.
+ * @param boolean $host: Whether or not to prefix the hostname.
  * 
  * @return string The combination of the two paths.
  */
-function pathfy($folder, $file, $public = false, $view = false)
+function pathfy($folder, $file, $public = false, $view = false, $host = false)
 {
 	global $config;
 
-	return $view
+	$host = ($host ? $config['path']['host'] : '');
+	$public = ($public ? '' : $config['path']['root']);
+
+	return $host . $view
 		? './../' . $config['path'][$folder] . $file
-		: ($public ? '' : $config['path']['root']) . $config['path'][$folder] . $file;
+		: $public . $config['path'][$folder] . $file;
 }
