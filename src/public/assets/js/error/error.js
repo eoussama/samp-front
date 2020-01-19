@@ -10,11 +10,9 @@
 
 
 $(document).ready(() => {
-
-    // #region Go back.
-    $('#back-btn').on('click', () => {
-        
-        window.history.back();
-    });
-    // #endregion
+	// #region Go back.
+	$('#back-btn').on('click', () => {
+		window.history.back();
+	});
+	// #endregion
 });
