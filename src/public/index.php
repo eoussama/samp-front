@@ -48,7 +48,9 @@ $news = new News($conn, $config['database']['newsTable']);
  * Only uncomment this if you want to seed some
  * dummy articles in your database for testing purposes.
  */
-// $news->seed();
+if ($config['website']['seed']) {
+	$news->seed();
+}
 
 // Connecting to the SA:MP server associated with the website.
 $query = new SampQueryAPI($config['samp']['ip'], $config['samp']['port']);
