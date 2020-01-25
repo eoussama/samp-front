@@ -17,7 +17,7 @@ services:
       dockerfile: ./docker/Dockerfile
     ports:
       - "8080:80"
-    volumes:
-      - ./../:/var/www/
+    # volumes:
+    #   - ./../:/var/www/
     depends_on:
       - mysql

@@ -9,7 +9,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Copy source code
-COPY ./ ./var/www/
+COPY ./ ./../
 RUN chown -R www-data:www-data /var/www/
 
 # Exposing ports
