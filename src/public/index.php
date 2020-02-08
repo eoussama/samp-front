@@ -120,6 +120,9 @@ $discordTheme = ($config['discord']['autoMatch'] ? ($config['website']['darkMode
 
 			<!-- The reset of the links. -->
 			<div class="right menu">
+				<a class="item" id="play-btn" href="samp://<?php echo $config['samp']['ip']; ?>:<?php echo $config['samp']['port']; ?>">
+					<div class="ui green button">Play</div>
+				</a>
 				<a class="item" href="<?php echo pathfy('views', 'dashboard.php', true); ?>">Dashboard</a>
 				<a class="item" href="<?php echo $config['website']['links']['forum']; ?>">Forum</a>
 				<a class="item" id="live-stats-btn">Live stats</a>
