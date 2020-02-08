@@ -24,7 +24,7 @@ $config['path'] = array(
 	/**
 	 * The absolute path of the website's folder.
 	 */
-	'root'          => $_SERVER['DOCUMENT_ROOT'],
+	'root'          => $_SERVER['DOCUMENT_ROOT'] . '/',
 
 	/**
 	 * The absolute path of the website's folder.
