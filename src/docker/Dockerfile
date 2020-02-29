@@ -11,7 +11,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 # Copy source code
 COPY ./ ./../
 RUN chown -R www-data:www-data /var/www/
-RUN chmod -R 0755 /var/www/
 
 # Exposing ports
 EXPOSE 80
