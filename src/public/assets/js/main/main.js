@@ -155,7 +155,7 @@ $(document).ready(() => {
 								$serverInfo["language"].text(data.info.mapname);
 								$serverInfo["gamemode"].text(data.info.gamemode);
 								$serverInfo["players"].text(`${data.players.length} / ${data.info.maxplayers}`);
-								$serverInfo["password"].text(`${data.info.password ? "Yes" : "No"}`);
+								$serverInfo["password"].text(`${data.info.password && parseInt(data.info.password) === 1 ? "Yes" : "No"}`);
 
 								// Updating the player count.
 								$playersInfo["count"].text(`${data.players.length} / ${data.info.maxplayers}`);
