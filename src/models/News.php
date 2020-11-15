@@ -69,7 +69,7 @@ class News
         $query  .= "id          VARCHAR(36) PRIMARY KEY,";
         $query  .= "title       VARCHAR(50),";
         $query  .= "body        TEXT,";
-        $query  .= "created_at  DATETIME DEFAULT CURRENT_TIMESTAMP";
+        $query  .= "created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP";
         $query .= ");";
 
         // Preparing the statement.

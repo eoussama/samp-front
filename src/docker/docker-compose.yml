@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
   app:
-    image: eoussama/samp-front:0.5.1
+    image: eoussama/samp-front:0.5.2
     container_name: samp-front-app
     restart: always
     build:
